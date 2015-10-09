@@ -4,7 +4,7 @@
 	<title>Network Science | Albert-László Barabás | Chapter 7</title>
 	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	
+
   <script type="text/javascript" src="../javascripts/jquery.fixed.js"></script>
 
 <script type="text/javascript" charset="utf-8">
@@ -16,9 +16,9 @@
       $('a.toggle').click(function(){ toggleCodeDisplay($(this)); return false; });
     });
   </script>
-  
+
 	<link rel="stylesheet" href="../stylesheets/html.css" type="text/css">
-    
+
     <link rel="stylesheet" href="../stylesheets/bjqs.css" type="text/css">
     <script src="../javascripts/bjqs-1.3.min.js"></script>
 
@@ -36,47 +36,47 @@
 		});
 	});
 	</script>
-    
-    
+
+
     <script class="secret-source">
         jQuery(document).ready(function($) {
-          
+
           $('#banner-slide').bjqs({
             animtype      : 'slide',
             height        : 413,
             width         : 800,
             responsive    : true,
           });
-          
+
         });
       </script>
-      
+
       <script class="secret-source2">
         jQuery(document).ready(function($) {
-          
+
           $('#second-slide').bjqs({
             animtype      : 'slide',
             height        : 413,
             width         : 800,
             responsive    : true,
           });
-          
+
         });
       </script>
-      
+
       <script class="secret-source2">
         jQuery(document).ready(function($) {
-          
+
           $('#third-slide').bjqs({
             animtype      : 'slide',
             height        : 413,
             width         : 800,
             responsive    : true,
           });
-          
+
         });
       </script>
-      
+
 
 </head>
 <body>
@@ -88,15 +88,15 @@
         <div id="nav-bar">
           <h1><a href="../index.html"> <strong>NETWORK SCIENCE</strong> BOOK </a></h1>
           <h2>Albert-László Barabási</h2>
-          <a id="purchase-link" href="../chapter-7/ch7.html">CHAPTER 8</a> <a id="purchase-link" href="../chapter-6/ch6.html">CHAPTER 6</a>  
+          <a id="purchase-link" href="../chapter-7/ch7.html">CHAPTER 8</a> <a id="purchase-link" href="../chapter-6/ch6.html">CHAPTER 6</a>
           <a id="purchase-link" href="../pdf/network_science_Ch7_2013_v5.pdf">Download Chapter 7 as PDF</a>
-          
+
         </div>
       </div>
       <div id="toc-holder">
         <div id="toc-list">
           <ul>
-            <li><a href="#Introduction">7.1 Introduction</a></li> 
+            <li><a href="#Introduction">7.1 Introduction</a></li>
             <li><a href="#Assortativity-and-disassortativity">7.2 Assortativity and disassortativity</a></li>
             <li><a href="#Measuring-degree-correlations">7.3 Measuring degree correlations</a></li>
             <li><a href="#Structural-cutoffs">7.4 Structural cutoffs</a></li>
@@ -105,15 +105,15 @@
             <li><a href="#The-impact-of-degree-correlations">7.7 The impact of degree correlations</a></li>
             <li><a href="#Summary">7.8 Summary</a></li>
             <li><a href="#Degree-correlation-coefficient">7.A: Degree correlation coefficient</a></li>
-            <li><a href="#Structural-Cutoffs">7.B: Structural Cutoffs</a></li>  
+            <li><a href="#Structural-Cutoffs">7.B: Structural Cutoffs</a></li>
             <li><a href="#Bibliography">7 Bibliography</a></li>
           </ul>
         </div>
       </div>
     </div>
   </div> <!--  fine  navigator //-->
-  
-  
+
+
 
   <div id="top">
     <div id="header">
@@ -125,16 +125,23 @@
   <div id="middle">
 
   	<div id="container">
-    
-    
+
+
  <section>
     <a id="Introduction"></a>
     <h3 id="#">Chapter 7 </br> </br>INTRODUCTION</h3>
 
-<p></p>
+<p>Angelina Jolie and Brad Pitt, Ben Affleck and Jennifer Garner, Harrison Ford and Calista Flockhart, Michael Douglas and Catherine Zeta-Jones, Tom Cruise and Katie Holmes, Richard Gere and Cindy Crawford (Figure 7.1). An odd list, yet instantly recognizable to those immersed in the headline- driven world of celebrity couples. They are Hollywood stars that are or were married. Their weddings (and breakups) has drawn countless hours of media coverage and sold millions of gossip magazines. Thanks to them we take for granted that celebrities marry each other. We rarely pause to ask: Is this normal? In other words, what is the true chance that a celebrity marries another celebrity?
+
+Assuming that a celebrity could date anyone from a pool of about a hundred million (108) eligible individuals worldwide, the chances that their mate would be another celebrity from a generous list of  1,000 other celebrities is only 10-5. Therefore, if dating were driven by random encounters, celebrities would never marry each other.
+
+Even if we do not care about the dating habits of celebrities, we must pause and explore what this phenomenon tells us about the structure of the social network. Celebrities, political leaders, and CEOs of major corporations tend to know an exceptionally large number of individuals and are known by even more. They are hubs. Hence celebrity dating (Figure 7.1) and joint board memberships (Figure 7.0) are manifestations of an interesting property of social network: hubs tend to have ties to other hubs.
+
+As obvious this may sound, this property is not present in all networks. Consider for example the protein-interaction network of yeast, shown in Figure 7.2. A quick inspection of the network reveals its scale-free nature: numerous one- and two-degree proteins coexist with a few highly connected hubs. These hubs, however, tend to avoid linking to each other. They link instead to many small-degree nodes, generating a hub-and-spoke pattern. This is particularly obvious for the two hubs highlighted in Figure 7.2: they almost exclusively interact with small-degree proteins.
+</p>
 
 </section>
-<div class="pageb"></div> 
+<div class="pageb"></div>
 
 
 
@@ -235,9 +242,9 @@ STRUCTURAL CUTOFFS</h3>
 <h3 id="#">7 BIBLIOGRAPHY</h3>
 
 <div class="list">
-	
+
 	<ul>
-		
+
 <li><p>
 [1] P. Uetz, L. Giot, G. Cagney, TA. Mansfield, RS Judson, JR Knight, D Lockshon, V Narayan, M Srinivasan, P Pochart, A Qureshi-Emili, Y Li, B Godwin, D Conover, T Kalbfleisch, G Vijayadamodar, M Yang, M Johnston, S Fields, JM Rothberg.  <a href="http://www.ncbi.nlm.nih.gov/pubmed/10688190"><em>A comprehensive analysis of protein-protein interactions in Saccharomyces cerevisiae</em></a>. Nature 403: 623–627, 2000.
 </p></li>
@@ -396,27 +403,27 @@ STRUCTURAL CUTOFFS</h3>
 
 
 </div>
-</div>  
-  
-  
-  
+</div>
+
+
+
 
 	<div id="bottom">
 		<div id="footer">
-        
-        
+
+
 			<div class="one-third" id="licenses">
         <h4>Licenses</h4>
         <p>
           <a class="license-badge" rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a>
-         
+
         </p>
 
         <p>
           The book's text and illustrations are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
         </p>
       </div>
-      
+
 
       <div class="one-third">
         <h4>Credit</h4>

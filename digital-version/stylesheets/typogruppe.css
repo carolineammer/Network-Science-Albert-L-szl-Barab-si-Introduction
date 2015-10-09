@@ -54,7 +54,7 @@ ul {
 li {
   margin-bottom: 10px; }
   li:last-child {
-    margin-bottom: 0; }
+    margin-bottom: 10px; }
 
 blockquote {
   	/*position: relative;

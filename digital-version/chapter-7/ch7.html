@@ -1,0 +1,439 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Network Science | Albert-László Barabás | Chapter 7</title>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	
+  <script type="text/javascript" src="../javascripts/jquery.fixed.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      $('#toc-list').fixed({'top':'8'});
+      $('#nav-bar-wrap').fixed({'top':'8'});
+      $('span.c1').each(function(){ addStylesToCodeLines($(this)); });
+      $('div.source-code').each(function(){ setRawCodeHeight($(this)); });
+      $('a.toggle').click(function(){ toggleCodeDisplay($(this)); return false; });
+    });
+  </script>
+  
+	<link rel="stylesheet" href="../stylesheets/html.css" type="text/css">
+    
+    <link rel="stylesheet" href="../stylesheets/bjqs.css" type="text/css">
+    <script src="../javascripts/bjqs-1.3.min.js"></script>
+
+
+    <link href="../stylesheets/theme.default.css" rel="stylesheet">
+	<script src="../javascripts/jquery.tablesorter.min.js"></script>
+	<script src="../javascripts/jquery.tablesorter.widgets.min.js"></script>
+	<script>
+	$(function(){
+		$('table').tablesorter({
+			widgets        : ['zebra', 'columns'],
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true
+		});
+	});
+	</script>
+    
+    
+    <script class="secret-source">
+        jQuery(document).ready(function($) {
+          
+          $('#banner-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+      <script class="secret-source2">
+        jQuery(document).ready(function($) {
+          
+          $('#second-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+      <script class="secret-source2">
+        jQuery(document).ready(function($) {
+          
+          $('#third-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+
+</head>
+<body>
+
+  <div id="navigator">
+    <div id="navigator-inner">
+      <div id='nav-bar-wrap'>
+        <div id="mask"></div>
+        <div id="nav-bar">
+          <h1><a href="../index.html"> <strong>NETWORK SCIENCE</strong> BOOK </a></h1>
+          <h2>Albert-László Barabási</h2>
+          <a id="purchase-link" href="../chapter-7/ch7.html">CHAPTER 8</a> <a id="purchase-link" href="../chapter-6/ch6.html">CHAPTER 6</a>  
+          <a id="purchase-link" href="../pdf/network_science_Ch7_2013_v5.pdf">Download Chapter 7 as PDF</a>
+          
+        </div>
+      </div>
+      <div id="toc-holder">
+        <div id="toc-list">
+          <ul>
+            <li><a href="#Introduction">7.1 Introduction</a></li> 
+            <li><a href="#Assortativity-and-disassortativity">7.2 Assortativity and disassortativity</a></li>
+            <li><a href="#Measuring-degree-correlations">7.3 Measuring degree correlations</a></li>
+            <li><a href="#Structural-cutoffs">7.4 Structural cutoffs</a></li>
+            <li><a href="#Degree-correlations-in-real-networks">7.5 Degree correlations in real networks</a></li>
+            <li><a href="#Generating-correlated-networks">7.6 Generating correlated networks</a></li>
+            <li><a href="#The-impact-of-degree-correlations">7.7 The impact of degree correlations</a></li>
+            <li><a href="#Summary">7.8 Summary</a></li>
+            <li><a href="#Degree-correlation-coefficient">7.A: Degree correlation coefficient</a></li>
+            <li><a href="#Structural-Cutoffs">7.B: Structural Cutoffs</a></li>  
+            <li><a href="#Bibliography">7 Bibliography</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> <!--  fine  navigator //-->
+  
+  
+
+  <div id="top">
+    <div id="header">
+      <h1><a href="##"><strong>NETWORK SCIENCE</strong> BOOK</a></h1>
+      <h2>Albert-László Barabási</h2>
+    </div>
+  </div>
+
+  <div id="middle">
+
+  	<div id="container">
+    
+    
+ <section>
+    <a id="Introduction"></a>
+    <h3 id="#">Chapter 7 </br> </br>INTRODUCTION</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div> 
+
+
+
+<section>
+<a id="Assortativity-and-disassortativity"></br></br></a>
+<h3 id="#">7.2 ASSORTATIVITY AND DISASSORTATIVITY</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Measuring-degree-correlations"></br></br></a>
+<h3 id="#">7.3 MEASURING DEGREE CORRELATIONS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Structural-cutoffs"></br></br></a>
+<h3 id="#">7.4 STRUCTURAL CUTOFFS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Degree-correlations-in-real-networks"></br></br></a>
+<h3 id="#">7.5 DEGREE CORRELATIONS IN REAL NETWORKS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Generating-correlated-networks"></br></br></a>
+<h3 id="#">7.6 GENERATING CORRELATED NETWORKS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="The-impact-of-degree-correlations"></br></br></a>
+<h3 id="#">7.7 THE IMPACT OF DEGREE CORRELATIONS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Summary"></br></br></a>
+<h3 id="#">7.8 SUMMARY</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Degree-correlation-coefficient"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 7.A<br>
+DEGREE CORRELATION COEFFICIENT</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Structural-Cutoffs"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 7.B<br>
+STRUCTURAL CUTOFFS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Bibliography"></br></br></a>
+<h3 id="#">7 BIBLIOGRAPHY</h3>
+
+<div class="list">
+	
+	<ul>
+		
+<li><p>
+[1] P. Uetz, L. Giot, G. Cagney, TA. Mansfield, RS Judson, JR Knight, D Lockshon, V Narayan, M Srinivasan, P Pochart, A Qureshi-Emili, Y Li, B Godwin, D Conover, T Kalbfleisch, G Vijayadamodar, M Yang, M Johnston, S Fields, JM Rothberg.  <a href="http://www.ncbi.nlm.nih.gov/pubmed/10688190"><em>A comprehensive analysis of protein-protein interactions in Saccharomyces cerevisiae</em></a>. Nature 403: 623–627, 2000.
+</p></li>
+
+<li><p>
+[2] I. Xenarios, DW. Rice, L. Salwinski, MK. Baron, EM. Marcotte, D. Eisenberg <a href="http://www.ncbi.nlm.nih.gov/pubmed/10592249"><em>DIP: the database of interacting proteins</em></a>. Nucleic Acids Res. 28: 289– 29, 2000.
+</p></li>
+
+<li><p>
+[3] H. Jeong, S.P. Mason, A.-L. Barabási, Z.N. Oltvai. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/200105-03_Nature-ProteinNetworks/200105-03_Nature-ProteinNetworks.pdf"><em>Lethality and centrality in protein networks</em></a>. Nature 411: 41-42, 2001.
+</p></li>
+
+<li><p>
+[4] R. Pastor-Satorras, A. Vázquez, and A. Vespignani. <a href="http://arxiv.org/abs/cond-mat/0105161"><em>Dynamical and correlation properties of the Internet</em></a>. Phys. Rev. Lett. 87: 258701, 2001.
+</p></li>
+
+<li><p>
+[5] A. Vazquez, R. Pastor-Satorras, and A. Vespignani. <a href="#"><em>Large-scale topological and dynamical properties of Internet</em></a>. Phys. Rev. E 65: 066130, 2002.
+</p></li>
+
+<li><p>
+[6] S.L. Feld. <a href="http://www.jstor.org/discover/10.2307/2781907?uid=3739696&uid=2129&uid=2&uid=70&uid=4&uid=3739256&sid=21103677389203"><em>Why your friends have more friends than you do.</em></a>. American Journal of Sociology 96: 1464–1477, 1991.
+</p></li>
+
+<li><p>
+[7] E.W. Zuckerman and J.T. Jost. <a href="http://www.psych.nyu.edu/jost/Zuckerman%20&%20Jost%20(2001)%20What%20Makes%20You%20Think%20You're%20So%20Popular1.pdf"><em>What makes you think you’re so popular? Self evaluation maintenance and the subjective side of the “friendship paradox”</em></a>. Social Psychology Quarterly 64: 207–223, 2001.
+</p></li>
+
+<li><p>
+[8] M. E. J. Newman. <a href="http://arxiv.org/abs/cond-mat/0205405/"><em>Assortative mixing in networks</em></a>. Phys. Rev. Lett. 89;208701, 2002.
+</p></li>
+
+<li><p>
+[9] M. E. J. Newman. <a href="http://arxiv.org/abs/cond-mat/0209450"><em>Mixing patterns in networks</em></a>. Physical Review E 67: 026126, 2003.
+</p></li>
+
+<li><p>
+[10] S. Maslov, K. Sneppen, and A. Zaliznyak. <a href="http://arxiv.org/abs/cond-mat/0205379"><em>Pattern Detection in Complex Networks: Correlation Profile of the Internet</em></a>. Physica A 333, 529-540, 2004.
+</p></li>
+
+<li><p>
+[11] M. Boguna, R. Pastor-Satorras, A. Vespignani. <a href="http://arxiv.org/abs/cond-mat/0311650"><em>Cut-offs and finite size effects in scale-free networks</em></a>. Eur. Phys. J. B 38: 205, 2004.
+</p></li>
+
+<li><p>
+[12] M. E. J. Newman and Juyong Park <a href="http://arxiv.org/abs/cond-mat/0305612"><em>Why social networks are different from other types of networks</em></a>. Phys. Rev. E 68, 036122, 2003.
+</p></li>
+
+<li><p>
+[13] M. McPherson, L. Smith-Lovin and J. M. Cook <a href="http://www.annualreviews.org/doi/abs/10.1146/annurev.soc.27.1.415"><em>Birds of a feather: homophily in social networks</em></a>. Annual Review of Sociology 27:415-444, 2001.
+</p></li>
+
+<li><p>
+[14] J. G. Foster, D. V. Foster, P. Grassberger, M. Paczuski. <a href="http://www.pnas.org/content/107/24/10815.short"><em>Edge direction and the structure of networks</em></a>. PNAS 107: 10815, 2010.
+</p></li>
+
+<li><p>
+[15] A. Barrat and R. Pastor-Satorras. <a href="http://arxiv.org/abs/cond-mat/0410646"><em>Rate equation approach for correlations in growing network models</em></a>. Physical Review E 71, 036127, 2005.
+</p></li>
+
+<li><p>
+[16] S. N. Dorogovtsev and J. F. F. Mendes. <a href="http://arxiv.org/abs/cond-mat/0106144"><em>Evolution of networks</em></a>. Adv. Phys. 51, 1079, 2002.
+</p></li>
+
+<li><p>
+[17] J. Berg and M. Lässig. <a href="http://arxiv.org/abs/cond-mat/0205589"><em>Correlated random networks</em></a>. Phys. Rev. Lett. 89: 228701, 2002
+</p></li>
+
+<li><p>
+[18] M. Boguñá and R. Pastor-Satorras. <a href="http://journals.aps.org/pre/abstract/10.1103/PhysRevE.68.036112"><em>Class of correlated random networks with hidden variables</em></a>. Phys. Rev. E 68: 036112, 2003.
+</p></li>
+
+<li><p>
+[19] R. Xulvi-Brunet and I. M. Sokolov. <a href="http://journals.aps.org/pre/abstract/10.1103/PhysRevE.70.066102"><em>Reshuffling scale-free networks: From random to assortative.</em></a>. Phys. Rev. E 70: 066102, 2004.
+</p></li>
+
+<li><p>
+[20] R. Xulvi-Brunet and I. M. Sokolov. <a href="http://adsabs.harvard.edu/abs/2005AcPPB..36.1431X"><em>Changing correlations in networks: assortativity and dissortativity</em></a>. Acta Phys. Pol. B 36: 1431, 2005.
+</p></li>
+
+<li><p>
+[21] J. Menche, A. Valleriani, and R. Lipowsky. <a href="http://www.mpikg.mpg.de/rl/P/archive/327.pdf"><em>Asymptotic properties of degree-correlated scale-free networks</em></a>. Phys. Rev. E 81: 046103, 2010.
+</p></li>
+
+<li><p>
+[22] V. M. Eguíluz and K. Klemm. <a href="http://arxiv.org/abs/cond-mat/0205439"><em>Epidemic threshold in structured scale-free networks.</em></a>. Phys. Rev. Lett. 89:108701, 2002.
+</p></li>
+
+<li><p>
+[23] M. Boguñá and R. Pastor-Satorras, Phys. <a href="http://arxiv.org/abs/cond-mat/0205621"><em>Epidemic spreading in correlated complex networks.</em></a>. Rev. E 66: 047104, 2002.
+</p></li>
+
+<li><p>
+[24] M. Boguñá, R. Pastor-Satorras, and A. Vespignani <a href="http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.90.028701"><em>Absence of epidemic threshold in scale-free networks with degree correlations</em></a>. Phys. Rev. Lett. 90: 028701, 2003.
+</p></li>
+
+<li><p>
+[25] A. Vázquez and Y. Moreno. <a href="http://arxiv.org/abs/cond-mat/0209182"><em>Resilience to damage of graphs with degree correlations.</em></a>. Phys. Rev. E 67: 015101R, 2003.
+</p></li>
+
+<li><p>
+[26] S. J. Wang, A. C. Wu, Z. X. Wu, X. J. Xu, and Y. H. Wang. <a href="http://arxiv.org/pdf/0704.1849.pdf"><em>Response of degree-correlated scale-free networks to stimuli</em></a>. Phys. Rev. E 75: 046113, 2007.
+</p></li>
+
+<li><p>
+[27] F. Sorrentino, M. Di Bernardo, G. Cuellar, and S. Boccaletti. <a href="http://adsabs.harvard.edu/abs/2006PhyD..224..123S"><em>Synchronization in weighted scale-free networks with degree–degree correlation</em></a>. Physica D 224: 123, 2006.
+</p></li>
+
+<li><p>
+[28] M. Di Bernardo, F. Garofalo, and F. Sorrentino. <a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=1582890&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F10559%2F33412%2F01582890.pdf%3Farnumber%3D1582890"><em>Effects of degree correlation on the synchronization of networks of oscillators</em></a>. Int. J. Bifurcation Chaos Appl. Sci. Eng. 17: 3499, 2007.
+</p></li>
+
+<li><p>
+[29] A. Vazquez and M. Weigt. <a href="http://arxiv.org/abs/cond-mat/0207035"><em>Computational complexity arising from degree correlations in networks</em></a>. Phys. Rev. E 67, 027101, 2003.
+</p></li>
+
+<li><p>
+[30] M. Posfai, Y Y. Liu, J-J Slotine, A.-L. Barabási. <a href="http://www.nature.com/srep/2013/130115/srep01067/full/srep01067.html"><em>Effect of correlations on network controllability</em></a>. Scientific Reports 3: 1067,2013.
+</p></li>
+
+<li><p>
+[31] M. Weigt and A. K. Hartmann. <a href="http://www.ncbi.nlm.nih.gov/pubmed/10991138"><em>The number of guards needed by a museum: A phase transition in vertex covering of random graphs</em></a>. Phys. Rev. Lett. 84: 6118, 2000.
+</p></li>
+
+<li><p>
+[32] S. Maslov and K. Sneppen. <a href="http://www.sussex.ac.uk/Users/ctf20/dphil_2005/CSNs/Minimal%20Genome/maslov.pdf"><em>Specificity and stability in topology of protein networks</em></a>. Science 296: 910–913, 2002.
+</p></li>
+
+<li><p>
+[33] M. McPherson, L. Smith-Lovin, and J. M. Cook. <a href="http://www.annualreviews.org/doi/abs/10.1146/annurev.soc.27.1.415"><em>Birds of a feather: homophily in social networks.</em></a>. Annual Review of Sociology 27: 415–444, 2001.
+</p></li>
+
+<li><p>
+[34] L. Adamic and N. Glance. <a href="http://www2.scedu.unibo.it/roversi/SocioNet/AdamicGlanceBlogWWW.pdf"><em>The political blogosphere and the 2004 U.S. election: Divided they blog </em></a>. LinkKDD '05 Proceedings of the 3rd international workshop on Link discovery, Pages 36 - 43, 2005.
+</p></li>
+
+<li><p>
+[35] J. Park and M. E. J. Newman. <a href="http://arxiv.org/abs/cond-mat/0303327"><em>The origin of degree correlations in the Internet and other networks</em></a>. Phys. Rev. E 66: 026112, 2003.
+</p></li>
+
+<li><p>
+[36] F. Chung and L. Lu. <a href="http://www.math.ucsd.edu/~fan/wp/conn.pdf"><em>Connected components in random graphs with given expected degree sequences</em></a>. Annals of Combinatorics, 6: 125, 2002.
+</p></li>
+
+<li><p>
+[37] Z. Burda and Z. Krzywicki. <a href="http://arxiv.org/abs/cond-mat/0207020"><em>Uncorrelated random networks.</em></a>. Phys. Rev. E 67: 046118, 2003.
+</p></li>
+
+
+
+</ul>
+</div>
+<div style="page-break-after:always;"> </div>
+</section>
+<div class="pageb"></div>
+
+
+</div>
+</div>  
+  
+  
+  
+
+	<div id="bottom">
+		<div id="footer">
+        
+        
+			<div class="one-third" id="licenses">
+        <h4>Licenses</h4>
+        <p>
+          <a class="license-badge" rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a>
+         
+        </p>
+
+        <p>
+          The book's text and illustrations are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
+        </p>
+      </div>
+      
+
+      <div class="one-third">
+        <h4>Credit</h4>
+
+        <p>Design & Data Visualization: <a href="http://www.mamartino.com">Mauro Martino</a>, Márton Pósfai, Gabriele Musella</p>
+
+      </div>
+
+      <div class="one-third">
+        <h4>Author</h4>
+        <p><a href="http://www.barabasi.com">ALBERT-LÁSZLÓ BARABÁSI</a> is director of the <a href="http://barabasilab.neu.edu">Center for Complex Network Research</a> at Northeastern University.</p>
+
+        <p>He is the author of <a href="http://barabasilab.com/LinkedBook/">Linked</a>.</p>
+
+        <p><a href="https://twitter.com/barabasi">BARABÁSI in Twitter</a> </p>
+      </div>
+		</div>
+	</div>
+</body>
+</html>

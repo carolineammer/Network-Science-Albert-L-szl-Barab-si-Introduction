@@ -1,0 +1,764 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Network Science | Albert-László Barabás | Chapter 10</title>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	
+  <script type="text/javascript" src="../javascripts/jquery.fixed.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      $('#toc-list').fixed({'top':'8'});
+      $('#nav-bar-wrap').fixed({'top':'8'});
+      $('span.c1').each(function(){ addStylesToCodeLines($(this)); });
+      $('div.source-code').each(function(){ setRawCodeHeight($(this)); });
+      $('a.toggle').click(function(){ toggleCodeDisplay($(this)); return false; });
+    });
+  </script>
+  
+
+	<link rel="stylesheet" href="../stylesheets/html.css" type="text/css">
+
+
+</head>
+<body>
+
+  <div id="navigator">
+    <div id="navigator-inner">
+      <div id='nav-bar-wrap'>
+        <div id="mask"></div>
+        <div id="nav-bar">
+          <h1><a href="../index.html"> <strong>NETWORK SCIENCE</strong> BOOK</a></h1>
+          <h2>Albert-László Barabási</h2>
+          <a id="purchase-link" href="../chapter-8/ch8.html">CHAPTER 8</a>   
+          <a id="purchase-link" href="../pdf/Chapter10_final.pdf">Download Chapter 10 as PDF</a>
+          
+        </div>
+      </div>
+      <div id="toc-holder">
+        <div id="toc-list">
+          <ul>
+            <li><a href="#intro">10 Introduction</a></li> 
+            <li><a href="#Epidemic-Modeling">10.2 Epidemic Modeling</a></li>
+            <li><a href="#Network-Epidemics">10.3 Network Epidemics</a></li>
+            <li><a href="#Contact-Networks">10.4 Contact Networks</a></li>
+            <li><a href="#Beyond-the-Degree-Distribution">10.5 Beyond the Degree Distribution</a></li>
+            <li><a href="#Immunization">10.6 Immunization</a></li>
+            <li><a href="#Epidemic Prediction">10.7 Epidemic Prediction</a></li>
+            <li><a href="#SUMMARY">10.9 SUMMARY</a></li>
+            <li><a href="#BIBLIOGRAPHY">10 BIBLIOGRAPHY</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  <div id="top">
+    <div id="header">
+      <h1><a href="##"><strong>NETWORK SCIENCE</strong> BOOK</a></h1>
+      <h2>Albert-László Barabási</h2>
+    </div>
+  </div>
+
+  <div id="middle">
+
+  	<div id="container">
+    
+<section>
+ <a id="intro"></br></br></br></br></a>
+ <a id="#" style="display: block;"></a><h2 id="#">Chapter 10. Introduction</h2>
+    <a style="display: block;"></a></p>
+    <p>On the night of February 21, 2003 a physician from Guangdong Province in southern China checked into the Metropole Hotel in Hong Kong. He previously treated patients suffering from a disease that, lacking a clear diagnosis, was called atypical pneumonia. Next day, after leaving the hotel, he went to the local hospital, this time as a patient. He died there several days later of atypical pneumonia [1].</p>
+
+    <p>The physician did not leave the hotel without a trace: That night sixteen other guests of the Metropole Hotel and one visitor also contracted the disease that was eventually renamed Severe Acute Respiratory Syndrome, or SARS. These guests carried the SARS virus with them to Hanoi, Singapore, and Toronto, sparking outbreaks in each of those cities. Epidemiologists later traced close to half of the 8,100 documented cases of SARS back to the Metropole Hotel. With that the physician who brought the virus to Hong Kong become an example of a super-spreader, an individual who is responsible for a disproportionate number of infections during an epidemic.</p>
+
+    <div class="image-container half-width-right" >
+      <img src="../imgs/chapter10/fig10.1.jpg" alt="network science web-site" />
+        <p class="captionBold">Figure 10.1</p>
+        <p class="caption">
+          <span class="imte">Super-spreaders</span>
+          One-hundred-forty-four of the 206 SARS patients diagnosed in Singapore were traced to a chain of five individuals that included four super-spreaders. The most important of these was Patient Zero, the physician from Guangdong Province in China, who brought the disease to the Metropole Hotel. After [1].
+        </p>
+    </div>
+
+    <p>A network theorist will recognize super-spreaders as hubs, nodes with an exceptional number of links in the contact network on which a disease spreads. As hubs appear in many networks, super-spreaders have been documented in many infectious diseases, from smallpox to AIDS [2]. In this chapter we introduce a network based approach to epidemic phenomena that allows us to understand and predict the true impact of these hubs. The resulting framework, that we call network epidemics, offers an analytical and numerical platform to quantify and forecast the spread of infectious diseases.
+    </p>
+
+    <p>Infectious diseases account for 43% of the global burden of disease, as captured by the number of years of lost healthy life. They are called contagious, as they are transmitted by contact with an ill person or with their secretions. Cures and vaccines are rarely sufficient to stop an infectious disease it is equally important to understand how the pathogen responsible for the disease spreads in the population, which in turn determines the way we administer the available cures or vaccines.</p>
+
+    <div class="image-container " >
+    	<img src="../imgs/chapter10/fig10.2.jpg" alt="Mobile Phone Viruses" />
+        <p class="captionBold">Figure 10.2</p>
+        <p class="caption">
+          <span class="imte">Mobile Phone Viruses</span>
+          Smart phones, capable of sharing programs and data with each other, offer a fertile ground for virus writers. Indeed, since 2004 hundreds of smart phone viruses have been identified, reaching a state of sophistication in a few years that took computer viruses about two decades to achieve [3]. Mobile viruses are transmitted using two main communication mechanisms [4]:
+          <span class="imte">Bluetooth (BT) Viruses</span>
+          A BT virus infects all phones found within BT range from the infected phone, which is about 10-30 meters. As physical proximity is essential for a BT connection, the transmission of a BT virus is determined by the owner’s location and the underlying mobility network, connecting locations by individuals who travel between them (SECTION 10.4). Hence BT viruses follow a spreading pattern similar to influenza.
+          <span class="imte">Multimedia Messaging Services (MMS)</span>
+          Viruses carried by MMS can infect all susceptible phones whose number is in the infected phone’s phonebook. Hence MMS viruses spread on the social network, following a long-range spreading pattern that is independent of the infected phone’s physical location. Consequently the spreading of MMS viruses is similar to the patterns characterizing computer viruses.
+        </p>
+    </div>
+
+    <p>The diversity of phenomena regularly described as spreading processes on networks is staggering:</p>
+
+    <p><strong>Biological</strong></br>
+      The spread of pathogens on their respective contact network is the main subject of this chapter. Examples include airborne diseases like influenza, SARS, or tuberculosis, transmitted when two individuals breathe the air in the same room; contagious diseases and parasites transmitted when people touch each other; the Ebola virus, transmitted via contact with a patient's bodily fluids, HIV and other sexually transmitted diseases passed on during sexual intercourse. Infectious diseases also include cancers carried by cancer-causing viruses, like HPV or EBV, or diseases carried by parasites like bedbugs or malaria.</p>
+
+    <p><strong>Digital</strong></br>
+      A computer virus is a self-reproducing program that can transmit a copy of itself from computer to computer. Its spreading pattern has many similarities to the spread of pathogens. But digital viruses also have many unique features, determined by the technology behind the specific virus. As mobile phones morphed into hand-held computers, lately we also witnessed the appearance of mobile viruses and worms that infect smartphones (Figure 10.2).</p>
+
+    <p><strong>Social</strong></br>
+      The role of the social and professional network in the spread and acceptance of innovations, knowledge, business practices, products, behavior, rumors and memes, is a much-studied problem in social sciences, marketing and economics [5, 6]. Online environments, like Twitter, offer unprecedented ability to track such phenomena. Consequently a staggering number of studies focus on social spreading, asking for example why can some messages reach millions of individuals, while others struggle to get noticed.</p>
+
+    <p>The examples discussed above involve diverse spreading agents, from biological to computer viruses, ideas and products; they spread on different types of networks, from social to computer and professional networks; they are characterized by widely different time scales and follow different mechanisms of transmission (Table 10.1). Despite this diversity, as we show in this chapter, these spreading processes obey common patterns and can be described using the same network-based theoretical and modeling framework.</p>
+
+    <div class="image-container " >
+      <img src="../imgs/chapter10/table10.1.jpg" alt="Networks and Agents"/>
+        <p class="captionBold">Table 10.1</p>
+        <p class="caption">
+          <span class="imte">Networks and Agents</span>
+          The spread of a pathogen, a meme or a computer virus is determined by the network on which the agent spreads and the transmission mechanism of the responsible agent. The table lists several much studied spreading phenomena, together with the nature of the particular spreading agent and the network on which the agent spreads.
+        </p>
+    </div>
+
+</section>
+<div class="pageb"></div>
+
+<section>
+<a id="Epidemic-Modeling"></br></br></a>
+<h3 id="#">10.2 EPIDEMIC MODELING</h3>
+
+<p>Epidemiology has developed a robust analytical and numerical framework to model the spread of pathogens. This framework relies on two fundamental hypotheses:</p>
+
+<p><strong>i. Compartmentalization</strong></br>
+Epidemic models classify each individual based on the stage of the disease affecting them. The simplest classification assumes that an individual can be in one of three states or compartments:</p>
+
+<div class="list">
+  <ul>
+    <li><p><em>Susceptible (S): Healthy individuals who have not yet contacted the pathogen (Figure 10.3).</em></p></li>
+    <li><p><em>Infectious (I): Contagious individuals who have contacted the pathogen and hence can infect others.</em></p></li>
+    <li><p><em>Recovered (R): Individuals who have been infected before, but have recovered from the disease, hence are not infectious.</em></p></li>
+  </ul>
+</div>
+
+<p>The modeling of some diseases requires additional states, like immune individuals, who cannot be infected, or latent individuals, who have been exposed to the disease, but are not yet contagious.</p>
+
+<p>Individuals can move between compartments. For example, at the beginning of a new influenza outbreak everyone is in the susceptible state. Once an individual comes into contact with an infected person, she can become infected. Eventually she will recover and develop immunity, losing her susceptibility to the the particular strain of influenza.</p>
+
+<div class="image-container half-width-right" >
+	<img src="../imgs/chapter10/fig10.3.jpg" alt="Pathogens" />
+    <p class="captionBold">Figure 10.3</p>
+    <p class="caption"><span class="imte">Pathogens</span></br>	
+A pathogen, a word rooted in the Greek words “suffering, passion” (pathos) and “producer of” (genes), denotes an infectious agent or germ. A pathogen could be a disease-causing microorganism, like a virus, a bacterium, a prion, or a fungus. The figure shows several much-studied pathogens, like the HIV virus, responsible for AIDS, an influenza virus and the hepatitis C virus. After http://www. livescience.com/18107-hiv-therapeutic-vaccines-promise.html and http://www.huffingtonpost.com/2014/01/13/deadly-viruses-beautiful-photos_n_4545309.html</p>
+</div>
+
+<p>The modeling of some diseases requires additional states, like immune individuals, who cannot be infected, or latent individuals, who have been exposed to the disease, but are not yet contagious.</p>
+
+<p>Individuals can move between compartments. For example, at the beginning of a new influenza outbreak everyone is in the susceptible state. Once an individual comes into contact with an infected person, she can become infected. Eventually she will recover and develop immunity, losing her susceptibility to the the particular strain of influenza.</p>
+
+<p><strong>ii. Homogenous Mixing</strong></br>
+The homogenous mixing hypothesis (also called fully mixed or mass-action approximation) assumes that each individual has the same chance of coming into contact with an infected individual. This hypothesis eliminates the need to know the precise contact network on which the disease spreads, replacing it with the assumption that anyone can infect anyone else.</p>
+
+<p>In this section we introduce the epidemic modeling framework built on these two hypotheses. To be specific, we explore the dynamics of three frequently used epidemic models, the so-called SI, SIS and SIR models, that help us understand the basic building blocks of epidemic modeling.</p>
+
+<p>In this section we introduce the epidemic modeling framework built on these two hypotheses. To be specific, we explore the dynamics of three frequently used epidemic models, the so-called SI, SIS and SIR models, that help us understand the basic building blocks of epidemic modeling.</p>
+
+<p><strong>SUSCEPTIBLE-INFECTED (SI) MODEL</strong></br>
+Consider a disease that spreads in a population of N individuals. Denote with S(t) the number of individuals who are susceptible (healthy) at time t and with I(t) the number individuals that have been already infected. At time t=0 everyone is susceptible (S(0)=N) and no one is infected (I(0)=0). Let us assume that a typical individual has ⟨k⟩ contacts and that the likelihood that the disease will be transmitted from an infected to a susceptible individual in a unit time is β. We ask the following: If a single individual becomes infected at time t=0 (i.e. I(0)=1), how many individuals will be infected at some later time t?</p>
+
+    <div class="image-container half-width-right" >
+      <img src="../imgs/chapter10/fig10.4.jpg" alt="network science web-site" />
+        <p class="captionBold">Figure 10.4</p>
+        <p class="caption">
+          <span class="imte">The Susceptible-Infected (SI) Model</span>
+          <strong>(a)</strong> In the SI model an individual can be in one of two states: susceptible (healthy) or infected (sick). The model assumes that if a susceptible individual comes into contact with an infected individual, it becomes infected at rate β. The arrow indicates that once an individual becomes infected, it stays infected, hence it cannot recover.</br>
+          <strong>(b)</strong> Time evolution of the fraction of infected individuals, as predicted by (10.4). At early times the fraction of infected individuals grows exponentially. As eventually everyone becomes infected, at large times we have i(∞)=1.
+        </p>
+    </div>
+
+<p>Within the homogenous mixing hypothesis the probability that the infected person encounters a susceptible individual is S(t)/N. Therefore the infected person comes into contact with ⟨k⟩S(t)/N susceptible individuals in a unit time. Since I(t) infected individuals are transmitting the pathogen, each at rate β, the average number of new infections dI(t) during a timeframe dt is</p>
+
+<!--equation!!!! -->
+
+<p>Consequently I(t) changes at the rate</p>
+
+<!--equation!!!! -->
+
+<p>Throughout this chapter we will use the variables</p>
+
+<!--equation!!!! -->
+
+<p>to capture the fraction of the susceptible and of the infected population at time t. For simplicity we also drop the (t) variable from i(t) and s(t), re-writing (10.1) as (ADVANCED TOPICS 10.A)</p>
+
+<!--equation!!!! -->
+
+<p>where the product β⟨k⟩ is called the transmission rate or transmissibility. We solve (10.3) by writing</p>
+
+<!--equation!!!! -->
+
+<p>Integrating both sides, we obtain</p>
+
+<!--equation!!!! -->
+
+<p>With the initial condition i0= i(t=0), we get C=i0/(1–i0), obtaining that the fraction of infected individuals increases in time as</p>
+
+<!--equation!!!! -->
+
+<p>Equation (10.4) predicts that:</p>
+
+<div class="list">
+  <ul>
+    <li><p><em>At the beginning the fraction of infected individuals increases exponentially (Figure 10.4b). Indeed, early on an infected individual encounters only susceptible individuals, hence the pathogen can easily spread.</em></p></li>
+    <li><p><em>The characteristic time required to reach an 1/e fraction (about 36%) of all susceptible individuals is
+      <!--equation!!!! -->
+      Hence τ is the inverse of the speed with which the pathogen spreads through the population. Equation (10.5) predicts that increasing either the density of links ⟨k⟩ or β enhances the speed of the pathogen and reduces the characteristic time.
+    </em></p></li>
+    <li><p><em>With time an infected individual encounters fewer and fewer susceptible individuals. Hence the growth of i slows for large t (Figure 10.4b). The epidemic ends when everyone has been infected, i.e. when i(t→∞)=1 and s(t→∞)=0.</em></p></li>
+  </ul>
+</div>
+
+<p><strong>SUSCEPTIBLE-INFECTED-SUSCEPTIBLE (SIS) MODEL</strong></br>
+
+    <div class="image-container half-width-right" >
+      <img src="../imgs/chapter10/fig10.5.jpg" alt="network science web-site" />
+        <p class="captionBold">Figure 10.5</p>
+        <p class="caption">
+          <span class="imte">The Susceptible-Infected-Susceptible (SIS) Model</span>
+          <strong>(a)</strong> The SIS model has the samei(s∞t)a=t1e–s as the SI i ≈ i e(β⟨k⟩t-μ)t β⟨k⟩ model: susc0eptible and infected. It differs from the SI model in that it allows recovery, i.e. infected individuals are cured, becoming susceptible again at rate μ.</br>
+          <strong>(b)</strong> Time evolution of the fraction of infected individuals in the SIS model, as predicted by (10.7). As recovery is possible, at large t the system reaches an endemic state, in which the fraction of infected individuals is constant, i(∞), given by (10.8). Hence in the endemic state only a finite fraction of individuals are infected. Note that for high recovery rate μ the number of infected individuals decreases exponentially and the disease dies out.
+        </p>
+    </div>
+
+    <div class="image-container half-width-right" >
+      <img src="../imgs/chapter10/table10.2.jpg" alt="The Basic Reproductive Number, R0" />
+        <p class="captionBold">Table 10.2</p>
+        <p class="caption">
+          <span class="imte">The Basic Reproductive Number, R0</span>
+          The reproductive number (10.10) provides the number of individuals an infectious individual infects if all its contacts are susceptible. For R0< 1 the pathogen naturally dies out, as the number of recovered individuals exceeds the number of new infections. If R0>1 the pathogen will spread and persist in the population. The higher is R0, the faster is the spreading process. The table lists R0 for several wellknown pathogens. After [7].
+        </p>
+    </div>
+
+<p>Most pathogens are eventually defeated by the immune system or by treatment. To capture this fact we need to allow the infected individuals to recover, ceasing to spread the disease. With that we arrive at the so-called SIS model, which has the same two states as the SI model, susceptible and infected. The difference is that now infected individuals recover at a fixed rate μ, becoming susceptible again (Figure 10.5a). The equation describing the dynamics of this model is an extension of (10.3),</p>
+
+<!--equation!!!! -->
+
+<p>where μ is the recovery rate and the μi term captures the rate at which the population recovers from the disease. The solution of (10.6) provides the fraction of infected individuals in function of time (Figure 10.5b)</p>
+
+<!--equation!!!! -->
+
+<p>where the initial condition i0= i(t=0) gives C=i0/(1–i0 –μ/β⟨k⟩).</p>
+
+<p>While in the SI model eventually everyone becomes infected, (10.7) predicts that in the SIS model the epidemic has two possible outcomes:</p>
+
+<div class="list">
+  <ul>
+    <li><p><em><strong>Endemic State </strong>(μ<β⟨k⟩)</br>
+      For low recovery rate the fraction of infected individuals, i, follows a logistic curve similar to the one observed for the SI model. Yet, not everyone is infected, but i reaches a constant i(∞)< 1 value (Figure 10.5b). This means that at any moment only a finite fraction of the population is infected. In this stationary or endemic state the number of newly infected individuals equals the number of individuals who recover from the disease, hence the infected fraction of the population does not change with time. We can calculate i(∞) by setting di/dt = 0 in (10.6), obtaining</br>
+    <!--equation!!!! -->
+    </em></p></li>
+    <li><p><em><strong>Disease-free State </strong>(μ>β⟨k⟩)</br>
+      For a sufficiently high recovery rate the exponent in (10.7) is negative. Therefore, i decreases exponentially with time, indicating that an initial infection will die out exponentially. This is because in this state the number of individuals cured per unit time exceeds the number of newly infected individuals. Therefore with time the pathogen disappears from the population.</br>
+    <!--equation!!!! -->
+    </em></p></li>
+  </ul>
+</div>
+
+<p>In other words, the SIS model predicts that some pathogens will persist in the population while others die out shortly. To understand what governs the difference between these two outcomes we write the characteristic time of a pathogen as</p>
+
+<!--equation!!!! -->
+
+<p>where</p>
+
+<!--equation!!!! -->
+
+<p>is the basic reproductive number. It represents the average number of susceptible individuals infected by an infected individual during its infectious period in a fully susceptible population. In other words, R0 is the number of new infections each infected individual causes under ideal circumstances. The basic reproductive number is valuable for its predictive power:</p>
+
+<div class="list">
+  <ul>
+    <li><p><em>
+      If R0 exceeds unity, τ is positive, hence the epidemic is in the endemic state. Indeed, if each infected individual infects more than one healthy person, the pathogen is poised to spread and persist in the population. The higher is R0, the faster is the spreading process.
+    </em></p></li>
+    <li><p><em>
+      If R0< 1 then τ is negative and the epidemic dies out. Indeed, if each infected individual infects less than one additional person, the pathogen cannot persist in the population.
+    </em></p></li>
+  </ul>
+</div>
+
+<p>Consequently, the reproductive number is one of the first parameters epidemiologists estimate for a new pathogen, gauging the severity of the problem they face. For several well-studies pathogens R0 is listed in Table 10.2. The high R0 of some of these pathogens underlies the dangers they pose: For example each individual infected with measles causes over a dozen subsequent infections.</p>
+
+<p><strong>SUSCEPTIBLE-INFECTED-RECOVERED (SIR) MODEL</strong></br>
+
+    <div class="image-container half-width-right" >
+      <img src="../imgs/chapter10/fig10.6.jpg" alt="The Susceptible-Infected-Recovered (SIR) Model" />
+        <p class="captionBold">Figure 10.6</p>
+        <p class="caption">
+          <span class="imte">The Susceptible-Infected-Recovered (SIR) Model</span>
+          <strong>(a)</strong> In contrast with the SIS model, in the SIR model recovered individuals enter a recovered state, meaning that they develop immunity rather than becoming susceptible again. Flu, SARS and Plague are diseases with this property, hence we must use the SIR model to describe their spread.</br>
+          <strong>(b)</strong> The differential equations governing the time evolution of the fraction of individuals in the susceptible s, infected i and the removed r state.
+          <strong>(c)</strong> The time dependent behavior of s, i and r as predicted by the equations shown in (b). According to the model all individuals transition from a susceptible (healthy) state to the infected (sick) state and then to the recovered (immune) state.
+        </p>
+    </div>
+
+<p>For many pathogens, like most strains of influenza, individuals develop immunity after they recover from the infection. Hence, instead of returning to the susceptible state, they are “removed” from the population. These recovered individuals do not count any longer from the perspective of the pathogen as they cannot be infected, nor can they infect others. The SIR model, whose properties are discussed in Figure 10.6, captures the dynamics of this process.</p>
+
+<div class="image-container half-width-right" >
+      <img src="../imgs/chapter10/fig10.7.jpg" alt="Comparing the SI, SIS and SIR Models" />
+        <p class="captionBold">Figure 10.7</p>
+        <p class="caption">
+          <span class="imte">Comparing the SI, SIS and SIR Models</span>
+          The plot shows growth of the fraction of infected individuals, i, in the SI, SIS and SIR models. Two different regimes stand out:</br>
+          <strong>Exponential Regime</strong></br>
+          The models predict an exponential growth in the number of infected individuals during the early stages of the epidemic. For the same β the SI model predicts the fastest growth (smallest τ, see (10.5)). For the SIS and SIR models the growth is slowed by recovery, resulting in a larger τ, as predicted by (10.9). Note that for sufficiently high recovery rate μ the SIS and the SIR models predict a disease-free state, when the number of infected individuals decays exponentially with time.
+          <strong>Final Regime</strong></br>
+          The three models predict different long-term outcomes: In the SI model everyone becomes infected, i(∞)=1; in the SIS model a finite fraction of individuals are infected i(∞)< 1 in the SIR model all infected nodes recover, hence the number of infected individuals goes to zero i(∞)=0.
+          </br>
+          The table summarizes the main properties of each model.
+        </p>
+    </div>
+
+<p>In summary, depending on the characteristics of a pathogen, we need different models to capture the dynamics of an epidemic outbreak. As shown in Figure 10.7, the predictions of the SI, SIS, and SIR models agree with each other in the early stages of an epidemic: When the number of infected individuals is small, the disease spreads freely and the number of infected individuals increases exponentially. The outcomes are different for large times: In the SI model everyone becomes infected; the SIS model either reaches an endemic state, in which a finite fraction of individuals are always infected, or the infection dies out; in the SIR model everyone recovers at the end. The reproductive number predicts the long-term fate of an epidemic: for R0 < 1 the pathogen persists in the population, while for
+R0 >1 it dies out naturally.
+</p>
+
+<p>The models discussed so far have ignored the fact that that an individual comes into contact only with its network-based neighbors in the pertinent contact network. We assumed homogenous mixing instead, which means that an infected individual can infect any other individual. It also means that an infected individual typically infects only ⟨k⟩ other individuals, ignoring variations in node degrees. To accurately predict the dynamics of an epidemic, we need to consider the precise role the contact network plays in epidemic phenomena.</p>
+
+</section>
+<div class="pageb"></div>
+
+<section>
+<a id="Network-Epidemics"></br></br></a>
+<h3 id="#">10.3 NETWORK EPIDEMICS</h3>
+
+<p>The ease of air travel, allowing millions to cross continents on a daily basis, has dramatically accelerated the speed with which pathogens travel around the world. While in medieval times a virus took years to sweep a continent (Figure 10.8), today a new virus can reach several continents in a matter of days. There is an acute need, therefore, to understand and predict the precise patterns that pathogens follow as they spread around the globe.</p>
+
+<p>The epidemic models discussed in the previous section do not incorpo- rate the structure of the contract network that facilitates the spread of a pathogen. Instead they assume that any individual can come into contact with any other individual (homogenous mixing hypothesis) and that all individuals have comparable number of contacts, ⟨k⟩. Both assumptions are false: Individual can transmit a pathogen only to those they come into contact with, hence pathogens spread on a complex contact network. Fur- thermore, these contact networks are often scale-free, hence ⟨k⟩ is not suf- ficient to characterize their topology.</p>
+
+    <div class="image-container " >
+      <img src="../imgs/chapter10/fig10.8.jpg" alt="The Great Plague" />
+        <p class="captionBold">Figure 10.7</p>
+        <p class="caption">
+          <span class="imte">The Great Plague</span>
+          The Black Death, one of the most devastating pandemics in human history, was an outbreak of bubonic plague caused by the bacterium Yersinia pestis. The figure shows the gradual advance of the disease throughout Europe, taking years to sweep the continent. It start- ed in China and traveled along the Silk Road to reach Crimea around 1346. From there, probably carried by Oriental rat fleas on the black rats that were regular passengers on merchant ships, spread throughout the Medi- terranean and Europe. Its slow spread reflect- ed the slow travel speed of its era. The black death is estimated to have killed 30% to 60% of Europe's population [8]. The resulting dev- astation has caused a series of religious, social and economic upheavals, having a profound impact on the history of Europe.</br>After Roger Zenner, Wikipedia.
+        </p>
+    </div>
+
+<p>The failure of the basic hypotheses prompted a fundamental revision of the epidemic modeling framework. This change began with the work of Ro- mualdo Pastor-Satorras and Alessandro Vespignani, who in 2001 extended the basic epidemic models to incorporate in a self-consistent fashion the topological characteristics of the underlying contact network [9]. In this section we introduce the formalism developed by them, familiarizing our- selves with network epidemics.</p>
+
+<p><strong>SUSCEPTIBLE-INFECTED (SI) MODEL ON A NETWORK</strong></br>
+
+<p>If a pathogen spreads on a network, individuals with more links are more likely to be in contact with an infected individual, hence they are more likely to be infected. Therefore the mathematical formalism must consider the degree of each node as an implicit variable. This is achieved by the degree block approximation, that distinguishes nodes based on their degree and assumes that nodes with the same degree are statistically equivalent (Figure 10.9). Therefore we denote with</p>
+
+<!--equation!!!! -->
+
+<p>the fraction of nodes with degree k that are infected among all Nk degree-k nodes in the network. The total fraction of infected nodes is the sum of all infected degree-k nodes</p>
+
+<!--equation!!!! -->
+
+<p>Given the different node degrees, we write the SI model for each degree k separately:</p>
+
+<!--equation!!!! -->
+
+<!--equation!!!! -->
+
+<!--equation!!!! -->
+
+<!--equation!!!! -->
+
+<!--equation!!!! -->
+
+
+</section>
+<div class="pageb"></div>
+
+<section>
+<a id="BIBLIOGRAPHY"></br></br></a>
+<a id="3" style="display: block;"></a>
+<h3 id="books">BIBLIOGRAPHY</h3>
+<div class="list">
+	
+<ul>
+		
+<li><p>
+  [1] D. Normile. The Metropole, Superspreaders and Other Mysteries. Science, 339:1272-1273, 2013.
+</p></li>
+<li><p>
+  [2] J.O. Lloyd-Smith, S.J. Schreiber, P.E. Kopp, and W.M. Getz. Superspreading and the effect of individual variation on disease emergence. Nature, 438:355-359, 2005.
+</p></li>
+<li><p>
+  [3] M. Hypponen. Malware Goes Mobile. Scientific American, 295:70, 2006.
+</p></li>
+<li><p>
+  [4] P. Wang, M. Gonzalez, C. A. Hidalgo, and A.-L. Barabasi. Understanding the spreading patterns of mobile phone viruses. Science, 324:10711076, 2009.
+</p></li>
+<li><p>
+  [5] E.M. Rogers. Diffusion of Innovations. Free Press, 2003.
+</p></li>
+<li><p>
+  [6] T.W. Valente. Network models of the diffusion of innovations. Hampton Press, Cresskill, NJ, 1995.
+</p></li>
+<li><p>
+  [7] History and Epidemiology of Global Smallpox Eradication From the training course titled "Smallpox: Disease, Prevention, and Intervention". The CDC and the World Health Organization. Slides 16-17.
+</p></li>
+<li><p>
+  [8] R.M. Anderson and R.M. May. Infectious Diseases of Humans: Dynamics and Control. Oxford University Press, Oxford, 1992.
+</p></li>
+<li><p>
+  [9] R. Pastor-Satorras and A. Vespignani. Epidemic spreading in scalefree networks. Physical Review Letters, 86:3200–3203, 2001.
+</p></li>
+<li><p>
+  [10] R. Pastor-Satorras and A. Vespignani. Epidemic dynamics and endemic states in complex networks. Physical Review E, 63:066117, 2001.
+</p></li>
+<li><p>
+  [11] Y. Wang, D. Chakrabarti, C, Wang, and C. Faloutsos. Epidemic spreading in real networks: an eigenvalue viewpoint. Proceedings of 22nd International Symposium on Reliable Distributed Systems, pg. 25-34, 2003.
+</p></li>
+<li><p>
+  [12] R. Durrett. Some features of the spread of epidemics and information on a random graph. PNAS, 107:4491-4498, 2010.
+</p></li>
+<li><p>
+  [13] S. Chatterjee and R. Durrett. Contact processes on random graphs with power law degree distributions have critical value 0. Ann. Probab., 37: 2332-2356, 2009.
+</p></li>
+<li><p>
+  [14] C Castellano, and R Pastor-Satorras. Thresholds for epidemic spreading in networks. Physical Review Letters, 105:218701, 2010.
+</p></li>
+<li><p>
+  [15] B. Lewin. (ed.), Sex i Sverige. Om sexuallivet i Sverige 1996 [Sex in Sweden. On the Sexual Life in Sweden 1996]. National Institute of Public Health, Stockholm, 1998.
+</p></li>
+<li><p>
+  [16] F. Liljeros, C. R. Edling, L. A. N. Amaral, H. E. Stanley, and Y. Åberg. The web of human sexual contacts. Nature, 411:907-8, 2001.
+</p></li>
+<li><p>
+  [17] A. Schneeberger, C. H. Mercer, S. A. Gregson, N. M. Ferguson, C. A. Nyamukapa, R. M. Anderson, A. M. Johnson, and G. P. Garnett. Scale-free networks and sexually transmitted diseases: a description of observed patterns of sexual contacts in Britain and Zimbabwe. Sexually Transmitted Diseases, 31: 380-387, 2004.
+</p></li>
+<li><p>
+  [18] W. Chamberlain. A View from Above. Villard Books, New York, 1991. [19] R. Shilts. And the Band Played On. St. Martin’s Press, New York, 2000.
+</p></li>
+<li><p>
+  [20] P. S. Bearman, J. Moody, and K. Stovel. Chains of affection: the structure of adolescent romantic and sexual networks. Am J Sociol., 110:44-91, 2004.
+</p></li>
+<li><p>
+  [21] M. C. Gonzalez, C. A. Hidalgo, and A.-L. Barabasi. Understanding individual human mobility patterns. Nature, 453:779-782, 2008.
+</p></li>
+<li><p>
+  [22] C. Song, Z. Qu, N. Blumm, and A.-L. Barabasi. Limits of Predictability in Human Mobility. Science, 327:1018-1021, 2010.
+</p></li>
+<li><p>
+  [23] F. Simini, M. Gonzalez, A. Maritan, and A.-L. Barabasi. A universal model for mobility and migration patterns. Nature, 484:96-100, 2012.
+</p></li>
+<li><p>
+  [24] D. Brockmann, L. Hufnagel, and T. Geisel. The scaling laws of human travel. Nature, 439:462–465, 2006.
+</p></li>
+<li><p>
+  [25] V. Colizza, A. Barrat, M. Barthelemy, and A. Vespignani. The role of the airline transportation network in the prediction and predictability of global epidemics. PNAS, 103:2015, 2006.
+</p></li>
+<li><p>
+  [26] L. Hufnagel, D. Brockmann, and T. Geisel. Forecast and control of epidemics in a globalized world. PNAS, 101:15124, 2004.
+</p></li>
+<li><p>
+  [27] R. Guimerà, S. Mossa, A. Turtschi, and L. A. N. Amaral. The worldwide air transportation network: Anomalous centrality, community structure, and cities' global roles. PNAS, 102:7794, 2005.
+</p></li>
+<li><p>
+  [28] C. Cattuto, et al. Dynamics of Person-to-Person Interactions from Distributed RFID Sensor Networks. PLoS ONE, 5:e11596, 2010.
+</p></li>
+<li><p>
+  [29] L. Isella, C. Cattuto, W. Van den Broeck, J. Stehle, A. Barrat, and J.-F. Pinton. What’s in a crowd? Analysis of face-to-face behavioral networks. Journal of Theoretical Biology, 271:166-180, 2011.
+</p></li>
+<li><p>
+  [30] K. Zhao, J. Stehle, G. Bianconi, and A. Barrat. Social network dynamics of face-to-face interactions. Physical Review E, 83:056109, 2011.
+</p></li>
+<li><p>
+  [31] J. Stehlé, N. Voirin, A. Barrat, C Cattuto, L. Isella, J-F. Pinton, M. Quaggiotto, W. Van den Broeck, C. Régis, B. Lina, and P. Vanhems. High-resolution measurements of face-to-face contact patterns in a primary school. PLoS ONE, 6:e23176, 2011.
+</p></li>
+<li><p>
+  [32] B.N. Waber, D. Olguin, T. Kim, and A. Pentland. Understanding Organizational Behavior with Wearable Sensing Technology. Academy of Management Annual Meeting. Anaheim, CA. August, 2008.
+</p></li>
+<li><p>
+  [33] L. Wu, B.N. Waber, S. Aral, E. Brynjolfsson, and A. Pentland. Mining Face-to-Face Interaction Networks using Sociometric Badges: Predicting Productivity in an IT Configuration Task. In Proceedings of the International Conference on Information Systems. Paris, France. December 14-17 2008.
+</p></li>
+<li><p>
+  [34] M. Salathé, M. Kazandjievab, J.W. Leeb, P. Levisb, M.W. Feldmana, and J.H. Jones. A high-resolution human contact network for infectious disease transmission. PNAS, 107:22020–22025, 2010.
+</p></li>
+<li><p>
+  [35] A.-L. Barabasi. The origin of bursts and heavy tails in human dynamics. Nature, 435:207-11, 2005.
+</p></li>
+<li><p>
+  [36] V. Sekara, and S. Lehmann. Application of network properties and signal strength to identify face-to-face links in an electronic dataset. Proceedings of CoRR, 2014.
+</p></li>
+<li><p>
+  [37] S. Eubank, H. Guclu, V.S.A. Kumar, M.V. Marathe, A. Srinivasan, Z. Toroczkai, and N. Wang. Modelling disease outbreaks in realistic urban social networks. Nature, 429:180-184, 2004.
+</p></li>
+<li><p>
+  [38] H. Ebel, L-I. Mielsch, and S. Bornholdt. Scale-free topology of e-mail networks. Physical Review E, 66:035103, 2002.
+</p></li>
+<li><p>
+  [39] M. Morris, and M. Kretzschmar. Concurrent partnerships and transmission dynamics in networks. Social Networks, 17:299-318, 1995.
+</p></li>
+<li><p>
+  [40] N. Masuda and P. Holme. Predicting and controlling infectious diseases epidemics using temporal networks. F1000 Prime Rep., 5:6, 2013.
+</p></li>
+<li><p>
+  [41] P. Holme, and J. Saramäki. Temporal networks. Physics Reports, 519:97-125, 2012.
+</p></li>
+<li><p>
+  [42] M. Karsai, M. Kivelä, R. K. Pan, K. Kaski, J. Kertész, A.-L. Barabasi, and J. Saramäki. Small but slow world: how network topology and burstiness slow down spreading. Physical Review E, 83:025102(R), 2011.
+</p></li>
+<li><p>
+  [43] A. Vazquez, B. Racz, A. Lukacs, and A.-L. Barabasi. Impact of nonPoissonian activity patterns on spreading processes. Physical Review Letters, 98:158702, 2007.
+</p></li>
+<li><p>
+  [44] A. Vazquez, J.G. Oliveira, Z. Dezsö, K.-I. Goh, I. Kondor, and A.-L. Barabasi. Modeling bursts and heavy tails in human dynamics. Physical Review E, 73:036127, 2006.
+</p></li>
+<li><p>
+  [45] A.V. Goltsev, S.N. Dorogovtsev, and J.F.F. Mendes. Percolation on correlated networks. Physical Review E., 78:051105, 2008.
+</p></li>
+<li><p>
+  [46] P. Van Mieghem, H. Wang, X. Ge, S. Tang and F. A. Kuipers. Influence of assortativity and degree-preserving rewiring on the spectra of networks. The European Physical Journal B, 76:643, 2010.
+</p></li>
+<li><p>
+  [47] M. Boguna, R. Pastor-Satorras, and A. Vespignani. Absence of epidemic threshold in scale-free networks with degree correlations. Physical Review Letters, 90:028701, 2003.
+</p></li>
+<li><p>
+  [48] Y. Moreno, J. B. Gómez, and A.F. Pacheco. Epidemic incidence in correlated complex networks. Physical Review E, 68:035103, 2003.
+</p></li>
+<li><p>
+  [49] J.-P. Onnela, J. Saramaki, J. Hyvonen, G. Szabó, D. Lazer, K. Kaski, J. Kertész, and A.-L. Barabasi. Structure and tie strengths in mobile communication networks. PNAS, 104:7332, 2007.
+</p></li>
+<li><p>
+  [50] M. S. Granovetter. The strength of weak ties. American Journal of Sociology, 78:1360–1379, 1973.
+</p></li>
+<li><p>
+  [51] A. Galstyan, and P. Cohen. Cascading dynamics in modular networks. Physical Review E, 75:036109, 2007.
+</p></li>
+<li><p>
+  [52] J. P. Gleeson. Cascades on correlated and modular random networks. Physical Review E, 77:046117, 2008.
+</p></li>
+<li><p>
+  [53] P. A. Grabowicz, J. J. Ramasco, E. Moro, J. M. Pujol, and V. M. Eguiluz. Social features of online networks: The strength of intermediary ties in online social media. PLOS ONE, 7:e29358, 2012.
+</p></li>
+<li><p>
+  [54] L. Weng, F. Menczer and Y.-Y. Ahn. Virality Prediction and Community Structure in Social Networks. Scientific Reports, 3:2522, 2013.
+</p></li>
+<li><p>
+  [55] S. Aral, and D. Walker. Creating social contagion through viral product design: A randomized trial of peer influence in networks. Management Science, 57:1623–1639, 2011.
+</p></li>
+<li><p>
+  [56] J. Leskovec, L. Adamic, and B. Huberman. The dynamics of viral marketing. ACM Trans. Web, 1, 2007.
+</p></li>
+<li><p>
+  [57] L. Weng, A Flammini, A. Vespignani, and F. Menczer. Competition among memes in a world with limited attention. Scientific Reports, 2:335, 2012.
+</p></li>
+<li><p>
+  [58] J. Berger, and K. L. Milkman. What makes online content viral? Journal of Marketing Research, 49:192–205, 2009.
+</p></li>
+<li><p>
+  [59] S. Jamali, and H. Rangwala. Digging digg: Comment mining, popularity prediction and social network analysis. Proc. Intl. Conf. on Web Information Systems and Mining (WISM), 32–38, 2009.
+</p></li>
+<li><p>
+  [60] G. Szabó and, B. A. Huberman. Predicting the popularity of online content. Communications of the ACM, 53:80–88, 2010.
+</p></li>
+<li><p>
+  [61] B. Suh, L. Hong, P. Pirolli, and E. H. Chi. Want to be retweeted? Large scale analytics on factors impacting retweet in twitter network. Proc. IEEE Intl. Conf. on Social Computing, 177–184, 2010.
+</p></li>
+<li><p>
+  [62] D. Centola. The spread of behavior in an online social network experiment. Science, 329:1194–1197, 2010.
+</p></li>
+<li><p>
+  [63] L. Backstrom, D. Huttenlocher, J. Kleinberg, and X. Lan. Group formation in large social networks: membership, growth, and evolution. Proc. ACM SIGKDD Intl. Conf. on Knowledge discovery and data mining, 44–54, 2006.
+</p></li>
+<li><p>
+  [64] M. Granovetter. Threshold Models of Collective Behavior. American Journal of Sociology, 83:1420–1443, 1978.
+</p></li>
+<li><p>
+  [65] N.A. Christakis, and J.H. Fowler. The Spread of Obesity in a Large Social Network Over 32 Years. New England Journal of Medicine, 35:370379, 2007.
+</p></li>
+<li><p>
+  [66] N. A. Christakis and J. H. Fowler. The collective dynamics of smoking in a large social network. New England Journal of Medicine, 358:22492258, 2008.
+</p></li>
+<li><p>
+  [67] R. Pastor-Satorras, and A. Vespignani. Evolution and structure of the Internet: A statistical physics approach. Cambridge University Press, Cambridge, 2007.
+</p></li>
+<li><p>
+  [68] Z. Dezső and A-L. Barabasi. Halting viruses in scale-free networks. Physical Review E, 65:055103, 2002.
+</p></li>
+<li><p>
+  [69] R. Pastor-Satorras and A. Vespignani. Immunization of complex networks. Physical Review E, 65:036104, 2002.
+</p></li>
+<li><p>
+  [70] R. Cohen, S. Havlin, and D. ben-Avraham. Efficient Immunization Strategies for Computer Networks and Populations. Physical Review Letters, 91:247901, 2003.
+</p></li>
+<li><p>
+  [71] F. Fenner et al. Smallpox and its Eradication. WHO, Geneva, 1988. <a href="http://www.who.int/features/2010/smallpox/en/"></a>
+</p></li>
+<li><p>
+  [72] L. A. Rvachev, and I. M. Longini Jr. A mathematical model for the global spread of influenza. Mathematical Biosciences, 75:3-22, 1985.
+</p></li>
+<li><p>
+  [73] A. Flahault, E. Vergu, L. Coudeville, and R. Grais. Strategies for containing a global influenza pandemic. Vaccine, 24:6751-6755, 2006.
+</p></li>
+<li><p>
+  [74] I. M. Longini Jr, M. E. Halloran, A. Nizam, and Y. Yang. Containing pandemic influenza with antiviral agents. Am. J. Epidemiol., 159:623-633, 2004.
+</p></li>
+<li><p>
+  [75] I.M. Longini Jr, A. Nizam, S. Xu, K. Ungchusak, W. Hanshaoworakul, D. Cummings, and M. Halloran. Containing pandemic influenza at the source. Science, 309:1083-1087, 2005.
+</p></li>
+<li><p>
+  [76] V. Colizza, A. Barrat, M. Barthélemy, A.-J. Valleron, and A. Vespignani. Modeling the world-wide spread of pandemic influenza: baseline case and containment interventions. PLoS Med, 4:e13, 2007.
+</p></li>
+<li><p>
+  [77] T. D. Hollingsworth, N.M. Ferguson, and R.M. Anderson. Will travel restrictions control the International spread of pandemic influenza? Nature Med., 12:497-499, 2006.
+</p></li>
+<li><p>
+  [78] C.T. Bauch, J.O. Lloyd-Smith, M.P. Coffee, and A.P. Galvani. Dynamically modeling SARS and other newly emerging respiratory illnesses: past, present, and future. Epidemiology, 16:791-801, 2005.
+</p></li>
+<li><p>
+  [79] I. M. Hall, R. Gani, H.E. Hughes, and S. Leach. Real-time epidemic forecasting for pandemic influenza. Epidemiol Infect., 135:372-385, 2007.
+</p></li>
+<li><p>
+  [80] M. Tizzoni, P. Bajardi, C. Poletto, J. J. Ramasco, D. Balcan, B. Gonçalves, N. Perra, V. Colizza, and A. Vespignani. Real-time numerical forecast of global epidemic spreading: case study of 2009 A/H1N1pdm. BMC Medicine, 10:165, 2012.
+</p></li>
+<li><p>
+  [81] D. Balcan, H. Hu, B. Gonçalves, P. Bajardi, C. Poletto, J. J. Ramasco, D. Paolotti, N. Perra, M. Tizzoni, W. Van den Broeck, V. Colizza, and A. Vespignani. Seasonal transmission potential and activity peaks of the new influenza A/H1N1: a Monte Carlo likelihood analysis based on human mobility. BMC Med., 7:45, 2009.
+</p></li>
+<li><p>
+  [82] P. Bajardi, et al. Human Mobility Networks, Travel Restrictions, and the Global Spread of 2009 H1N1 Pandemic. PLoS ONE, 6:e16591, 2011.
+</p></li>
+<li><p>
+  [83] P.Bajardi, C. Poletto, D. Balcan, H. Hu, B. Gonçalves, J. J. Ramasco, D. Paolotti, N. Perra, M. Tizzoni, W. Van den Broeck, V. Colizza, and A. Vespignani. Modeling vaccination campaigns and the Fall/Winter 2009 activity of the new A/H1N1 influenza in the Northern Hemisphere. EHT Journal, 2:e11, 2009.
+</p></li>
+<li><p>
+  [84] M.E. Halloran, N.M. Ferguson, S. Eubank, I.M. Longini, D.A.T. Cummings, B. Lewis, S. Xu, C. Fraser, A. Vullikanti, T.C. Germann, D. Wagener, R. Beckman, K. Kadau, C. Macken, D.S. Burke, and P. Cooley. Modeling targeted layered containment of an influenza pandemic in the United States. PNAS, 105:4639-44, 2008.
+</p></li>
+<li><p>
+  [85] G. M. Leung, A. Nicoll. Reflections on Pandemic (H1N1) 2009 and the international response. PLoS Med, 7:e1000346, 2010.
+</p></li>
+<li><p>
+  [86] A.C. Singer, et al. Meeting report: risk assessment of Tamiflu use under pandemic conditions. Environ Health Perspect., 116:1563-1567, 2008.
+</p></li>
+<li><p>
+  [87] R. Fisher. The wave of advance of advantageous genes. Ann. Eugen., 7:355–369, 1937.
+</p></li>
+<li><p>
+  [88] J. V. Noble. Geographic and temporal development of plagues. Nature, 250:726–729, 1974.
+</p></li>
+<li><p>
+  [89] D. Brockmann and D. Helbing. The Hidden Geometry of Complex, Network-Driven Contagion Phenomena. Science, 342:1337-1342, 2014.
+</p></li>
+<li><p>
+  [90] J. S. Brownstein, C. J. Wolfe, and K. D. Mandl. Empirical evidence for the effect of airline travel on inter-regional influenza spread in the United States. PLoS Med, 3:e40, 2006.
+</p></li>
+<li><p>
+  [91] D. Shah and T. Zaman, in SIGMETRICS’10, Proceedings of the ACM SIGMETRICS international conference on Measurement and modeling of computer systems, pp. 203–214, 2010.
+</p></li>
+<li><p>
+  [92] A. Y. Lokhov, M. Mezard, H. Ohta, L. Zdeborova. Inferring the origin of an epidemy with dynamic message-passing algorithm. Phys. Rev E, 90:012801, 2014.
+</p></li>
+<li><p>
+  [93] P. C. Pinto, P. Thiran, M. Vetterli. Locating the Source of Diffusion in Large-Scale Networks. Physical Review Letters, 109:068702, 2012.
+</p></li>
+<li><p>
+  [94] C. H. Comin and L. da Fontoura Costa. Identiying the starting point of a spreading process in complex networks. Phys. Rev. E, 84:056105, 2011.
+</p></li>
+<li><p>
+  [95] D. Shah and T. Zaman. Rumors in a Network: Who's the Culprit? IEEE Trans. Inform. Theory, 57:5163, 2011.
+</p></li>
+<li><p>
+  [96] K. Zhu and L. Ying. Information source detection in the SIR model: A sample path based approach. Information Theory and Applications Workshop (ITA); 1-9, 2013.
+</p></li>
+<li><p>
+  [97] B. A. Prakash, J. Vreeken, and C. Faloutsos. Spotting culprits in epidemics: How many and which ones? ICDM’12; Proceedings of the IEEE International Conference on Data Mining, 11:20, 2012.
+</p></li>
+<li><p>
+  [98] V. Fioriti and M. Chinnici. Predicting the sources of an outbreak with a spectral technique. Applied Mathematical Sciences, 8:6775-6782, 2012.
+</p></li>
+<li><p>
+  [99] W. Dong, W. Zhang and C.W. Tan. Rooting out the rumor culprit from suspects. Proceedings of CoRR, 2013.
+</p></li>
+<li><p>
+  [100] B. Barzel, and A.-L. Barabasi. Universality in network dynamics. Nature Physics, 9:673, 2013.
+</p></li>
+<li><p>
+  [101] A. Barrat, M. Barthélemy and A. Vespignani. Dynamical Processes on Complex Networks. Cambridge University Press, 2012.
+</p></li>
+<li><p>
+  [102] S. N. Dorogovtsev, A.V. Goltsev, and J. F. F. Mendes. Critical phenomena in complex networks. Reviews of Modern Physics 80, 1275, 2008.
+</p></li>
+<li><p>
+  [103] R. Cohen and S. Havlin. Complex Networks Structure, Robustness and Function. Cambridge University Press, 2010.
+</p></li>
+<li><p>
+  [104] P. Grassberger. On the critical behavior of the general epidemic process and dynamical percolation. Mathematical Biosciences, 63:157, 1983.
+</p></li>
+<li><p>
+  [105] M. E. J.Newman. The spread of epidemic disease on networks. Physical Review E, 66:016128, 2002.
+</p></li>
+<li><p>
+  [106] C. P. Warren, L. M. Sander, and I. M. Sokolov. Firewalls, disorder, and percolation in networks. Mathematical Biosciences, 180:293, 2002.
+</p></li>
+<li><p>
+  [107] R. Cohen, K. Erez, D. ben-Avraham, and S. Havlin. Resilience of the Internet to random breakdown. Physical Review Letters, 85:4626–4628, 2000.
+</p></li>
+<li><p>
+  [108] D. S. Callaway, M. E. J. Newman, S. H. Strogatz, and D. J. Watts. Network robustness and fragility: percolation on random graphs. Physical Review Letters, 85:5468–5471, 2000.
+</p></li>
+
+</ul>
+</div>
+</section>
+<div class="pageb"></div>
+
+</div>
+</div>  
+  
+  
+  
+  
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+	<div id="bottom">
+		<div id="footer">
+        
+        
+			<div class="one-third" id="licenses">
+        <h4>Licenses</h4>
+        <p>
+          <a class="license-badge" rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a>
+         
+        </p>
+
+        <p>
+          The book's text and illustrations are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
+        </p>
+      </div>
+      
+
+      <div class="one-third">
+        <h4>Credit</h4>
+
+        <p>Design & Data Visualization: <a href="http://www.mamartino.com">Mauro Martino</a>, Márton Pósfai, Gabriele Musella</p>
+
+      </div>
+
+      <div class="one-third">
+        <h4>Author</h4>
+        <p><a href="http://www.barabasi.com">ALBERT-LÁSZLÓ BARABÁSI</a> is director of the <a href="http://barabasilab.neu.edu">Center for Complex Network Research</a> at Northeastern University.</p>
+
+        <p>He is the author of <a href="http://barabasilab.com/LinkedBook/">Linked</a>.</p>
+
+        <p><a href="https://twitter.com/barabasi">BARABÁSI in Twitter</a> </p>
+      </div>
+		</div>
+	</div>
+</body>
+</html>

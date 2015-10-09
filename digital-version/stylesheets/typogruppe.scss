@@ -1,0 +1,104 @@
+$schriftGroesse: 18px;
+$hellBlau: #36A6BF;
+$dunkelBlau: #025E73;
+
+body {
+	font-family: "brandon text";
+	font-size: $schriftGroesse;
+	line-height: 1.5em;
+}
+
+p {
+	font-size: $schriftGroesse;
+	line-height: 1.5em;
+}
+
+h1,
+h2,
+h3,
+h4,
+.tip {
+	font-family: "brandon grotesque";
+}
+
+h2 {
+	font-size: 18px;
+	color: $hellBlau;
+	margin: 0;
+}
+
+h3 {
+	font-size: 30px;
+	color:$dunkelBlau;
+	margin: 0.9em 0 0;
+}
+
+figure {
+	margin: 50px 0 35px 0;
+	font-size: 15px;
+}
+
+.fig-nr {
+	color: $hellBlau;
+	font-style: oblique;
+	display:inline-block;
+	margin-top: 20px;
+}
+
+.tip {
+	background-color: grey;
+	font-weight: 200;
+	padding: 50px;
+
+	h4 {
+		color: #fff;
+		font-size: 15px;
+	}
+
+	p {
+		font-size: 16px;
+		color: #FFF;
+	}
+
+	li {
+		list-style: none;
+	}
+}
+
+ul {
+	padding: 0;
+
+	li {
+		// list-style-image: url("img/icon.png");
+	}
+}
+
+li {
+	margin-bottom: 10px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+blockquote {
+	/*position: relative;
+
+	&:after {
+		display: inline-block;
+		position: absolute;
+		line-height: 1;
+		font-size: 32px;
+		left: -39px;
+    	top: -13px;
+		content: '“”';
+		color: $hellBlau;
+	} */
+
+	font-family: "georgia", sans-serif;
+	font-size: 30px;
+	line-height: 1.3em;
+	margin: 50px 0;
+	color: grey;
+	padding: 0 50px 0 50px;
+}

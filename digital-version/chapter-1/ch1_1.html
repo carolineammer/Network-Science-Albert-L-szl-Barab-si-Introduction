@@ -1,0 +1,618 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Network Science | Albert-László Barabás | Chapter 1</title>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	
+  <script type="text/javascript" src="../javascripts/jquery.fixed.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      $('#toc-list').fixed({'top':'8'});
+      $('#nav-bar-wrap').fixed({'top':'8'});
+      $('span.c1').each(function(){ addStylesToCodeLines($(this)); });
+      $('div.source-code').each(function(){ setRawCodeHeight($(this)); });
+      $('a.toggle').click(function(){ toggleCodeDisplay($(this)); return false; });
+    });
+  </script>
+  
+
+	<link rel="stylesheet" href="../stylesheets/html.css" type="text/css">
+
+
+</head>
+<body>
+
+  <div id="navigator">
+    <div id="navigator-inner">
+      <div id='nav-bar-wrap'>
+        <div id="mask"></div>
+        <div id="nav-bar">
+          <h1><a href="../index.html"> <strong>NETWORK SCIENCE</strong> INTRODUCTION</a></h1>
+          <h2>Albert-László Barabási</h2>
+          <a id="purchase-link" href="../chapter-2/ch2.html">CHAPTER 2</a>   
+          <a id="purchase-link" href="../pdf/network_science_Ch1_2012_November.pdf">Download Chapter 1 as PDF</a>
+          
+        </div>
+      </div>
+      <div id="toc-holder">
+        <div id="toc-list">
+          <ul>
+            <li><a href="#VULNERABILITY-DUE-TO-INTERCONNECTIVITY">1.1 Vulnerability Due to Interconnectivity</a></li> 
+            <li><a href="#NETWORKS-AT-THE-HEART-OF-COMPLEX-SYSTEMS">1.2 Networks at the Heart of Complex Systems</a></li>
+            <li><a href="#TWO-FORCES-HELPED-THE-EMERGENCE-OF-NETWORK-SCIENCE">1.3 Two Forces Helped the Emergence of Network Science</a></li>
+            <li><a href="#THE-CHARACTERISTICS-OF-NETWORK-SCIENSE">1.4 The Characteristics of Network Science</a></li>
+            <li><a href="#TWO-FORCES-HELPED-THE-EMERGENCE-OF-NETWORK-SCIENCE">1.5 TWO FORCES HELPED THE EMERGENCE OF NETWORK SCIENCE</a></li>
+            <li><a href="#THE-CHARACTERISTICS-OF-NETWORK-SCIENCE">1.6 THE CHARACTERISTICS OF NETWORK SCIENCE</a></li>
+            <li><a href="#THE-IMPACT-OF-NETWORK-SCIENCE">1.7 THE IMPACT OF NETWORK SCIENCE</a></li>
+            <li><a href="#SCIENTIFIC-IMPACT">1.8 SCIENTIFIC IMPACT</a></li>
+            <li><a href="#SUMMARY">1.9 SUMMARY</a></li>
+            <li><a href="#BIBLIOGRAPHY">1 BIBLIOGRAPHY</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> <!--  fine  navigator //-->
+  
+  
+
+  <div id="top">
+    <div id="header">
+      <h1><a href="##"><strong>NETWORK SCIENCE</strong> BOOK</a></h1>
+      <h2>Albert-László Barabási</h2>
+    </div>
+  </div>
+
+  <div id="middle">
+
+  	<div id="container">
+    
+<section>
+ <a id="intro"></br></br></br></br></a>
+ <a id="#" style="display: block;"></a><h2 id="#">Section 1.1</h2>
+<a style="display: block;"></a></p>
+
+<section>
+<a id="VULNERABILITY-DUE-TO-INTERCONNECTIVITY"></br></br></a>
+<h3 id="#">VULNERABILITY DUE TO INTERCONNECTIVITY</h3>
+
+<div class="image-container half-width-right" >
+	<img src="../imgs/chapter01/ch01_03a.png" alt="2003 North American blackout." />	
+    <p class="captionBold">Figure 1.3a</p>
+    <p class="caption"><span class="imte">2003 North American blackout.</span></br>
+Satellite image of August 13, 2003: 9:29pm EDT 20 hours before.</p>
+</div>
+
+<div class="image-container half-width-right" >
+	<img src="../imgs/chapter01/ch01_03b.png" alt="2003 North American blackout." />	
+    <p class="captionBold">Figure 1.3b</p>
+    <p class="caption"><span class="imte">2003 North American blackout.</span></br>
+Satellite image of August 14, 2003: 9:14pm EDT 5 hours after.</p>
+</div>
+
+
+<p>At a first glance the two satellite images of <u>Figure 1.1</u> are indistinguishable, showing lights shining brightly in highly populated areas and dark spaces that mark vast uninhabited forests and oceans. Yet, upon closer inspection we notice differences: Toronto, Detroit, Cleveland, Columbus and Long Island, bright and shining in <u>(a)</u>, have have gone dark in <u>(b)</u>. This is not a doctored shot from the next Armageddon movie but represents a real image of the US Northeast on August 14, 2003, before and after the blackout that left without power an estimated 45 million people in eight US states and another 10 million in Ontario.</p>
+
+<p>The 2003 blackout is a typical example of a cascading failure. When a network acts as a transportation system, a local failure shifts loads to other nodes. If the extra load is negligible, the system can seamlessly absorb it, and the failure goes unnoticed. If, however, the extra load is too much for the neighboring nodes, they will too tip and redistribute the load to their neighbors. In no time, we are faced with a cascading event, whose magnitude depends on the position and the capacity of the nodes that failed initially.</p>
+
+<p>Cascading failures have been observed in many complex systems. They take place on the Internet, when traffic is rerouted to bypass malfunctioning routers. This routine operation can occasionally create denial of service attacks, which make fully functional routers unavailable by overwhelming them with traffic. We witness cascading events in financial systems, like in 1997, when the International Monetary Fund pressured the central banks of several Pacific nations to limit their credit, which defaulted multiple corporations, eventually resulting in stock market crashes worldwide. The 2009-2011 financial meltdown is often seen as a classic example of a cascading failure, the US credit crisis paralyzing the economy of the globe, leaving behind scores of failed banks, corporations, and even bankrupt states. Cascading failures can be also induced artificially. An example is the worldwide effort to dry up the money supply of terrorist organizations, aimed at crippling their ability to function. Similarly, cancer researchers aim to induce cascading failures in our cells to kill cancer cells.</p>
+
+<p>The Northeast blackout illustrates several important themes of this book: First, to avoid damaging cascades, we must understand the structure of the network on which the cascade propagates. Second, we must be able to model the dynamical processes taking place on these networks, like the flow of electricity. Finally, we need to uncover how the interplay between the network structure and dynamics affects the robustness of the whole system. Although cascading failures may appear random and unpredictable, they follow reproducible laws that can be quantified and even predicted using the tools of network science.</p>
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="NETWORKS-AT-THE-HEART-OF-COMPLEX-SYSTEMS"></br></br></a>
+<h3 id="#">1.2 NETWORKS AT THE HEART OF COMPLEX SYSTEMS</h3>
+
+<blockquote >
+  “I think the next century will be the century of complexity.”
+  
+    <span class="attribution">
+Stephen Hawking
+</span>
+  
+</blockquote>
+
+<p>We are surrounded by systems that are hopelessly complicated, from the society, whose seamless functioning requires cooperation between billions of individuals, to communications infrastructures that integrate billions of cell phones with computers and satellites. Our ability to reason and comprehend the world around us is guaranteed by the coherent activity of billions of neurons in our brain. Our very existence is rooted in seamless interactions between thousands of genes and metabolites within our cells. These systems are collectively called complex systems. Given the important role they play in our life, in science and economy, the understanding, mathematical description, prediction, and eventually the control of such complex systems is one of the major intellectual and scientific challenges of the 21st century.
+</p>
+
+
+<div class="tip">
+  <h4 id="com.plex">Box 1.1 </br> com.plex</h4>
+  <p><em>[adj., v. kuh m-pleks, kom-pleks; n. kom-pleks]</em></p>
+<div class="list">
+<ol>
+<li><p>composed of many interconnected parts; compound; composite: a complex highway system</p></li>
+<li><p>characterized by a very complicated or involved arrangement of parts, units, etc.: complex machinery</p></li>
+<li><p>so complicated or intricate as to be hard to understand or deal with: a complex problem</p></li>
+</ol>
+</div>
+<p><em>Source: Dictionary.com</em></p>
+</div>
+
+
+<p>The emergence of network theory, at the dawn of the 21st century is a vivid demonstration that science can live up to this challenge. Indeed, <em>behind each complex system, there is an intricate network that encodes the interactions between the system’s components:</em></p>
+
+
+<div class="image-container half-width-right" >
+	<img src="../imgs/chapter01/ch01_04.png" alt="The subtle networks behind the economy." />	
+    <p class="captionBold">Image 1.4</p>
+    <p class="caption"><span class="imte">The subtle networks behind the economy.</span></br>
+A credit card, selected as the 99th object in the popular exhibition by the British Museum, entitled The History of the World in 100 Objects. This card is a vivid demonstration of the interconnected nature of the modern economy, creating subtle linkages that one normally does not even think of. The card was issued in the United Arab Emirates in 2009 by the Hong Kong and Shanghai Banking Corporation, commonly known HSBC, a London based bank. The card functions through protocols provided by VISA, an USA based credit association. Yet, the card adheres to Islamic banking principles, which operates in accordance with Fiqhal-Muamalat (Islamic rules of transactions), most notably eliminating interest or riba. The card is not limited to muslims in the United Arab Emirates, but it is also offered to Muslim minorities in non-Muslim countries, and is used by many non-Muslims who agree with its strict ethical guidelines.</p>
+</div>
+
+<p>Networks are at the heart of some of the most revolutionary technologies of the 21st century, empowering everything from Google to Facebook, CISCO, and Twitter. At the end, networks permeate science, technology, and nature to a much higher degree than may be evident upon a casual inspection. Consequently, it is increasingly clear that we will never understand complex systems unless <em>we gain a deep understanding of the networks behind them.</em></p>
+
+<p>The scientific explosion that network science experienced during the first decade of the 21st century is rooted in the discovery that <em>despite the apparent differences, the emergence and evolution of different networks is driven by a common set of fundamental laws and reproducible mechanism.</em> Hence despite the amazing diversity in form, size, nature, age, and scope characterizing real networks, most networks observed in nature, society, and technology are driven by common organizing principles. In other words, once we disregard the nature of the components and their interactions, the obtained networks are more similar than different from each other. In the following sections, we discuss the forces that have led to the emergence of this new research field and its impact on science, technology, and society.</p>
+</section>
+<div class="pageb"></div>
+
+
+
+<section>
+<a id="TWO-FORCES-HELPED-THE-EMERGENCE-OF-NETWORK-SCIENCE"></br></br></a>
+<h3 id="#">1.5 TWO FORCES HELPED THE EMERGENCE OF NETWORK SCIENCE</h3>
+
+<p>Why didn’t network science emerge two hundred years earlier? The networks it explores are by no means new: metabolic networks date back to the origins of life, with a history of four billion years, and the Internet is over four decades old. Furthermore, many disciplines, from biochemistry to sociology, and brain science, have been dealing with their notion of networks. Graph theory, a prolific subfield of mathematics, has focused on networks since 1735. Why do we dare to call network science the science of the 21st century?</p>
+
+<div class="image-container half-width-right" >
+	<img src="../imgs/chapter01/ch01_05.png" alt="The emergence of network science." />	
+	<p class="captionBold">Image 1.5</p>
+    <p class="caption"><span class="imte">The emergence of network science.</span></br>
+
+While the study of networks has a long history from graph theory to sociology, the modern chapter of network science emerged only during the first decade of the 21st century, following the publication of two seminal papers in 1998 [2] and 1999 [3]. The explosive interest in network science is well documented by the citation pattern of two classic network papers, the 1959 paper by Paul Erdős and Alfréd Rényi that marks the beginning of the study of random networks in graph theory [4] and the 1973 paper by Mark Granovetter, the most cited social network paper [5]. Both papers were hardly or only moderately cited before 2000. The explosive growth of citations to these papers in the 21st century documents the emergence of network science, drawing a new, interdisciplinary audience to these classic publications.</p>
+</div>
+
+<p>Something special happened at the dawn of the 21st century that transcended individual research fields and catalyzed the emergence of a new discipline (<u>Image 1.5</u>). To understand why this happened only now, and not two hundred years earlier, we need to discuss the forces that have contributed to the emergence of network science.</p>
+
+<p><strong>The emergence of network maps:</strong> To describe the behavior of a system consisting of hundreds to billions of interacting components, we first need a map of the system’s wiring diagram. In a social system, this would require knowing the list of your friends, your friends’ friends, and so on. In the WWW, this map tells us which webpages link to each other. In the cell, this corresponds to a detailed list of binding interactions and reactions that the genes, proteins, and metabolites participate in. In the past, we either lacked the tools to map these networks out, or it was difficult to keep track of the huge amount of data behind these maps. The emergence of the Internet, offering effective and fast data sharing methods, together with cheap digital storage, fundamentally changed this, allows us to collect, assemble, share, and analyze data pertaining to real networks.</br>
+
+While many of the canonical maps studied today in network science were not collected with the purpose of studying networks (<u>Box 2</u>), we witnessed an explosion of map making at the end of the 1990s. These offered detailed maps of the networks behind numerous complex system, from cell to the economy. Examples include the CAIDA or DIMES project aimed at obtaining an accurate map of the Internet [8]; the hundreds of millions of dollars spent by biologists to systematically map out protein-protein interactions in human cells [6], or the Connectome project of the US National Institute of Health that aims to trace the neural connection in mammalian brains [7].</p>
+
+<p><strong>The universality of network characteristics:</strong> It is easy to list the differences between the various networks we encounter in nature or society: the nodes of the metabolic network are tiny molecules and the links are chemical reactions governed by quantum mechanics; the nodes of the WWW are web documents and the links are URLs maintained by computer algorithms; the nodes of the social network are individuals, the links representing family, professionals, friendship, and acquaintance ties. The processes that shape these networks also differ greatly: metabolic networks are shaped by billions of years of evolution; WWW is collectively built by the actions of millions of individuals; social networks are shaped by social norms whose roots go back thousands of years. Given this diversity in size, nature, scope, history, and evolution, one would not be surprised if the networks behind these systems would differ greatly. Yet, a key discovery of network science is that the architecture and the evolution of networks emerging in various domains of science, nature, and technology are rather similar to each other, allowing us to use a common set of mathematical tools to explore these systems. This universality is one of the guiding principle of this book: we will not only seek to uncover specific network properties, but we will aim to understand its origins, encoding the laws that shape network evolution, as well as its consequences in understanding network behavior.</p>
+
+<div class="tip">
+  <h4 id="com.plex">Box 1.2 </br>  The origins of network maps</h4>
+  <p><em>Many of the maps studied today by network scientists were not generated with the purpose of studying networks:</em></p>
+<div class="list">
+<ul>
+<li><p><em>The list of chemical reactions that take place in a cell were discovered over a 150 year period by biochemists and biologists. In the 1990s they were collected in central databases, offering the first chance to assemble the networks behind a cell.</em></p></li>
+<li><p><em>The list of actors that play in each movie were traditionally scattered in books and encyclopedias. With the advent of the Internet, these disparate data were assembled into a central database by imdb.com, mainly to feed the curiosity of movie aficionados. The database offered the first chance for network scientists to explore the structure of the affiliation network behind Hollywood.</em></p></li>
+<li><p><em>The detailed list of authors of millions of research papers were traditionally scattered in the table of content of thousands of journals, but recently the Web of Science, Google Scholar, and other sites assembled them into comprehensive databases, easing the search for scientific information.</em></p></li>
+</ul>
+</div>
+<p><em>In the hands of network scientists these databases turned into the first science collaboration maps. Hence, much of the early history of network science relied on the investigators’ ingenuity to recognize and extract the networks from existing datasets. Network science changed that: today well-funded research collaborations focus on map making from biology to the Internet.</em></p>
+</div>
+</section>
+<div class="pageb"></div>
+
+
+
+<section>
+<a id="THE-CHARACTERISTICS-OF-NETWORK-SCIENCE"></br></br></a>
+<h3 id="#">1.6 THE CHARACTERISTICS OF NETWORK SCIENCE</h3>
+<p>Network science is distinguished, not only by its subject matter, but also by its methodology. In the following we briefly discuss the key characteristics of the approach network science adopted to understand complex systems, helping us better understand the domain we are about to embark on.</p>
+<p><strong>Interdisciplinary nature:</strong> Network science offers a language through which different disciplines can seamlessly interact with each other. Indeed, cell biologists and computer scientists alike are faced with the task of characterizing the wiring diagram behind their system, extracting information from incomplete and noisy datasets, and the need to understand their systems’ robustness to failures or deliberate attacks. To be sure, each discipline brings along a different set of technical details and challenges, which are important on their own. Yet, the common character of the many issues various fields struggle with have led to a cross-disciplinary fertilization of tools and ideas. For example, the concept of betweenness centrality that emerged in the social network literature in the 1970s, today plays a key role in identifying high traffic nodes on the Internet; algorithms developed by computer scientists for graph partitioning have found novel applications in cell biology.</p>
+<p><strong>Empirical, data driven nature:</strong>he tools of network science have their roots in graph theory, a fertile field of mathematics. What distinguishes network science from graph theory is its empirical nature, i.e. its focus on data and utility. As we will see in the coming chapters, we will never be satisfied with developing the abstract mathematical tools to describe a certain network property. Each tool we develop will be tested on real data and its value will be judged by the insights it offers about a system’s structure or evolution.</p>
+<p><strong>Quantitative and mathematical nature:</strong> To contribute to the development of network science, it is essential to master the mathematical tools behind it. The tools of network science borrowed the formalism to deal with graphs from graph theory and the conceptual framework to deal with randomness and seek universal organizing principles from statistical physics. Lately, the field is benefiting from concepts borrowed from engineering, control and information theory, statistics and data mining, helping us extract information from incomplete and noisy datasets.</p>
+<p><strong>Computational nature:</strong> Finally, given the size of many of the networks we explore, and the exceptional amount of data behind them, network science offers a series of formidable computational challenges. Hence, the field has a strong computational character, actively borrowing from algorithms, database management and data mining. A series of software tools help practitioners with diverse computational skills analyze networks.</p>
+</section>
+<div class="pageb"></div>
+
+
+
+<section>
+<a id="THE-IMPACT-OF-NETWORK-SCIENCE"></br></br></a>
+<h3 id="#">1.7 THE IMPACT OF NETWORK SCIENCE</h3>
+<div class="image-container " >
+	
+	<img src="../imgs/chapter01/ch01_06.jpg" alt="The rise of social networking." />
+	
+    <p class="captionBold">Figure 1.6</p>
+    <p class="caption"><span class="imte">The rise of social networking.</span></br>
+The popularity of the best known social networks, in terms of the number of users they attracted by the end of 2011 (vertical axis) shown as a function of their founding year (horizontal axis).</p>
+</div>
+<p>The impact of a new research field is measured both by its intellectual achievements as well as by the reach and the potential of its applications. While network science is a young field, its impact is everywhere around us, as we discuss below.</p>
+<p><strong>Economic Impact: From web search to social networking.</strong></br>
+Some of the most successful companies of the 21st century, from <i>Google</i> to <i>Facebook</i>, from <i>Cisco</i> to <i>Apple</i> and <i>Akamai</i>, base their technology and business model on networks. Indeed, Google is not only the biggest network mapping operation, building a comprehensive map of the WWW, but its search technology relies on the network characteristics of the Web. Networks have gained particular popularity with the emergence of Facebook, the company with the oft-emphasized ambition to map out the social network of the whole planet. While Facebook was not the first social networking site, it is likely also not the last: an extensive ecosystem of social networking tools, from <i>Twitter</i> to <i>Orkut</i>, are attracting an impressive number of users (<u>Image 1.6</u>). The tools developed by network science fuel these sites, aiding everything from friend recommendation to advertising.</p>
+
+<div class="image-container half-width-right" >
+	<img src="../imgs/chapter01/ch01_07ab.jpg" alt="Networks in biology and medicine." />	
+    <p class="captionBold">Image 1.7a, 1.7b</p>
+    <p class="caption"><span class="imte">Networks in biology and medicine.</span></br>
+a) The cover of two issues of <i>Nature Reviews Genetics</i>, the top review journal in genetics. The cover from 2004, focuses on network biology [11], the cover from 2011 discuses network medicine [12].</br></br>
+b) The prominent role networks play in both cell biology and medical research is illustrated by the fact that the 2004 article on network biology is the second most cited article in the history of Nature Reviews Genetics.</p>
+</div>
+
+<p><strong>Health: From drug design to metabolic engineering.</strong></br>The human genome project, completed in 2001, offered the first comprehensive list of all human genes [9, 10]. Yet, to fully understand how our cells function, and the origin of disease, we need accurate maps that tell us how these genes and other cellular components interact with each other. Most cellular processes, from the processing of food by our cells to sensing changes in the environment, rely on molecular networks. The breakdown of these networks is responsible for most human diseases. This has led to the emergence of network biology, a new subfield of biology that aims to understand the behavior of cellular networks. A parallel movement within medicine, called network medicine, aims to uncover the role of networks in human disease (<u>Image 1.7a/b</u>). Networks are particularly important in drug development. The ultimate goal of network pharmacology is to develop drugs that can cure diseases without significant side effects. This goal is pursued at many levels, from millions of dollars invested to map out cellular networks to the development of tools and databases to store, curate, and analyze patient and genetic data. Several new companies take advantage of these opportunities, from <i>GeneGo</i> that aims to collect accurate maps of cellular interactions from scientific literature to <i>Genomatica</i> that uses the predictive power behind metabolic networks to identify drug targets in bacteria and humans. Recently most major pharmaceutical companies have made significant investments in network and systems medicine, seeing it as the path towards future drugs.</p>
+
+
+<div class="image-container " >
+<img src="../imgs/chapter01/ch01_08.jpg" alt="Networks in biology and medicine." />	
+<p class="captionBold">Image 1.8</p>
+<p class="caption"><span class="imte">The network behind a military engagement.</span></br>
+This diagram was designed during the Afghan war to portray the American strategy in Afghanistan. While it has been occasionally ridiculed in the press, it portrays well the complexities and the interconnected nature of a military’s engagement. (<u>Image from New York Times</u>)</p>
+</div>
+
+<p><strong>Security: Fighting Terrorism.</strong></br>
+Terrorism is one of the maladies of the 21st century, absorbing significant resources to combat it worldwide. Network thinking is increasingly present in the arsenal of various law enforcement agencies in charge of limiting terrorist activities. It is used to disrupt the financial network of terrorist organizations, to map terrorist networks, and to uncover the role of their members and their capabilities. While much of the work in this area is classified, several success stories have surfaced. Examples include the use of social networks to capture Saddam Hussein or the capture of the individuals behind the March 11, 2004 Madrid train bombings through the examination of the mobile call network. Network concepts have impacted military doctrine as well, leading to the concept of net-war, aimed at fighting low intensity conflicts and crime waged by terrorist and criminal networks that employ decentralized flexible network structures [13]. One of the first network science programs at the college level was started at West Point, the US Army’s military academy. In 2009 the Army Research Lab and the Department of Defense devoted over $300 million to support network science centers across the US.</p>
+
+<p><strong>Epidemics: From forecasting to halting deadly viruses.</strong></br>
+While the H1N1 pandemic was not as devastating as it was feared at the beginning of the outbreak in 2009, it gained a special role in the history of epidemics: it was the first pandemic whose course and time evolution was accurately predicted months before the pandemic reached its peak (<u>Image 1.9</u>) [14]. This was possible thanks to fundamental advances in understanding the role of networks in the spread of viruses. Indeed, before 2000 epidemic modeling was dominated by compartment models, assuming that everyone can infect everyone else one word the same socio-physical compartment. The emergence of a network-based framework has fundamentally changed this, offering a new level of predictability in epidemic phenomena.
+</p>
+
+<div class="image-container " >
+	<video id="sampleMovie" width="800"  preload controls>
+    <source src="../imgs/chapter01/Vespignani-VirusSimulation-Tree.m4v" />
+	<source src="../imgs/chapter01/Vespignani-VirusSimulation-Tree.ogv" />
+	<source src="../imgs/chapter01/Vespignani-VirusSimulation-Tree.webm" />
+    </video>
+<p class="captionBold">Image 1.9</p>
+<p class="caption"><span class="imte">Predicting the H1N1 epidemic.</span></br>
+The predicted spread of the H1N1 epidemics during 2009, representing the first successful prediction of a pandemic. The project, relying on the details of the worldwide transportation networks, foresee that H1N1 will peak out in October 2009, in contrast with the normal January-February peaks of influenza. This meant that the vaccines planned for November 2009 were too late, which was indeed the case. The success of this project shows the power of network science in facilitating advances in areas affected by networks.</br>Movie by D.Balcom, B.Gonçalves, H.Hu, and A.Vespignani.</p>
+</div>
+
+<p>Today epidemic prediction is one of the most active applications of network science [15, 16]. It is the source several fundamental results, covered in this book, that are used to predict the spread of both biological and electronic viruses. The impact of these advances are felt beyond biological viruses. In January 2010 network science tools have predicted the conditions necessary for the emergence of viruses spreading through mobile phones [17]. The first major mobile epidemic outbreak that started in the fall of 2010 in China, infecting over 300,000 phones each day, closely followed the predicted scenario.</p>
+
+<p><strong>Brain Research: Mapping neural network.</strong></br>
+The human brain, consisting of hundreds of billions of interlinked neurons, is one of the least understood networks from the perspective of network science. The reason is simple: we lack maps telling us which neurons link to each other. The only fully mapped neural map available for research is that of the C.Elegans worm, with only 300 neurons. Should detailed maps of mammalian brains become available, brain research could become the most prolific application area of network science. Driven by the potential impact of such maps, in 2010 the National Institutes of Health has initiated the Connectome project, aimed at developing the technologies that could provide an accurate neuron-level map of mammalian brains.</p>
+
+<p><strong>Management: Uncovering the internal structure of an organization.</strong></br>
+While traditionally management uses the official chain of command to understand the inner structure of an organization, it is increasingly evident that the informal network, capturing who really communicates with whom, matters even more for the success of a company. Accurate maps of this network can expose lack of communication between key units, can identify individuals who play an outsize role in bringing different departments and products together, and help higher management diagnose diverse organizational issues. Furthermore, there is increasing evidence in the management literature that the position of an employee within this network correlates with his/her productivity [18].</p>
+
+<p>Therefore, several dozen consulting companies have emerged with expertise to map out the true structure of an organization. Established consulting firms, from IBM to SAP, have added social networking capabilities to their consulting business. These companies offer a host of services, from identifying opinion leaders to preventing employee churn and from identifying optimal groups for a task to modeling product diffusion (<u>Image 1.10a/b/c/d</u>). Hence lately network science tools are increasingly indispensable in management and business, enhancing productivity and boosting innovation within an organization.</p>
+
+<p>Network science can therefore offer a microscope for higher management, helping them improve the company’s effectiveness by uncovering the true network behind any organization.</p>
+
+<div class="image-container " >
+<img src="../imgs/chapter01/ch01_10a.jpg" alt="Understanding the inner workings of an organization." />	
+<p class="captionBold">Image 1.10a</p>
+<p class="caption"><span class="imte">Understanding the inner workings of an organization.</span></br>
+The workforce of a Hungarian company with three main locations, one on Budapest, whose employees are shown in purple, and two manufacturing sites outside of the city, shown in yellow and blue. The company had a major internal communication problem: information that reached the workers about the intentions of the higher management often had nothing do to with the management’s real plans. Seeking to understand the source of this discrepancy, and looking for ways to embrace information flow within the company, the management turned to Maven 7, a social networking consulting company that applies network science in diverse organizational setting.</p>
+</div>
+
+<div class="image-container " >
+<img src="../imgs/chapter01/ch01_10b.jpg" alt="Understanding the inner workings of an organization." />	
+<p class="captionBold">Image 1.10b</p>
+<p class="caption"><span class="imte">Understanding the inner workings of an organization.</span></br>
+Having the list of the workers and their role in the company, together with the official hierarchy is not sufficient to understand how an organization works. For that we need to know who listens to whom, who is asking for advice from whom, eventually uncovering the paths through which knowledge and information travels within the organization. Hence Maven 7 developed an online platform to ask each employee whom do they turn to for advice when it comes to decisions impacting the company, from restructuring to advancement. This allowed them to build the map shown above, where two individuals are connected if one nominated the other as his/her source of information on organizational and professional issues.</br>
+The map identifies several highly influential individuals that are the hubs of the organization. The problem was that none of the hubs were part of the leadership.</p>
+</div>
+
+<div class="image-container " >
+<img src="../imgs/chapter01/ch01_10c.jpg" alt="Understanding the inner workings of an organization." />	
+<p class="captionBold">Image 1.10c</p>
+<p class="caption"><span class="imte">Understanding the inner workings of an organization.</span></br>
+The position of the leadership within the company’s informal network is illustrated on this map, where we colored the nodes based on their company rank within the company. None of the company directors, including the CEO, shown in red, are hubs. Nor are the top managers, shown in blue. The hubs are managers, group leaders and associates, or workers. The biggest hub, hence the most influential individual, is an associate, shown as a gray node in the center.</p>
+</div>
+
+<div class="image-container " >
+<img src="../imgs/chapter01/ch01_10d.jpg" alt="Understanding the inner workings of an organization." />	
+<p class="captionBold">Image 1.10d</p>
+<p class="caption"><span class="imte">Understanding the inner workings of an organization.</span></br>
+The image indicates that a significant fraction of employees are one to two links from the biggest hub. It turns out that he is the safety and environmental expert in the company, whose job is to visit each location and talk with most employees. There is only one part of the company he has no links to: the directors or the top management. With little access to the management and their intentions, he passes on information that he collects along his trail, effectively running a gossip center.</br>
+How does one remedy this situation? Fire the biggest hub? He is not the problem and firing him would probably make the problem even more acute. The real issue is that higher management failed to put in place proper channels of communication, leaving behind a structural hole, which was naturally filled by the environmental and safety manager. Offering him and the few other hubs access to the true information can fundamentally change the reliability of information within the company. Network science can therefore offer a potent microscope for higher management, helping them improve the company’s effectiveness by uncovering the true network behind an organization.</p>
+</div>
+</section>
+<div class="pageb"></div>
+
+
+
+<section>
+<a id="SCIENTIFIC-IMPACT"></br></br></a>
+<h3 id="#">1.8 SCIENTIFIC IMPACT</h3>
+<p>Nowhere is the impact of network thinking more evident than in the scientific community. The most prominent scientific journals, from <i>Nature</i> and <i>Science</i> to <i>Cell</i> and <i>PNAS</i>, have devoted special issues, reviews, or editorials addressing the impact of networks on various topics from biology to social sciences. During the past decade, each year several dozen international conferences, workshops, summer and winter schools have focused exclusively on network science. A successful network science meeting series, called <i>NetSci</i>, attracts the field’s practitioners since 2005. Several generalinterest books, making the bestseller lists in many countries, have brought network science to the public. Most major universities offer network science courses, attracting a diverse student body. Finally, <i>Science Magazine</i> has devoted a special issue to networks, marking the tenyear anniversary of the paper that reported the discovery of scale-free networks [3] (<u>Image 1.12</u>).</p>
+
+<div class="image-container " >
+	<video id="sampleMovie" width="800"  preload controls>
+    <source src="../imgs/chapter01/citation_videos2.m4v" />
+	<source src="../imgs/chapter01/citation_videos2.ogv" />
+	<source src="../imgs/chapter01/citation_videos2.webm" />
+    </video>
+<p class="captionBold">Image 1.11</p>
+<p class="caption"><span class="imte">Complexity and network science.</span></br>
+The impact of network science can be put into perspective by looking at the citation patterns of the most cited papers in complexity. The study of complex systems in the 70s and 80s was dominated by Edward Lorenz’s 1963 classic work on chaos [19], Kenneth G. Wilson’s renormalization group [20], and Mitchell Feigenbaum’s discovery of the bifurcation diagram [21]. In the 1980s the community has shifted its focus on pattern formation, following Benoit Mandelbrot’s book on fractals [22] and Thomas Witten and Len Sander’s introduction of the diffusion limited aggregation mode [23]. Equally influential was John Hopfield’s paper on neural networks [24] and Per Bak, Chao Tang and Kurt Wiesenfeld’s paper on self-organized criticality [25]. These papers are continuing to define our understanding of complex systems, each of them writing a separate chapter in modern statistical mechanics. The video compare their citation pattern with the citations of the two most cited papers in this area [2,3].</p>
+</div>
+
+<p>The relative impact of network science can be put into perspective by looking at the citation patterns of the most cited papers in the area of complex systems (<u>Image 1.11</u>). Each of these papers are citation classics, cumulatively amassing anywhere between 2,000 and 5,000 citations, continuing to gather anywhere between 50 to 300 citations a year. To see how the interest in network science compares to these classic discoveries, in Movie 3 we also show the citation patterns of the two most cited network science papers: the 1998 paper on small-world phenomena by Duncan Watts and Steve Strogatz [2] and the 1999 Science paper reporting the discovery of scale-free networks by Albert-László Barabási and Réka Albert [3]. As one can see, the growth in citations to these papers unparalleled in the area of complex systems.</p>
+
+<p>Several other metrics indicate that network science is impacting in a defining manner particular disciplines. For example, several research fields witnessed network papers become some of the most cited papers in their leading journals:</p>
+
+<div class="image-container half-width-right" >
+	<img src="../imgs/chapter01/ch01_12.gif" alt="Complex systems and networks." />	
+    <p class="captionBold">Image 1.12</p>
+    <p class="caption"><span class="imte">Complex systems and networks.</span></br>
+Special issue of Science magazine on Complex Systems and Networks, published on July 24, 2009, marking the 10th anniversary of the 1999 discovery of scale-free networks [3].</p>
+</div>
+
+
+
+<div class="list">
+<ul>
+<li><p>The 1998 paper by Watts and Strogatz in <i>Nature</i> on small world phenomena [2] and the 1999 paper by Barabási and Albert in Science on scale-free networks [3] were identified by ISI as the top ten most cited papers in physics during the decade after their publications. Furthermore, currently (2011) the Watts-Strogatz paper is the second most cited of all papers published by <i>Nature</i> in 1998, and the Barabasi-Albert paper is the most cited paper among all papers published in Science in 1999.
+</p></li>
+<li><p>Four years after its publication, the <i>SIAM</i> review of Mark Newman on network science became the most cited paper of any journal published by the <i>Society of Industrial Mathematics</i> [26].</p></li>
+<li><p><i>Reviews of Modern Physics</i>, published continuously since 1929, is the physics journal with the highest impact factor. Currently the most cited paper of the journal is Chandrasekhar classic 1944 review that summarized the author’s work that led to his Nobel in physics, entitled <i>Stochastic Problems in Physics and Astronomy</i> [27]. During over 60 years since its publication, the paper gathered over 5,000 citations. Yet, it will soon be taken over by a paper published only in 2001 entitled <i>Statistical Mechanics of Complex Networks</i>, the first review of network science [28].
+</p></li>
+<li><p>The paper leading to the discovery that in scale-free networks the epidemic threshold is zero, by Pastor-Satorras and Vespignani [29], is the most cited paper among the papers published in 2001 by <i>Physical Review Letters</i>, a position the paper is sharing with a paper on quantum computing.</p></li>
+<li><p>The paper by Michelle Girvan and Mark Newman on community discovery in networks [30] is the most cited paper published in 2002 by <i>Proceedings of the National Academy of Sciences</i>.</p></li>
+<li><p>The 2004 review entitled <i>Network Biology</i>, by Barabasi and Oltvai [11], is the second most cited paper in the history of <i>Nature Reviews Genetics</i>, the top review journal in genetics.</p></li>
+</ul>
+</div>
+
+<p>Given this extraordinary response by the scientific community, network science was examined by the National Research Council (NRC), the arm of the US National Academies in charge of offering policy recommendation to the US government. NRC has assembled two panels, resulting in two publications [31], defining the field of network science (<u>Image 1.13</u>). They not only document the emergence of a new research field, but highlight the field’s vital importance to national competitiveness and security. Following these reports, the National Science Foundation (NSF) in the US established a network science directorate and a series of network science centers were established by the Army Research Labs.
+</p>
+
+<p><strong>General Audience.</strong></br></p>
+
+<div class="image-container " >
+<iframe width="800" height="450" src="//www.youtube.com/embed/zK1Cb9qj3qQ?rel=0" frameborder="0" allowfullscreen></iframe>
+<p class="captionBold">Image 1.14</p>
+    <p class="caption"><span class="imte">Connected.</span></br>
+The trailer of the award winner document Connected, directed by Annamaria Talas, focusing on network science.</p>
+</div>
+
+<p>The results of network science have excited the public as well. This was fueled partly by the success of several general audience books, like <i>Linked: The New Science of Networks</i> by Albert-László Barabási, <i>Nexus</i> by Mark Buchanan, and <i>Six Degrees</i> by Duncan Watts, each being translated in many of languages. Newer books, like <i>Connected</i> by Nicholas Christakis and James Fowler, were also exceptionally successful (<u>Image 1.15</u>). An award-winning documentary, <i>Connected</i>, by Australian filmmaker Annamaria Talas, has brought the field to our TV screen, being broadcasted all over the world and winning several prestigious prizes (<u>Image 1.14</u>). Networks have inspired artists as well, leading to a wide range of network science research inspired art-project, and even an annual symposium series that brings together, on a yearly basis, artists and scientists [32]. Fueled by successful movies like <i>The Social Network</i>, and a series of novels and short stories, from science fiction to novels exploiting the network paradigm, today networks have permeated popular culture.</p>
+
+<div class="image-container " >
+<img src="../imgs/chapter01/ch01_15.jpg" alt="Wide impact." />	
+<p class="captionBold">Image 1.15</p>
+<p class="caption"><span class="imte">Wide impact.</span></br>
+Four widely read books are bringing network science to the public.</p>
+</div>
+</section>
+<div class="pageb"></div>
+
+
+
+<section>
+<a id="SUMMARY"></br></br></a>
+<h3 id="#">1.9 SUMMARY</h3>
+
+<div class="image-container half-width-right" >
+	<img src="../imgs/chapter01/ch01_16.jpg" alt="The rise of networks." />	
+    <p class="captionBold">Image 1.16</p>
+    <p class="caption"><span class="imte">The rise of networks.</span></br>
+The frequency of the use of the words evolution and quantum represents the major scientific advances of the 19th and 20th century, namely Darwin’s theory of evolution and quantum mechanics. The plot indicates the exploding awareness of networks in the last decades of the 20th century, preparing a fertile ground for the emergence of network science. The plots were generated by using the ngram platform of Google: http://books. google.com/ngrams.</p>
+</div>
+
+<p>While the emergence of the scientific interest in networks was rather sudden, the enthusiasm for the field was responding to the emergence of a wider social awareness of the importance of networks. This is illustrated in <u>Image 1.16</u>, where we show the usage frequency of the words that represent two important scientific revolutions of the past two centuries: evolution, capturing the most common term to refer to Darwin’s theory of <i>evolution</i>, and <i>quantum</i>, the most frequently used term when one refers to <i>quantum</i>mechanics. The use of evolution increases only after the 1859 publication of Darwin’s <i>On the Origins of Species</i>. The word <i>quantum</i>, first used in 1902, is virtually absent until the 1920s, when quantum mechanics gains prominence. The use of the word network has increased dramatically following the 1980s. While the word has many uses (as do evolution and <i>quantum</i>), its dramatic rise captures the extraordinary awareness of networks in the society at large. Indeed, evolution and quantum mechanics are just as important as core scientific fields, as they are as enabling platforms: the current revolution in genetics is built on evolutionary theory, and quantum mechanics offers a platform for a wide range of advances in contemporary science, from chemistry to wireless communications. In a similar fashion, network science is an enabling science, offering new tools and perspective for a wide range of scientific fields from social networking to drug design. Given the wide importance and impact of networks, we need to develop the tools to study and quantify them. The rest of this book is devoted to this worthy subject.</p>
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="BIBLIOGRAPHY"></br></br></a>
+<a id="3" style="display: block;"></a>
+<h3 id="books">BIBLIOGRAPHY</h3>
+<div class="list">
+	
+	<ul>
+		
+<li><p>
+[1] C. Wilson.  <a href="http://www.slate.com/id/2245228/"><em>Searching for Saddam: a five-part series on how the US military used social networking to capture the Iraqi dictator</em></a>. 2010.
+</p>
+</li>
+		
+<li><p>
+[2] D. J. Watts and S .H. Strogatz. <a href="http://www.nature.com/nature/journal/v393/n6684/abs/393440a0.html"><em>Collective dynamics of ‘small-world’ networks</em></a>. Nature, 393 (440), 1998.
+</p>
+</li>
+
+<li><p>
+[3] A.-L. Barabási and R. Albert. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/199910-15_Science-Emergence/199910-15_Science-Emergence.pdf"><em>Emergence of scaling in random networks</em></a>. Science, 286 (509), 1999.
+</p>
+</li>
+
+<li><p>
+[4] P. Erdős and A. Rényi. <a href="http://ftp.math-inst.hu/~p_erdos/1959-11.pdf"><em>On random graphs</em></a>. Publicationes Mathematicae, 6 (290), 1959.
+</p>
+</li>
+
+<li><p>
+[5] M. S. Granovetter. <a href="https://www.stanford.edu/dept/soc/people/mgranovetter/documents/granstrengthweakties.pdf"><em>The strength of weak ties</em></a>. American Journal of Sociology, 78 (1360), 1973.
+</p>
+</li>
+
+<li><p>
+[6] K. Venkatesan, J.-F. Rual, A. Vazquez, U. Stelzl, I. Lemmens, T. Hirozane-Kishikawa, T. Hao, M. Zenkner, X. Xin, K.-I. Goh, M. A. Yildirim, N. Simonis, J. M. Sahalie, S. Cevik, C. Simon, A.-S. de Smet, E. Dann, A. Smolyar, A. Vinayagam, H. Yu, D. Szeto, H. Borick, A. Dricot, N. Klitgord, R. R. Murray, C. Lin, M. Lalowski, and J. Timm. <a href="http://www.ncbi.nlm.nih.gov/pubmed/19060904"><em>An empirical framework for binary interactome mapping</em></a>. Nature Methods, 6 (83), 2009.
+</p>
+</li>
+
+<li><p>
+[7] O. Sporns, G. Tononi, and R. Kötter. <a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.0010042"><em>The Human Connectome: A Structural Description of the Human Brain</em></a> PLoS Comput. Biol., 1 (4), 2005.
+</p>
+</li>
+
+<li><p>
+[8] <a href="http://www.caida.org"><em>www.caida.org</em></a> &#160;&#160;&#160; <a href="http://www.netdimes.org"><em>  www.netdimes.org</em></a> 
+</p>
+</li>
+
+<li><p>
+[9] International Human Genome Sequencing Consortium.  <a href="http://www.nature.com/nature/journal/v409/n6822/abs/409860a0.html"><em>Initial sequencing and analysis of the human genome</em></a>. Nature, 409 (6822), 2001.
+</p>
+</li>
+
+<li><p>
+[10] J. C. Venter et al. <a href="http://www.ncbi.nlm.nih.gov/pubmed/11181995"><em>The Sequence of the Human Genome</em></a>. Science, 291 (1304), 2001.
+</p>
+</li>
+
+<li><p>
+[11] Z. N. Oltvai and A.-L. Barabási. <a href="http://www.nature.com/nrg/journal/v5/n2/full/nrg1272.html"><em>Understanding the cell’s functional organization</em></a>. Nature Reviews Genetics, 5 (101), 2004.
+</p>
+</li>
+
+<li><p>
+[12] N. Gulbahce, A.-L. Barabási, and J. Loscalzo. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/201012-18_NatureRev-NetMedicine/201012-18_NatureRev-NetMedicine.pdf"><em>Network medicine: a network-based approach to human disease</em></a>. Nature Reviews Genetics, 12 (56), 2011.
+</p>
+</li>
+
+<li><p>
+[13] J. Arquilla and D. Ronfeldt. <a href="http://www.rand.org/pubs/monograph_reports/MR1382.html"><em>Networks and Netwars: The Future of Terror, Crime, and Militancy</em></a>. (RAND: Santa Monica, CA), 2001.
+</p>
+</li>
+
+<li><p>
+[14] D. Balcan, H. Hu, B. Goncalves, P. Bajardi, C. Poletto, J. J. Ramasco, D. Paolotti, N. Perra, M. Tizzoni, W. Van den Broeck, V. Colizza, and A. Vespignani.  <a href="http://www.biomedcentral.com/content/pdf/1741-7015-7-45.pdf"><em>Seasonal trans- mission potential and activity peaks of the new influenza A(H1N1): a Monte Carlo likelihood analysis based on human mobility</em></a>. BMC Medicine, 7 (45), 2009.
+</p>
+</li>
+
+<li><p>
+[15] D. Balcan, V. Colizza, B. Gonçalves, H. Hu, and J. J. Ramasco, A. Vespignani. <a href="http://www.pnas.org/content/early/2009/12/11/0906910106"><em>Multiscale mobility networks and the spatial spreading of infectious diseases</em></a>. Proc. Natl. Acad. Sci., 106 (21484) 2009.
+</p>
+</li>
+
+<li><p>
+[16] L. Hufnagel, D. Brockmann, and T. Geisel. <a href="http://www.pnas.org/content/101/42/15124"><em>Forecast and control of epidemics in a globalized world</em></a>. Proc. Natl. Acad. Sci., 101 (15124), 2004.
+</p>
+</li>
+
+<li><p>
+[17] P. Wang, M. Gonzalez, C. A. Hidalgo, and A.-L. Barabási. <a href="http://www.chidalgo.com/Papers/WangGonzalezHidalgoBarabasi_Science_2009.pdf"><em> Understanding the spreading patterns of mobile phone viruses</em></a>. Science, 324 (1071), 2009.
+</p>
+</li>
+
+<li><p>
+[18] L. Wu , B. N. Waber, S. Aral, E. Brynjolfsson, and A. Pentland. <a href="http://papers.ssrn.com/sol3/papers.cfm?abstract_id=1130251"><em>Mining Face-to-Face Interaction Networks using Sociometric Badges: Predicting Productivity in an IT Configuration Task</em></a>
+</p>
+</li>
+
+<li><p>
+[19] E. N. Lorenz. <a href="http://www.astro.puc.cl/~rparra/tools/PAPERS/lorenz1962.pdf"><em>Deterministic Non periodic Flow</em></a>. J. At- mos. Sci., 20 (130), 1963.
+</p>
+</li>
+
+<li><p>
+[20] K. G. Wilson. <a href="http://rmp.aps.org/abstract/RMP/v47/i4/p773_1"><em>The renormalization group: Critical phenomena and the Kondo problem</em></a>. Rev. Mod. Phys. 47 (773), 1975.
+</p>
+</li>
+
+<li><p>
+[21] M. J. Feigenbaum. <a href="http://www.signallake.com/innovation/feigenbaum103177.pdf"><em>Quantitative Universality for a Class of Non-Linear Transformations</em></a>. J. Stat. Phys. 19 (25), 1978.
+</p>
+</li>
+
+<li><p>
+[22] B. B. Mandelbrot. <a href="http://www.amazon.com/Fractal-Geometry-Nature-Benoit-Mandelbrot/dp/0716711869"><em>The Fractal Geometry of Nature</em></a>. W.H. Freeman and Company. 1982
+</p>
+</li>
+
+<li><p>
+[23] T. Witten, Jr. and L. M. Sander. <a href="http://prl.aps.org/abstract/PRL/v47/i19/p1400_1"><em>Diffusion-Limited Agregation, a Kinetic Critical Phenomenon</em></a>. Phys. Rev. Lett., 47 (1400), 1981.
+</p>
+</li>
+
+<li><p>
+[24] J. J. Hopfield. <a href="http://www.pnas.org/content/79/8/2554.abstract"><em>Neural networks and physical systems with emergent collective computational abilities</em></a>. Proc. Natl. Acad. Sci., 79 (2554), 1982.
+</p>
+</li>
+
+<li><p>
+[25] P. Bak, C. Tang, and K. Wiesenfeld. <a href="http://webber.physik.uni-freiburg.de/~jeti/studenten_seminar/stud_sem05/bak.pdf"><em>Self-organized criticality: an explanation of 1/ƒ noise</em></a>. Phys. Rev. Lett., 59 (4), 1987.
+</p>
+</li>
+
+<li><p>
+[26] M. E. J. Newman. <a href="http://arxiv.org/pdf/condmat/0303516.pdf"><em>The structure and function of complex networks</em></a>. SIAM Review. 45 (167), 2003.
+</p>
+</li>
+
+<li><p>
+[27] S. Chandrasekhar. <a href="http://fraden.brandeis.edu/courses/phys39/simulations/Chandrasekhar%20Brownian%20Motion%20Rev%20Mod%20Phys%201943.pdf"><em>Stochastic Problems in Physics and Astronomy</em></a>. Rev. Mod. Phys., 15 (1), 1943.
+
+</p>
+</li>
+
+<li><p>
+[28] R. Albert and A.-L. Barabási. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/200201-30_RevModernPhys-StatisticalMech/200201-30_RevModernPhys-StatisticalMech.pdf"><em>Statistical mechanics of complex networks</em></a>. Rev. Mod. Phys., 74 (47), 2002.
+
+</p>
+</li>
+
+<li><p>
+[29] R. Pastor-Satorras and A. Vespignani. <a href="http://www.asu.edu/clas/csdc/events/pdf/vespignani.pdf"><em>Epidemic spreading in scale-free networks</em></a>. Phys. Rev. Lett., 86 (3200), 2001.
+</p>
+</li>
+
+<li><p>
+[30] M. Girvan and M. E. J. Newman. <a href="http://www.pnas.org/content/99/12/7821.abstract"><em>Community structure in social and biological networks</em></a>. Proc. Natl. Acad. Sci., 99 (7821), 2002.
+</p>
+</li>
+
+<li><p>
+[31] National Research Council. <a href="http://www.nap.edu/catalog.php?record_id=11516"><em>Network Science</em></a>. Washington, DC: The National Academies Press, 2005.
+</p>
+<p>
+[31] National Research Council. <a href="http://www.nap.edu/catalog.php?record_id=11516"><em>Strategy for an Army Center for Network Science, Technology, and Experimentation</em></a>. Washington, DC: The National Academies Press, 2007.
+</p>
+</li>
+
+<li><p>
+[32] M. Schich, R. Malina, and I. Meirelles (Editors). <a href="http://ahcncompanion.info"><em>Arts, Humanities, and Complex Networks</em></a>. [Kindle Edition], 2012.
+</p>
+</li>
+
+</ul>
+</div>
+</section>
+<div class="pageb"></div>
+
+</div>
+</div>  
+  
+  
+  
+  
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+	<div id="bottom">
+		<div id="footer">
+        
+        
+			<div class="one-third" id="licenses">
+        <h4>Licenses</h4>
+        <p>
+          <a class="license-badge" rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a>
+         
+        </p>
+
+        <p>
+          The book's text and illustrations are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
+        </p>
+      </div>
+      
+
+      <div class="one-third">
+        <h4>Credit</h4>
+
+        <p>Design & Data Visualization: <a href="http://www.mamartino.com">Mauro Martino</a>, Márton Pósfai, Gabriele Musella</p>
+
+      </div>
+
+      <div class="one-third">
+        <h4>Author</h4>
+        <p><a href="http://www.barabasi.com">ALBERT-LÁSZLÓ BARABÁSI</a> is director of the <a href="http://barabasilab.neu.edu">Center for Complex Network Research</a> at Northeastern University.</p>
+
+        <p>He is the author of <a href="http://barabasilab.com/LinkedBook/">Linked</a>.</p>
+
+        <p><a href="https://twitter.com/barabasi">BARABÁSI in Twitter</a> </p>
+      </div>
+		</div>
+	</div>
+</body>
+</html>

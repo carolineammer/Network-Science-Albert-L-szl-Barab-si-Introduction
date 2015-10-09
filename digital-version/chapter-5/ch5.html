@@ -1,0 +1,491 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Network Science | Albert-László Barabás | Chapter 5</title>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	
+  <script type="text/javascript" src="../javascripts/jquery.fixed.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      $('#toc-list').fixed({'top':'8'});
+      $('#nav-bar-wrap').fixed({'top':'8'});
+      $('span.c1').each(function(){ addStylesToCodeLines($(this)); });
+      $('div.source-code').each(function(){ setRawCodeHeight($(this)); });
+      $('a.toggle').click(function(){ toggleCodeDisplay($(this)); return false; });
+    });
+  </script>
+  
+	<link rel="stylesheet" href="../stylesheets/html.css" type="text/css">
+    
+    <link rel="stylesheet" href="../stylesheets/bjqs.css" type="text/css">
+    <script src="../javascripts/bjqs-1.3.min.js"></script>
+
+
+    <link href="../stylesheets/theme.default.css" rel="stylesheet">
+	<script src="../javascripts/jquery.tablesorter.min.js"></script>
+	<script src="../javascripts/jquery.tablesorter.widgets.min.js"></script>
+	<script>
+	$(function(){
+		$('table').tablesorter({
+			widgets        : ['zebra', 'columns'],
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true
+		});
+	});
+	</script>
+    
+    
+    <script class="secret-source">
+        jQuery(document).ready(function($) {
+          
+          $('#banner-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+      <script class="secret-source2">
+        jQuery(document).ready(function($) {
+          
+          $('#second-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+      <script class="secret-source2">
+        jQuery(document).ready(function($) {
+          
+          $('#third-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+
+</head>
+<body>
+
+  <div id="navigator">
+    <div id="navigator-inner">
+      <div id='nav-bar-wrap'>
+        <div id="mask"></div>
+        <div id="nav-bar">
+          <h1><a href="../index.html"> <strong>NETWORK SCIENCE</strong> BOOK </a></h1>
+          <h2>Albert-László Barabási</h2>
+          <a id="purchase-link" href="../chapter-6/ch6.html">CHAPTER 6</a> <a id="purchase-link" href="../chapter-4/ch4.html">CHAPTER 4</a>  
+          <a id="purchase-link" href="../pdf/network_science_Ch5_2013_December.pdf">Download Chapter 5 as PDF</a>
+          
+        </div>
+      </div>
+      <div id="toc-holder">
+        <div id="toc-list">
+          <ul>
+            <li><a href="#Introduction">5.1 Introduction</a></li> 
+            <li><a href="#Growth-and-preferential-attachment">5.2 Growth and preferential attachment</a></li>
+            <li><a href="#The-Barabási-Albert-Model">5.3 The Barabási-Albert Model</a></li>
+            <li><a href="#Degree-dynamics">5.4 Degree dynamics</a></li>
+            <li><a href="#Degree-distribution">5.5 Degree distribution</a></li>
+            <li><a href="#The-absence-of-growth-or-preferential-attachment">5.6 The absence of growth or preferential attachment</a></li>
+            <li><a href="#Measuring-preferential-attachment-in-real-network">5.7 Measuring preferential attachment in real network</a></li>
+            <li><a href="#Non-linear-preferential-attachment">5.8 Non-linear preferential attachment</a></li>
+            <li><a href="#The-origins-of-preferential-attachment">5.9 The origins of preferential attachment</a></li>
+            <li><a href="#Diameter-and-clustering-coefficient">5.10 Diameter and clustering coefficient</a></li>
+            <li><a href="#Summary">5.11 Summary</a></li>
+            <li><a href="#Homework">5.12 Homework</a></li>
+            <li><a href="#Deriving-the-degree-distribution">5.A: Deriving the degree distribution</a></li> 
+            <li><a href="#Nonlinear-preferential-attachment">5.B: Nonlinear preferential attachment</a></li> 
+            <li><a href="#The-clustering-coefficient">5.C: The clustering coefficient</a></li>      
+            <li><a href="#Bibliography">5 Bibliography</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> <!--  fine  navigator //-->
+  
+  
+
+  <div id="top">
+    <div id="header">
+      <h1><a href="##"><strong>NETWORK SCIENCE</strong> BOOK</a></h1>
+      <h2>Albert-László Barabási</h2>
+    </div>
+  </div>
+
+  <div id="middle">
+
+  	<div id="container">
+    
+    
+ <section>
+    <a id="Introduction"></a>
+    <h3 id="#">Chapter 5 </br> </br>INTRODUCTION</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div> 
+
+
+
+<section>
+<a id="Growth-and-preferential-attachment"></br></br></a>
+<h3 id="#">5.2 GROWTH AND PREFERENTIAL ATTACHMENT</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="The-Barabási-Albert-Model"></br></br></a>
+<h3 id="#">5.3 THE BARABÁSI-ALBERT MODEL</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Degree-dynamics"></br></br></a>
+<h3 id="#">5.4 DEGREE DYNAMICS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Degree-distribution"></br></br></a>
+<h3 id="#">5.5 DEGREE DISTRIBUTION</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="The-absence-of-growth-or-preferential-attachment"></br></br></a>
+<h3 id="#">5.6 THE ABSENCE OF GROWTH OR PREFERENTIAL ATTACHMENT</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Measuring-preferential-attachment-in-real-network"></br></br></a>
+<h3 id="#">5.7 MEASURING PREFERENTIAL ATTACHMENT IN REAL NETWORKS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Non-linear-preferential-attachment"></br></br></a>
+<h3 id="#">5.8 NON-LINEAR PREFERENTIAL ATTACHMENT</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="The-origins-of-preferential-attachment"></br></br></a>
+<h3 id="#">5.9 THE ORIGINS OF PREFERENTIAL ATTACHMENT</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Diameter-and-clustering-coefficient"></br></br></a>
+<h3 id="#">5.10 DIAMETER AND CLUSTERING COEFFICIENT</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Summary"></br></br></a>
+<h3 id="#">5.11 SUMMARY</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Homework"></br></br></a>
+<h3 id="#">5.12 HOMEWORK</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Deriving-the-degree-distribution"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 5.A<br>
+DERIVING THE DEGREE DISTRIBUTION</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+<section>
+<a id="Nonlinear-preferential-attachment"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 5.B<br>
+NONLINEAR PREFERENTIAL ATTACHMENT</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+<section>
+<a id="The-clustering-coefficient"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 5.C<br>
+THE CLUSTERING COEFFICIENT</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Bibliography"></br></br></a>
+<h3 id="#">5 BIBLIOGRAPHY</h3>
+<div class="list">
+
+<ul>
+		
+<li><p>
+[1] A.-L. Barabási and R. Albert. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/199910-15_Science-Emergence/199910-15_Science-Emergence.pdf"><em>Emergence of scaling in random networks</em></a>. Science, 286:509-512, 1999.
+</p></li>
+
+<li><p>
+[2] F. Eggenberger and G. Pólya.<a href="http://onlinelibrary.wiley.com/doi/10.1002/zamm.19230030407/abstract"><em>Über die Statistik Verketteter Vorgänge</em></a>. ZAMM - Journal of Applied Mathematics and Mechanics/Zeitschrift für Angewandte Mathematik und Mechanik, 3:279-289, 1923.
+</p></li>
+
+<li><p>
+[3] G. Udny Yule. <a href="http://math.uchicago.edu/~shmuel/Network-course-readings/Yule.pdf"><em>A mathematical theory of evolution, based on the conclusions</em></a>. f.r.s. Philosophical Transactions of the Royal Society of London. Series B, 213:21-87, 1925.
+</p></li>
+
+<li><p>
+[4] Gibrat R. <a href="http://en.wikipedia.org/wiki/Gibrat's_law"><em>Les Inégalités économiques</em></a>. Paris, France, 1931.
+</p></li>
+
+<li><p>
+[5] G. K. Zipf <a href="http://www.amazon.com/Human-Behavior-Principle-Least-Effort/dp/161427312X"><em>Human behavior and the principle of least reort</em></a>. Addison-Wesley Press, Oxford, England, 1949.
+</p></li>
+
+<li><p>
+[6] H. A. Simon. <a href="http://snap.stanford.edu/class/cs224w-readings/Simon55Skewdistribution.pdf"><em>On a class of skew distribution functions</em></a>. Biometrika, 42:425-440, 1955.
+</p></li>
+
+<li><p>
+[7] D. De Solla Price. <a href="http://garfield.library.upenn.edu/price/pricetheory1976.pdf"><em>A general theory of bibliometric and othercumulative advantage processes</em></a>. Journal of the American Society for Information Science, 27:292-306, 1976.
+</p></li>
+
+<li><p>
+[8] R. K. Merton. <a href="http://www.garfield.library.upenn.edu/merton/matthew1.pdf"><em>The Matthew effect in science</em></a>. Science, 159(3810):56- 63, 1968.
+</p></li>
+
+<li><p>
+[9] A.-L. Barabási.<a href="http://barabasilab.com/LinkedBook/"><em>Linked: The new science of networks</em></a>. Perseus, New York, 2002.
+</p></li>
+
+<li><p>
+[10] B. Bollobás, O. Riordan, J. Spencer, and G. Tusnády. <a href="http://onlinelibrary.wiley.com/doi/10.1002/rsa.1009/abstract"><em>The degree sequence of a scale-free random graph process</em></a>. Random Structures and Al- gorithms, 18:279-290, 2001.
+</p></li>
+
+<li><p>
+[11] A.-L. Barabási, H. Jeong, R. Albert. <a href="http://arxiv.org/abs/cond-mat/9907068"><em>Mean-field theory for scale free random networks</em></a>.  Physica A, 272:173-187, 1999.
+</p></li>
+
+<li><p>
+[12] S. N. Dorogovtsev, J. F. F. Mendes, and A. N. Samukhin. <a href="http://jupiter.engr.utk.edu/Projects/Mis/SFN/References/DMS00_Structure%20of%20Growing%20Networks.pdf"><em>Structure of growing networks with preferential linking</em></a>. Phys. Rev. Lett., 85:4633-4636, 2000.
+</p></li>
+
+<li><p>
+[13] P. L. Krapivsky, S. Redner, and F. Leyvraz. <a href="http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.85.4629"><em>Connectivity of growing random networks</em></a>. Phys. Rev. Lett., 85:4629-4632, 2000.
+</p></li>
+
+<li><p>
+[14] H. Jeong, Z. Néda. A.-L. Barabási. <a href="http://arxiv.org/pdf/cond-mat/0104131.pdf"><em>Measuring preferential attachment in evolving networks</em></a>. Europhysics Letters, 61:567-572, 2003.
+</p></li>
+
+<li><p>
+[15] M. E. J. Newman. <a href="http://arxiv.org/abs/cond-mat/0104209"><em>Clustering and preferential attachment in growing networks</em></a>. Phys. Rev. E 64, 025102, 2001.
+</p></li>
+
+<li><p>
+[16] S.N. Dorogovtsev and J.F.F. Mendes. <a href="http://arxiv.org/abs/cond-mat/0106144"><em>Evolution of networks</em></a>. Oxford Clarendon Press, 2002.
+</p></li>
+
+<li><p>
+[17] J. M. Kleinberg, R. Kumar, P. Raghavan, S. Rajagopalan, and A. Tom- kins. <a href="http://www.cs.cornell.edu/home/kleinber/web-graph.ps"><em>The Web as a graph: measurements, models and methods</em></a>. Proceedings of the International Conference on Combinatorics and Computing, 1999.
+</p></li>
+
+<li><p>
+[18] R. Kumar, P. Raghavan, S. Rajalopagan, D. Divakumar, A. S. Tom- kins, and E. Upfal. <a href="http://mlab.cb.k.u-tokyo.ac.jp/~moris/lecture/enshu3-2001/kumar-pods00.pdf"><em>The Web as a graph</em></a>. Proceedings of the 19th Symposium on principles of database systems, 2000.
+</p></li>
+
+<li><p>
+[19] Pastor-Satorras, R., Smith, E. & Sole, R. <a href="http://complex.upf.es/~ricard/JTBproteome.pdf"><em>Evolving proteinminteraction networks through gene duplication</em></a>. J. Theor. Biol. 222:m199–210, 2003.
+</p></li>
+
+<li><p>
+[20] Vazquez, A., Flammini, A., Maritan, A. & Vespignani <a href="http://www.karger.com/Article/Abstract/67642"><em>A. Modeling of protein interaction networks</em></a>. ComPlexUs 1:38–44, 2003.
+</p></li>
+
+<li><p>
+[21] G.S. Becker <a href="http://www.amazon.com/The-Economic-Approach-Human-Behavior/dp/0226041123"><em>The economic approach to Human Behavior</em></a>. Chicago, 1976.
+</p></li>
+
+<li><p>
+[22] A. Fabrikant, E. Koutsoupias, and C. Papadimitriou. <a href="http://snap.stanford.edu/class/cs224w-readings/fabrikan02powerlaw.pdf"><em>Heuristically optimized trade-offs: a new paradigm for power laws in the internet</em></a>. In Proceedings of the 29th International Colloquium on Automata, Languages, and Programming (ICALP), pages 110-122, Malaga, Spain, July 2002.
+</p></li>
+
+<li><p>
+[23] RM. D’Souza, C. Borgs, J. T. Chayes, N. Berger, and R. D. Kleinberg. <a href="http://www.pnas.org/content/104/15/6112.short"><em>Emergence of tempered preferential attachment from optimization</em></a>. PNAS 104, 6112-6117, 2007.
+</p></li>
+
+<li><p>
+[24] F. Papadopoulos, M. Kitsak, M. Angeles Serrano, M. Boguna, and D. Krioukov. <a href="http://www.nature.com/nature/journal/v489/n7417/full/nature11459.html"><em>Popularity versus similarity in growing networks.</em></a>. Nature, 489: 537, 2012.
+</p></li>
+
+<li><p>
+[25] A.-L. Barabási. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/201209-12_Nature-Luck/201209-12_Nature-Luck.pdf"><em>Network science: luck or reason</em></a>. Nature 489: 1-2, 2012.
+</p></li>
+
+<li><p>
+[26] H. A. Simon. <a href="http://snap.stanford.edu/class/cs224w-readings/Simon55Skewdistribution.pdf"><em>On a class of skew distribution functions.</em></a>. Biometrika 42:3, 425-440, 1955.
+</p></li>
+
+<li><p>
+[27] B. Mandelbrot. <a href="http://www.uvm.edu/~pdodds/files/papers/others/1953/mandelbrot1953a.pdf"><em>An Informational Theory of the Statistical Structure of Languages.</em></a>. In Communication Theory, edited by W. Jackson, pp. 486- 502. Woburn, MA: Butterworth, 1953.
+</p></li>
+
+<li><p>
+[28] B. Mandelbrot. <a href="http://www.bibsonomy.org/bibtex/25193c22596de918c7a497cfb975c9fd3/vitelot"><em>A Note On a Class of Skew Distribution Functions: Analysis and Critique of a Paper by H. A. Simon</em></a>. Information and control 2: 90- 99, 1959.
+</p></li>
+
+<li><p>
+[29] H. A. Simon. <a href="http://languagelog.ldc.upenn.edu/myl/SimonFurtherNotes.pdf"><em>Some Further Notes on a class of skew distribution functions</em></a>. Information and Control 3: 80-88, 1960.
+</p></li>
+
+<li><p>
+[30] B. Mandelbrot. <a href="http://www.sciencedirect.com/science/article/pii/S0019995859900981"><em>Final Note on a Class of Skew Distribution Functions: Analysis and Critique of a Model due to H.A. Simon.</em></a>. Information and Control 4: 198-216., 1961.
+</p></li>
+
+<li><p>
+[31] H. A. Simon. <a href="http://languagelog.ldc.upenn.edu/myl/SimonReplyToFinalNote.pdf"><em>Reply to final note</em></a>. Information and Control 4:, 217- 223, 1961.
+</p></li>
+
+<li><p>
+[32] B. Mandelbrot. <a href="http://www.sciencedirect.com/science/article/pii/S0019995861800259"><em>Post scriptum to final note</em></a>. Information and Control 4: 300-304 1961.
+</p></li>
+
+<li><p>
+[33] H. A. Simon. <a href="http://languagelog.ldc.upenn.edu/myl/SimonReplyToPostScriptum.pdf"><em>Reply to Dr. Mandelbrot’s Post Scriptum</em></a>. Information and Control 4: 305-308, 1961.
+</p></li>
+
+<li><p>
+[34] R. Cohen and S. Havlin <a href="http://polymer.bu.edu/~hes/networks/ch03.pdf"><em>Scale-free networks are ultrasmall</em></a>. Phys. Rev. Lett., 90:058701, 2003.
+</p></li>
+
+<li><p>
+[35] B. Bollobás and O. Riordan <a href="http://www.math.duke.edu/~rtd/math777/diamSF.pdf"><em>The diameter of a scale-free random graph</em></a>. Combinatorica, 24:5-34, 2004.
+</p></li>
+
+<li><p>
+[36] K. Klemm and V. M. Eguluz. <a href="http://arxiv.org/abs/cond-mat/0107607"><em>Growing scale-free networks with small-world behavior</em></a>. Phys. Rev. E, 65:057102, 2002.
+</p></li>
+
+<li><p>
+[37] B. Bollobás, O.M. Riordan. <a href="http://hydra.icgeb.trieste.it/~pongor/biophys-homepage/Network_handbook/CH001.pdf"><em>Mathematical results on scale-free random graphs</em></a>. Handbook of Graphs and Networks, edited by S. Bormholdt and A. G. Schuster, Wiley, 2003.
+</p></li>
+
+
+</ul>
+</div>
+<div style="page-break-after:always;"> </div>
+</section>
+<div class="pageb"></div>
+
+
+</div>
+</div>  
+  
+  
+  
+
+	<div id="bottom">
+		<div id="footer">
+        
+        
+			<div class="one-third" id="licenses">
+        <h4>Licenses</h4>
+        <p>
+          <a class="license-badge" rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a>
+         
+        </p>
+
+        <p>
+          The book's text and illustrations are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
+        </p>
+      </div>
+      
+
+      <div class="one-third">
+        <h4>Credit</h4>
+
+        <p>Design & Data Visualization: <a href="http://www.mamartino.com">Mauro Martino</a>, Márton Pósfai, Gabriele Musella</p>
+
+      </div>
+
+      <div class="one-third">
+        <h4>Author</h4>
+        <p><a href="http://www.barabasi.com">ALBERT-LÁSZLÓ BARABÁSI</a> is director of the <a href="http://barabasilab.neu.edu">Center for Complex Network Research</a> at Northeastern University.</p>
+
+        <p>He is the author of <a href="http://barabasilab.com/LinkedBook/">Linked</a>.</p>
+
+        <p><a href="https://twitter.com/barabasi">BARABÁSI in Twitter</a> </p>
+      </div>
+		</div>
+	</div>
+</body>
+</html>

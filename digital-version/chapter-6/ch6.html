@@ -1,0 +1,444 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Network Science | Albert-László Barabás | Chapter 6</title>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	
+  <script type="text/javascript" src="../javascripts/jquery.fixed.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      $('#toc-list').fixed({'top':'8'});
+      $('#nav-bar-wrap').fixed({'top':'8'});
+      $('span.c1').each(function(){ addStylesToCodeLines($(this)); });
+      $('div.source-code').each(function(){ setRawCodeHeight($(this)); });
+      $('a.toggle').click(function(){ toggleCodeDisplay($(this)); return false; });
+    });
+  </script>
+  
+	<link rel="stylesheet" href="../stylesheets/html.css" type="text/css">
+    
+    <link rel="stylesheet" href="../stylesheets/bjqs.css" type="text/css">
+    <script src="../javascripts/bjqs-1.3.min.js"></script>
+
+
+    <link href="../stylesheets/theme.default.css" rel="stylesheet">
+	<script src="../javascripts/jquery.tablesorter.min.js"></script>
+	<script src="../javascripts/jquery.tablesorter.widgets.min.js"></script>
+	<script>
+	$(function(){
+		$('table').tablesorter({
+			widgets        : ['zebra', 'columns'],
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true
+		});
+	});
+	</script>
+    
+    
+    <script class="secret-source">
+        jQuery(document).ready(function($) {
+          
+          $('#banner-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+      <script class="secret-source2">
+        jQuery(document).ready(function($) {
+          
+          $('#second-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+      <script class="secret-source2">
+        jQuery(document).ready(function($) {
+          
+          $('#third-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+
+</head>
+<body>
+
+  <div id="navigator">
+    <div id="navigator-inner">
+      <div id='nav-bar-wrap'>
+        <div id="mask"></div>
+        <div id="nav-bar">
+          <h1><a href="../index.html"> <strong>NETWORK SCIENCE</strong> BOOK </a></h1>
+          <h2>Albert-László Barabási</h2>
+          <a id="purchase-link" href="../chapter-7/ch7.html">CHAPTER 7</a> <a id="purchase-link" href="../chapter-5/ch5.html">CHAPTER 5</a>  
+          <a id="purchase-link" href="../pdf/network_science_Ch6_2014.pdf">Download Chapter 6 as PDF</a>
+          
+        </div>
+      </div>
+      <div id="toc-holder">
+        <div id="toc-list">
+          <ul>
+            <li><a href="#Introduction">6.1 Introduction</a></li> 
+            <li><a href="#The-Bianconi-Barabási model">6.2 The Bianconi-Barabási model</a></li>
+            <li><a href="#Measuring-fitness">6.3 Measuring fitness</a></li>
+            <li><a href="#Bose-Einstein-condensation">6.4 Bose-Einstein condensation</a></li>
+            <li><a href="#Evolving-Networks">6.5 Evolving Networks</a></li>
+            <li><a href="#Summary">6.6 Summary</a></li>
+            <li><a href="#Homework">6.7 Homework</a></li>
+            <li><a href="#Solving-the-fitness-model">6.A: Solving the fitness model</a></li>
+            <li><a href="#Bibliography">6 Bibliography</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> <!--  fine  navigator //-->
+  
+  
+
+  <div id="top">
+    <div id="header">
+      <h1><a href="##"><strong>NETWORK SCIENCE</strong> BOOK</a></h1>
+      <h2>Albert-László Barabási</h2>
+    </div>
+  </div>
+
+  <div id="middle">
+
+  	<div id="container">
+    
+    
+ <section>
+    <a id="Introduction"></a>
+    <h3 id="#">Chapter 6 </br> </br>INTRODUCTION</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div> 
+
+
+
+<section>
+<a id="The Bianconi-Barabási-model"></br></br></a>
+<h3 id="#">6.2 THE BIANCONI-BARABÁSI MODEL</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Measuring-fitness"></br></br></a>
+<h3 id="#">6.3 MEASURING FITNESS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Bose-Einstein-condensation"></br></br></a>
+<h3 id="#">6.4 BOSE-EINSTEIN CONDENSATION</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Evolving-Networks"></br></br></a>
+<h3 id="#">6.5 EVOLVING NETWORKS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Summary"></br></br></a>
+<h3 id="#">6.6 SUMMARY</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Homework"></br></br></a>
+<h3 id="#">5.7 HOMEWORK</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Solving-the-fitness-model"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 6.A<br>
+SOLVING THE FITNESS MODEL</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Bibliography"></br></br></a>
+<h3 id="books">6 BIBLIOGRAPHY</h3>
+<div class="list">
+
+<ul>
+		
+<li><p>
+[1] A.L. Barabási. <a href="http://barabasilab.com/LinkedBook/"><em>Linked: The New Science of Networks</em></a>. (Perseus, Bos- ton) 2001.
+</p></li>
+
+<li><p>
+[2] G. Bianconi and A.-L. Barabási. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/200105-15_EurophysLtrs-MultiscalingEvol/200105-15_EurophysLtrs-MultiscalingEvol.pdf"><em>Competition and multiscaling in evolving networks</em></a>. Europhysics Letters 54: 436-442, 2001.
+</p></li>
+
+<li><p>
+[3] A.-L. Barabási, R. Albert, H. Jeong, and G. Bianconi. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/200003-24_Science-PowerLawDisWWW/200003-24_Science-PowerLawDisWWW.pdf"><em>Power-law distribution of the world wide web</em></a>. Science 287: 2115, 2000.
+</p></li>
+
+<li><p>
+[4] P. L. Krapivsky and S. Redner. <a href="http://physics.bu.edu/~redner/pubs/pdf/lead.pdf"><em>Statistics of changes in lead node in connectivity-driven networks</em></a>. Phys. Rev. Lett. 89:258703, 2002.
+</p></li>
+
+<li><p>
+[5] C. Godreche and J. M. Luck. <a href="http://arxiv.org/abs/1006.0587"><em>On leaders and condensates in a growing network</em></a>. J. Stat. Mech. P07031, 2010.
+</p></li>
+
+<li><p>
+[6] J. H. Fowler, C. T. Dawes, and N. A. Christakis. <a href="http://fowler.ucsd.edu/genes_and_social_networks.pdf"><em>Model of Genetic Variation in Human Social Networks</em></a>. PNAS 106: 1720-1724, 2009.
+</p></li>
+
+<li><p>
+[7] M. O. Jackson. <a href="http://www.pnas.org/content/106/6/1687.full"><em>Genetic influences on social network characteristics</em></a>. PNAS 106:1687–1688, 2009.
+</p></li>
+
+<li><p>
+[8] S. A. Burt. <a href="http://www.ncbi.nlm.nih.gov/pubmed/18271857"><em>Genes and popularity: Evidence of an evocative gene environment correlation</em></a>. Psychol. Sci. 19:112–113, 2008.
+</p></li>
+
+<li><p>
+[9] S. Kong, N. Sarshar, and V. P. Roychowdhury. <a href="http://www.pnas.org/content/105/37/13724.abstract"><em>Experience versus talent shapes the structure of the Web</em></a>. PNAS 105:13724-9, 2008.
+</p></li>
+
+<li><p>
+[10] A.-L. Barabási, C. Song, and D. Wang. <a href="http://www.nature.com/nature/journal/v491/n7422/full/491040a.html"><em>Handful of papers dominates citation</em></a>. Nature 491:40, 2012.
+</p></li>
+
+<li><p>
+[11] D. Wang, C. Song, and A.-L. Barabási. <a href="https://www.sciencemag.org/content/342/6154/127.abstract"><em>Quantifying Long term scien- tific impact</em></a>. Science Vol. 342 no. 6154 pp. 127-132, 2013.
+</p></li>
+
+<li><p>
+[12] M. Medo, G. Cimini, and S. Gualdi. <a href="http://arxiv.org/abs/1109.5560"><em>Temporal effects in the growth of networks</em></a>. Physical Review Letters 107, 238701, 2011.
+</p></li>
+
+<li><p>
+[13] G. Bianconi and A.-L. Barabási. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/200106-01_PhysRevLtr-Bose-Einstein/200106-01_PhysRevLtr-Bose-Einstein.pdf"><em>Bose-Einstein Condensation in Complex Networks</em></a>. Physical Review Letters V. 86, N. 24, 2001.
+</p></li>
+
+<li><p>
+[14] C. Borgs, J. Chayes, C. Daskalakis, and S. Roch. <a href="http://research.microsoft.com/en-us/um/people/borgs/Papers/fit.pdf"><em>First to market is not everything: analysis of preferential attachment with fitness</em></a>. STOC’07, San Diego, California, 2007.
+</p></li>
+
+<li><p>
+[15] S. N. Dorogovtsev, J. F. F. Mendes, and A. N. Samukhin. <a href="http://jupiter.engr.utk.edu/Projects/Mis/SFN/References/DMS00_Structure%20of%20Growing%20Networks.pdf"><em>Structure of growing networks with preferential linking</em></a>. Phys. Rev. Lett. 85: 4633, 2000.
+</p></li>
+
+<li><p>
+[16] C. Godreche, H. Grandclaude, and J. M. Luck. <a href="http://arxiv.org/abs/0907.1470"><em>Finite-time fluctuations in the degree statistics of growing networks</em></a>. J. Stat. Phys. 137, 1117, 2009.
+</p></li>
+
+<li><p>
+[17] Y.-H. Eom and S. Fortunato. <a href="http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0024926"><em>Characterizing and Modeling Citation Dynamics</em></a>. PLoS ONE 6(9): e24926, 2011.
+</p></li>
+
+<li><p>
+[18] A.-L. Barabási, H. Jeong, Z. Néda, E. Ravasz, A. Schubert, and T. Vicsek. <a href="http://arxiv.org/pdf/cond-mat/0104162.pdf"><em>Evolution of the social network of scientific collaborations</em></a>. Physica A 311, (3-4), pp. 590-614, 2002.
+</p></li>
+
+<li><p>
+[19] R. Albert, and A.-L. Barabási. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/200012-11_PhysRevLtr-TopologyEvolNetworks/200012-11_PhysRevLtr-TopologyEvolNetworks.pdf"><em>Topology of evolving networks: local events and universality</em></a>. Phys. Rev. Lett. 85:5234-5237, 2000.
+</p></li>
+
+<li><p>
+[20] G. Goshal, L. Ping, and A.-L Barabási. <a href="#"><em>preprint</em></a>. 2013.
+</p></li>
+
+<li><p>
+[21] J. H. Schön, Ch. Kloc, R. C. Haddon, and B. Batlogg. <a href="http://www.sciencemag.org/content/288/5466/656.abstract"><em>A superconducting field-effect switch</em></a>. Science 288: 656–8. 2000.
+</p></li>
+
+<li><p>
+[22] D. Agin. <a href="http://www.amazon.com/Junk-Science-Indictment-Government-Industry/dp/0312374801"><em>Junk Science: An Overdue Indictment of Government, Industry, and Faith Groups That Twist Science for Their Own Gain</em></a>. Macmillan; New York, 2007.
+</p></li>
+
+<li><p>
+[23] S. Saavedra, F. Reed-Tsochas, and B. Uzzi.  <a href="http://www.pnas.org/content/105/43/16466.short"><em>Asymmetric disassembly and robustness in declining networks</em></a>. PNAS105:16466–16471, 2008.
+</p></li>
+
+<li><p>
+[24] F. Chung and L. Lu. <a href="http://www.math.ucsd.edu/~fan/wp/couple.pdf"><em>Coupling on-line and off-line analyses for random power-law graphs</em></a>. Int. Math. 1: 409-461, 2004.
+</p></li>
+
+<li><p>
+[25] C. Cooper, A. Frieze, and J. Vera. <a href="http://www.dcs.kcl.ac.uk/staff/ccooper/papers/delete_web.ps"><em>Random deletion in a scalefree random graph process</em></a>. Int. Math. 1, 463-483, 2004.
+</p></li>
+
+<li><p>
+[26] S. N. Dorogovtsev and J. Mendes. <a href="http://arxiv.org/abs/cond-mat/0005050"><em>Scaling behavior of developing and decaying networks</em></a>. Europhys. Lett. 52: 33-39, 2000.
+</p></li>
+
+<li><p>
+[27] C. Moore, G. Ghoshal, and M. E. J. Newman. <a href="http://arxiv.org/abs/cond-mat/0604069"><em>Exact solutions for models of evolving networks with addition and deletion of nodes</em></a>. Phys. Rev. E 74: 036121, 2006.
+</p></li>
+
+<li><p>
+[28] H. Bauke, C. Moore, J. Rouquier, and D. Sherrington. <a href="http://www.santafe.edu/media/workingpapers/11-05-017.pdf"><em>Topological phase transition in a network model with preferential attachment and node removal.</em></a>. The European Physical Journal B: 83: 519-524, 2011.
+</p></li>
+
+<li><p>
+[29] M. Pascual and J. Dunne. <a href="http://www.amazon.com/Ecological-Networks-Structure-Institute-Complexity/dp/0195188160"><em>Ecological Networks: Linking Structure to Dynamics in Food Webs.</em></a>. Oxford Univ Press, Oxford, 2005.
+</p></li>
+
+<li><p>
+[30] R. Sole and J. Bascompte. <a href="http://press.princeton.edu/titles/8224.html"><em>Self-Organization in Complex Ecosystems</em></a>. Princeton Univ Press, Princeton, 2006.
+</p></li>
+
+<li><p>
+[31] U. T. Srinivasan, J. A. Dunne, J. Harte, and N. D. Martinez. <a href="http://www.jstor.org/discover/10.2307/27651150?uid=3739696&uid=2129&uid=2&uid=70&uid=4&uid=3739256&sid=21103679328383"><em>Response of complex food webs to realistic extinction sequencesm</em></a>. Ecology 88:671– 682, 2007.
+</p></li>
+
+<li><p>
+[32] M. Faloutsos, P. Faloutsos, and C. Faloutsos. <a href="On power-law relationships of the internet topology"><em>On power-law relationships of the internet topology</em></a>. ACM SIGCOMM Computer Communication Review 29: 251-262, 1999.
+</p></li>
+
+<li><p>
+[33] A. Broder, R. Kumar, F. Maghoul, P. Raghavan, S. Rajagopalan, R. Stata, and A. Tomkins. <a href="http://www.cis.upenn.edu/~mkearns/teaching/NetworkedLife/broder.pdf"><em>Graph structure in the web</em></a>. Computer networks 33: 309-320, 2000.
+</p></li>
+
+<li><p>
+[34] J. Leskovec, J. Kleinberg, and C. Faloutsos. <a href="http://www.cs.cmu.edu/~jure/pubs/powergrowth-tkdd.pdf"><em>Graph evolution: Densification and shrinking diameters</em></a>. ACM TKDD07, ACM Transactions on Knowledge Discovery from Data, 2007.
+</p></li>
+
+<li><p>
+[35] H. Jeong, B. Tombor, R. Albert, Z. N. Oltvai, and A.-L. Barabási. <a href="http://www.nature.com/nature/journal/v407/n6804/full/407651a0.html"><em>The large-scale organization of metabolic networks</em></a>. Nature 407: 651–655, 2000.
+</p></li>
+
+<li><p>
+[36] S. Dorogovtsev and J. Mendes. <a href="http://arxiv.org/abs/cond-mat/0009065"><em>Effect of the accelerating growth of communications networks on their structure</em></a>. Phys. Rev. E 63: 025101(R), 2001.
+</p></li>
+
+<li><p>
+[37] M. J. Gagen and J. S. Mattick. <a href="http://www.ncbi.nlm.nih.gov/pubmed/16090052"><em>Accelerating, hyperaccelerating, and decelerating networks</em></a>. Phys. Rev. E 72: 016123, 2005.
+</p></li>
+
+<li><p>
+[38] C. Cooper and P. Prałat. <a href="http://onlinelibrary.wiley.com/doi/10.1002/rsa.20318/abstract"><em>Scale-free graphs of increasing degree</em></a>. Random Structures & Algorithms 38: 396–421, 2011.
+</p></li>
+
+<li><p>
+[39] N. Deo and A. Cami. <a href="http://www.sciencedirect.com/science/article/pii/S0020019006003632"><em>Preferential deletion in dynamic models of web-like networks</em></a>. Inf. Proc. Lett. 102: 156-162, 2007.
+</p></li>
+
+<li><p>
+[40] S. N. Dorogovtsev and J. F. F. Mendes. <a href="http://journals.aps.org/pre/abstract/10.1103/PhysRevE.62.1842"><em>Evolution of networks with aging of sites</em></a>. Phys. Rev. E, 62:1842, 2000.
+</p></li>
+
+<li><p>
+[41] A. N. Amaral, A. Scala, M. Barthélémy, and H. E. Stanley. <a href="http://www.pnas.org/content/97/21/11149.long"><em>Classes of small-world networks</em></a>. Proc. National Academy of Sciences USA 97: 11149, 2000.
+</p></li>
+
+<li><p>
+[42] K. Klemm and V. M. Eguiluz. <a href="http://arxiv.org/abs/cond-mat/0107606"><em>Highly clustered scale free networks</em></a>. Phys. Rev. E 65: 036123, 2002.
+</p></li>
+
+<li><p>
+[43] X. Zhu, R. Wang, and J.-Y. Zhu. <a href="http://arxiv.org/abs/cond-mat/0304609"><em>The effect of aging on network structure</em></a>. Phys. Rev. E 68: 056121, 2003.
+</p></li>
+
+<li><p>
+[44] G. Ergun and G. J. Rodgers. <a href="http://arxiv.org/abs/cond-mat/0103423"><em>Growing random networks with fitness</em></a>. Physica A 303: 261-272, 2002.
+</p></li>
+
+
+</ul>
+</div>
+<div style="page-break-after:always;"> </div>
+</section>
+<div class="pageb"></div>
+
+
+
+
+</div>
+</div>  
+  
+  
+  
+
+	<div id="bottom">
+		<div id="footer">
+        
+        
+			<div class="one-third" id="licenses">
+        <h4>Licenses</h4>
+        <p>
+          <a class="license-badge" rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a>
+         
+        </p>
+
+        <p>
+          The book's text and illustrations are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
+        </p>
+      </div>
+      
+
+      <div class="one-third">
+        <h4>Credit</h4>
+
+        <p>Design & Data Visualization: <a href="http://www.mamartino.com">Mauro Martino</a>, Márton Pósfai, Gabriele Musella</p>
+
+      </div>
+
+      <div class="one-third">
+        <h4>Author</h4>
+        <p><a href="http://www.barabasi.com">ALBERT-LÁSZLÓ BARABÁSI</a> is director of the <a href="http://barabasilab.neu.edu">Center for Complex Network Research</a> at Northeastern University.</p>
+
+        <p>He is the author of <a href="http://barabasilab.com/LinkedBook/">Linked</a>.</p>
+
+        <p><a href="https://twitter.com/barabasi">BARABÁSI in Twitter</a> </p>
+      </div>
+		</div>
+	</div>
+</body>
+</html>

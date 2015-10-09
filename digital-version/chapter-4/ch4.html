@@ -1,0 +1,493 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Network Science | Albert-László Barabás | Chapter 4</title>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	
+  <script type="text/javascript" src="../javascripts/jquery.fixed.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      $('#toc-list').fixed({'top':'8'});
+      $('#nav-bar-wrap').fixed({'top':'8'});
+      $('span.c1').each(function(){ addStylesToCodeLines($(this)); });
+      $('div.source-code').each(function(){ setRawCodeHeight($(this)); });
+      $('a.toggle').click(function(){ toggleCodeDisplay($(this)); return false; });
+    });
+  </script>
+  
+	<link rel="stylesheet" href="../stylesheets/html.css" type="text/css">
+    
+    <link rel="stylesheet" href="../stylesheets/bjqs.css" type="text/css">
+    <script src="../javascripts/bjqs-1.3.min.js"></script>
+
+
+    <link href="../stylesheets/theme.default.css" rel="stylesheet">
+	<script src="../javascripts/jquery.tablesorter.min.js"></script>
+	<script src="../javascripts/jquery.tablesorter.widgets.min.js"></script>
+	<script>
+	$(function(){
+		$('table').tablesorter({
+			widgets        : ['zebra', 'columns'],
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true
+		});
+	});
+	</script>
+    
+    
+    <script class="secret-source">
+        jQuery(document).ready(function($) {
+          
+          $('#banner-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+      <script class="secret-source2">
+        jQuery(document).ready(function($) {
+          
+          $('#second-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+      <script class="secret-source2">
+        jQuery(document).ready(function($) {
+          
+          $('#third-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+
+</head>
+<body>
+
+  <div id="navigator">
+    <div id="navigator-inner">
+      <div id='nav-bar-wrap'>
+        <div id="mask"></div>
+        <div id="nav-bar">
+          <h1><a href="../index.html"> <strong>NETWORK SCIENCE</strong> BOOK </a></h1>
+          <h2>Albert-László Barabási</h2>
+          <a id="purchase-link" href="../chapter-5/ch5.html">CHAPTER 5</a> <a id="purchase-link" href="../chapter-3/ch3.html">CHAPTER 3</a>  
+          <a id="purchase-link" href="../pdf/network_science_Ch4_2013_December.pdf">Download Chapter 4 as PDF</a>
+          
+        </div>
+      </div>
+      <div id="toc-holder">
+        <div id="toc-list">
+          <ul>
+            <li><a href="#Introduction">4.1 Introduction</a></li> 
+            <li><a href="#Power-laws-and-scale-free-networks">4.2 Power laws and scale-free networks</a></li>
+            <li><a href="#Hubs">4.3 Hubs</a></li>
+            <li><a href="#The-meaning-of-scale-free">4.4 The meaning of scale-free</a></li>
+            <li><a href="#Universality">4.5 Universality</a></li>
+            <li><a href="#Ultra-small-property">4.6 Ultra-small property</a></li>
+            <li><a href="#The-role-of-the-degree-exponent">4.7 The role of the degree exponent</a></li>
+            <li><a href="#Generating-networks-with-a-pre-defined-degree-distribution">4.8 Generating networks with a pre-defined degree distribution</a></li>
+            <li><a href="#Summary">4.9 Summary</a></li>
+            <li><a href="#Power-laws">4.A: Power laws</a></li>
+            <li><a href="#Plotting-a-power-law-degree-distribution">4.B: Plotting a power-law degree distribution</a></li>
+            <li><a href="#Estimating-the-degree-exponent">4.C: Estimating the degree exponent</a></li>      
+            <li><a href="#Bibliography">4 Bibliography</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> <!--  fine  navigator //-->
+  
+  
+
+  <div id="top">
+    <div id="header">
+      <h1><a href="##"><strong>NETWORK SCIENCE</strong> BOOK</a></h1>
+      <h2>Albert-László Barabási</h2>
+    </div>
+  </div>
+
+  <div id="middle">
+
+  	<div id="container">
+    
+    
+ <section>
+    <a id="Introduction"></a>
+    <h3 id="#">Chapter 4 </br> </br>INTRODUCTION</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div> 
+
+
+
+<section>
+<a id="Power-laws-and-scale-free-networks"></br></br></a>
+<h3 id="#">4.2 POWER LAWS AND SCALE-FREE NETWORKS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Hubs"></br></br></a>
+<h3 id="#">4.3 HUBS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="The-meaning-of-scale-free"></br></br></a>
+<h3 id="#">4.4 THE MEANING OF SCALE-FREE</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Universality"></br></br></a>
+<h3 id="#">4.5 UNIVERSALITY</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Ultra-small-property"></br></br></a>
+<h3 id="#">4.6 ULTRA-SMALL PROPERTY</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="The-role-of-the-degree-exponent"></br></br></a>
+<h3 id="#">4.7 THE ROLE OF THE DEGREE EXPONENT</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Generating-networks-with-a-pre-defined-degree-distribution"></br></br></a>
+<h3 id="#">4.8 GENERATING NETWORKS WITH A PRE-DEFINED DEGREE DISTRIBUTION</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Summary"></br></br></a>
+<h3 id="#">4.9 SUMMARY</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Power-laws"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 4.A<br>
+POWER LAWS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Plotting-a-power-law-degree-distribution"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 4.B<br>
+PLOTTING A POWER-LAW DEGREE DISTRIBUTION</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Estimating-the-degree-exponent"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 4.C<br>
+ESTIMATING THE DEGREE EXPONENT</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Bibliography"></br></br></a>
+<h3 id="#">4 BIBLIOGRAPHY</h3>
+<div class="list">
+
+<ul>
+		
+<li><p>
+[1] H. Jeong, R.Albert, and A.-L. Barabási. <a href="http://www3.nd.edu/~networks/Publication%20Categories/03%20Journal%20Articles/Computer/Diameter_Nature%20401,%20130-131%20(1999).pdf"><em>Internet: Diameter of the world-wide web</em></a>. Nature, 401:130-131, 1999.
+</p></li>
+
+<li><p>
+[2] A.-L. Barabási and R.Albert. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/199910-15_Science-Emergence/199910-15_Science-Emergence.pdf"><em>Emergence of scaling in random networks</em></a>. Science, 286:509-512, 1999.
+</p></li>
+
+<li><p>
+[3] V. Pareto, G -H Bousquet, G Busino. <a href="http://www.worldcat.org/title/cours-deconomie-politique/oclc/630428188"><em>Cours d’Économie Politique</em></a>. Librairie Droz, Geneva, 299–345, 1964.
+</p></li>
+
+<li><p>
+[4] A.-L. Barabási. <a href="http://barabasilab.com/LinkedBook/"><em>Linked: The New Science of Networks</em></a>. (Plume, New York). ISBN 0-452-28439-2, 2002.
+</p></li>
+
+<li><p>
+[5] M. Faloutsos, P. Faloutsos, and C. Faloutsos. <a href="http://www.cis.upenn.edu/~mkearns/teaching/NetworkedLife/power-internet.pdf"><em>On power-law relationships of the internet topology</em></a>. Proceedings of SIGCOMM. Comput. Com- mun. Rev. 29: 251-262, 1999.
+</p></li>
+
+<li><p>
+[6] R. Pastor-Satorras and A.Vespignani. <a href="http://www.amazon.com/Evolution-Structure-Internet-Statistical-Approach/dp/052171477X"><em>Evolution and Structure of the Internet: A Statistical Physics Approach</em></a>. (Cambridge University Press, Cambridge), 2004.
+</p></li>
+
+<li><p>
+[7] D. J. De Solla Price. <a href="http://www.garfield.library.upenn.edu/papers/pricenetworks1965.pdf"><em>Networks of Scientific Papers</em></a>. Science 149: 510- 515, 1965.
+</p></li>
+
+<li><p>
+[8] S. Redner. <a href="http://arxiv.org/abs/cond-mat/9804163"><em>How Popular is Your Paper? An Empirical Study of the Citation Distribution</em></a>. Eur.Phys.J.B4:131-134,1998.
+</p></li>
+
+<li><p>
+[9] A. L. Barabási, R.Albert, and H. Jeong. <a href="http://arxiv.org/abs/cond-mat/9907068"><em>Mean-field theory of scale- free random networks</em></a>. Physica A 272:173-187, 1999.
+</p></li>
+
+<li><p>
+[10] R. Kumar, P. Raghavan, S. Rajalopagan, and A.Tomkins. <a href="http://www.vldb.org/conf/1999/P60.pdf"><em>Extracting Large-Scale Knowledge Bases from the Web</em></a>. Proceedings of the 25thVLDB- Conference, Edinburgh,Scotland,pp.639-650,1999.
+</p></li>
+
+<li><p>
+[11] H. Jeong, B.Tombor, R.Albert, Z. N. Oltvai, and A.-L. Barabási. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/200010-05_Nature-OrganMetabolic/200010-05_Nature-OrganMetabolic.pdf"><em>The large-scale organization of metabolic networks</em></a>. Nature 407, 651-654, 2000.
+</p></li>
+
+<li><p>
+[12] W. Aiello, F. Chung, and L.A. Lu. <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.117.2682&rep=rep1&type=pdf"><em>Random graph model for massive graphs</em></a>. Proc. 32nd ACM Symp.Theor. Comp, 2000.
+</p></li>
+
+<li><p>
+[13] H. Jeong, B.Tombor, S. P. Mason, A.-L. Barabási, and Z.N. Oltvai. <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/200105-03_Nature-ProteinNetworks/200105-03_Nature-ProteinNetworks.pdf"><em>Lethality and centrality in protein networks</em></a>. Nature 411, 41-42, 2001.
+</p></li>
+
+<li><p>
+[14] A.-L. Barabási, H. Jeong, E. Ravasz, Z. Néda, A. Schubert, and T. Vicsek. <a href="http://arxiv.org/pdf/condmat/0104162.pdf"><em>Evolution of the social network of scientific collaborations</em></a>. Physica A 311: 590-614, 2002.
+</p></li>
+
+<li><p>
+[15] M. E. J. Newman. <a href="http://www.pnas.org/content/98/2/404.long"><em>The structure of scientific collaboration networks.</em></a>. Proc. Natl.Acad. Sci. 98(2), 404-409, 2001.
+</p></li>
+
+<li><p>
+[16] F. Liljeros, C.R. Edling, L.A.N. Amaral, H.E. Stanley, and Y. Aberg. <a href="http://arxiv.org/abs/cond-mat/0106507"><em>The Web of Human Sexual Contacts</em></a>. Nature 411, 907-908, 2001.
+</p></li>
+
+<li><p>
+[17] R. Ferrer i Cancho, and R.V. Solé. <a href="http://complex.upf.es/~ricard/SWPRS.pdf"><em>The small world of human lan- guage</em></a>. Proc. R. Soc. Lond. B 268: 2261-2265, 2001.
+</p></li>
+
+<li><p>
+[18] S.Yook, H. Jeong, and A.-L. Barabási. <a href="#"><em></em></a> (unpublished), (2001).
+</p></li>
+
+<li><p>
+[19] R. Ferrer i Cancho, C. Janssen, and R.V. Solé. <a href="http://www.uvm.edu/~pdodds/files/papers/others/2001/cancho2001.pdf"><em>Topology of technology graphs: Small world patterns in electronic circuits</em></a>. Phys. Rev. E 64, 046119, 2001.
+
+</p></li>
+
+<li><p>
+[20] S.Valverde and R.V. Sole. <a href="http://arxiv.org/abs/cond-mat/0307278"><em>Hierarchical Small Worlds in Software Architecture</em></a>. arXiv:cond-mat/0307278, 2003.
+</p></li>
+
+<li><p>
+[21] H. Ebel, L.-I. Mielsch, and S. Bornholdt. <a href="http://arxiv.org/pdf/cond-mat/0201476.pdf"><em>Scale-free topology of e-mail networks</em></a>. Phys. Rev. E 66, 035103(R), 2002.
+</p></li>
+
+<li><p>
+[22] J. P. K. Doye. <a href="http://arxiv.org/abs/cond-mat/0201430"><em>Network Topology of a Potential Energy Landscape: A Static Scale-Free Network</em></a>. Phys. Rev. Lett. 88, 238701, 2002.
+</p></li>
+
+<li><p>
+[23] H. Kwak, C. Lee, H. Park, S. Moon. <a href="http://an.kaist.ac.kr/~hosung/papers/2010-www-twitter.pdf"><em>What is Twitter, a social network or a news media?</em></a>. Proceedings of the 19th international conference on World wide web, 591-600, 2010.
+</p></li>
+
+<li><p>
+[24] M. Cha, H. Haddadi, F. Benevenuto and K. P. Gummadi. <a href="http://snap.stanford.edu/class/cs224w-readings/cha10influence.pdf"><em>Measuring user influence in Twitter:The million follower fallacy</em></a>. Proceedings of in- ternational AAAI Conference on Weblogs and Social, 2010.
+</p></li>
+
+<li><p>
+[25] J. Ugander, B. Karrer, L. Backstrom, and C. Marlow. <a href="http://arxiv.org/abs/1111.4503"><em>The Anatomy of the Facebook Social Graph</em></a>. arXiv:1111.4503, 2011.
+</p></li>
+
+<li><p>
+[26] B. Bollobás and O. Riordan. <a href="http://www.math.duke.edu/~rtd/math777/diamSF.pdf"><em>The Diameter of a Scale-Free Random Graph.</em></a>. Combinatorica, 24: 5-34, 2004.
+</p></li>
+
+<li><p>
+[27] R. Cohen and S. Havlin. <a href="http://polymer.bu.edu/~hes/networks/ch03.pdf"><em>Scale free networks are ultrasmall</em></a>. Phys.Rev. Lett. 90, 058701, 2003.
+</p></li>
+
+<li><p>
+[28] R. Cohen and S. Havlin. <a href="http://f3.tiera.ru/2/M_Mathematics/MV_Probability/Cohen%20R.,%20Havlin%20S.%20Complex%20networks..%20Structure,%20robustness%20and%20function%20(CUP,%202010)(ISBN%200521841569)(O)(248s)_MV_.pdf"><em>Complex Networks - Structure, Robustness and Function</em></a>. (Cambridge University Press, Cambridge),2010.
+</p></li>
+
+<li><p>
+[29] K.-I. Goh, B. Kahng, and D. Kim. <a href="http://arxiv.org/abs/cond-mat/0106565"><em>Universal behavior of load distribution in scale-free networks.</em></a>. Phys. Rev. Lett. 87, 278701, 2001.
+</p></li>
+
+<li><p>
+[30] F. Karinthy. Láncszemek, in Minden másképpen van (Budapest: Atheneum Irodai es Nyomdai R.-T. Kiadása, 1929), 85–90. English trans- lation is available in: M.E. J. Newman, A.-L. Barabási, and D. J. Watts. <a href="http://www.amazon.com/The-Structure-Dynamics-Networks-Complexity/dp/0691113572"><em>The Structure and Dynamics of Networks</em></a>. ( Princeton University Press, Princ- eton), 2006.
+</p></li>
+
+<li><p>
+[31] P. S. Dodds, R. Muhamad and D.J.Watts. <a href="http://www.cis.upenn.edu/~mkearns/teaching/NetworkedLife/columbia.pdf"><em>An experimental study to search in global social networks</em></a>. Science 301, 827-829, 2003.
+</p></li>
+
+<li><p>
+[32] P. Erdős and T. Gallai. <a href="http://www.renyi.hu/~p_erdos/1961-05.pdf"><em>Graphs with given degrees of vertices</em></a>. Matematikai Lapok, 11:264-274, 1960.
+</p></li>
+
+<li><p>
+[33] C.I. Del Genio, H. Kim, Z.Toroczkai, and K.E. Bassler. <a href="http://obelix.phys.nd.edu/~toro/archive/PLoS_ONE_GKTB10.pdf"><em>Efficient and exact sampling of simple graphs with given arbitrary degree sequence</em></a>. PLoS ONE, 5(4):e10012, 04 2010.
+</p></li>
+
+<li><p>
+[34] V.Havel. <a href="http://archive.is/HDioe"><em>A remark on the existence of finite graphs</em></a>. Casopis Pest. Mat., 80:477-480, 1955.
+</p></li>
+
+<li><p>
+[35] S. Hakimi. <a href="http://www.jstor.org/discover/10.2307/2098770?uid=3739696&uid=2129&uid=2&uid=70&uid=4&uid=3739256&sid=21103607483327"><em>On the realizability of a set of integers as degrees of the vertices of a graph</em></a>. SIAM J.Appl. Math., 10:496-506, 1962.
+</p></li>
+
+<li><p>
+[36] I. Charo Del Genio, G.Thilo, and Kevin E. Bassler. <a href="http://arxiv.org/abs/1106.5150"><em>All scale-free networks are sparse</em></a>. Phys. Rev. Lett., 107:178701, 10 2011.
+</p></li>
+
+<li><p>
+[37] B. Bollobás. <a href="http://www.sciencedirect.com/science/article/pii/S0195669880800308"><em>A probabilistic proof of an asymptotic formula for the number of labelled regular graphs</em></a>. European J. Combin. 1: 311– 316, 1980.
+</p></li>
+
+<li><p>
+[38] M. Molloy and B. A. Reed. <a href="http://onlinelibrary.wiley.com/doi/10.1002/rsa.3240060204/abstract"><em>Critical Point for Random Graphs with a Given Degree Sequence</em></a>. Random Structures and Algorithms, 6: 161-180, 1995.
+</p></li>
+
+<li><p>
+[39] M. Newman. <a href="http://www-personal.umich.edu/~mejn/networks-an-introduction/"><em>Networks: An Introduction</em></a>. (Oxford University, Ox- ford), 2010.
+</p></li>
+
+<li><p>
+[40] S. Maslov and K. Sneppen. <a href="http://www.sussex.ac.uk/Users/ctf20/dphil_2005/CSNs/Minimal%20Genome/maslov.pdf"><em>Specificity and stability in topology of protein networks</em></a>. Science, 296:910-913, 2002.
+</p></li>
+
+<li><p>
+[41] G. Caldarelli, I. A. Capocci, P. De Los Rios, and M.A. Muñoz. <a href="http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.89.258702"><em>Scale-Free Networks from Varying Vertex Intrinsic Fitness</em></a>. Phys. Rev. Lett. 89, 258702, 2002.
+</p></li>
+
+<li><p>
+[42] B. Söderberg. <a href="http://arxiv.org/abs/cond-mat/0211063"><em>General formalism for inhomogeneous random graphs</em></a>. Phys. Rev. E 66, 066121, 2002.
+</p></li>
+
+<li><p>
+[43] M. Boguñá and R. Pastor-Satorras.  <a href="http://journals.aps.org/pre/abstract/10.1103/PhysRevE.68.036112"><em>Class of correlated random networks with hidden variables</em></a>. Phys. Rev. E 68, 036112, 2003.
+</p></li>
+
+<li><p>
+[44] A. Clauset, C.R. Shalizi, and M.E.J. Newman. <a href="http://arxiv.org/abs/0706.1062"><em>Power-law distributions in empirical data</em></a>. SIAM Review S1: 661-703. ArXiv e- prints, 2009.
+</p></li>
+
+<li><p>
+[45] S. Redner. <a href="http://physics.bu.edu/~redner/pubs/pdf/PT.pdf"><em>Citation statistics from 110 years of physical review</em></a>. Physics Today, 58:49, 2005.
+</p></li>
+
+
+</ul>
+</div>
+<div style="page-break-after:always;"> </div>
+</section>
+<div class="pageb"></div>
+
+
+</div>
+</div>  
+  
+  
+  
+
+	<div id="bottom">
+		<div id="footer">
+        
+        
+			<div class="one-third" id="licenses">
+        <h4>Licenses</h4>
+        <p>
+          <a class="license-badge" rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a>
+         
+        </p>
+
+        <p>
+          The book's text and illustrations are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
+        </p>
+      </div>
+      
+
+      <div class="one-third">
+        <h4>Credit</h4>
+
+        <p>Design & Data Visualization: <a href="http://www.mamartino.com">Mauro Martino</a>, Márton Pósfai, Gabriele Musella</p>
+
+      </div>
+
+      <div class="one-third">
+        <h4>Author</h4>
+        <p><a href="http://www.barabasi.com">ALBERT-LÁSZLÓ BARABÁSI</a> is director of the <a href="http://barabasilab.neu.edu">Center for Complex Network Research</a> at Northeastern University.</p>
+
+        <p>He is the author of <a href="http://barabasilab.com/LinkedBook/">Linked</a>.</p>
+
+        <p><a href="https://twitter.com/barabasi">BARABÁSI in Twitter</a> </p>
+      </div>
+		</div>
+	</div>
+</body>
+</html>

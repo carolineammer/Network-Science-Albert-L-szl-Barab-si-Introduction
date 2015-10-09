@@ -1,0 +1,1218 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Network Science | Albert-László Barabás | Chapter 3</title>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	
+  <script type="text/javascript" src="../javascripts/jquery.fixed.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      $('#toc-list').fixed({'top':'8'});
+      $('#nav-bar-wrap').fixed({'top':'8'});
+      $('span.c1').each(function(){ addStylesToCodeLines($(this)); });
+      $('div.source-code').each(function(){ setRawCodeHeight($(this)); });
+      $('a.toggle').click(function(){ toggleCodeDisplay($(this)); return false; });
+    });
+  </script>
+  
+	<link rel="stylesheet" href="../stylesheets/html.css" type="text/css">
+    <link rel="stylesheet" href="../stylesheets/typogruppe.css" type="text/css">
+    <link rel="stylesheet" href="../stylesheets/bjqs.css" type="text/css">
+    <script src="../javascripts/bjqs-1.3.min.js"></script>
+
+
+    <link href="../stylesheets/theme.default.css" rel="stylesheet">
+	<script src="../javascripts/jquery.tablesorter.min.js"></script>
+	<script src="../javascripts/jquery.tablesorter.widgets.min.js"></script>
+	<script>
+	$(function(){
+		$('table').tablesorter({
+			widgets        : ['zebra', 'columns'],
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true
+		});
+	});
+	</script>
+    
+    
+    <script class="secret-source">
+        jQuery(document).ready(function($) {
+          
+          $('#banner-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+      <script class="secret-source2">
+        jQuery(document).ready(function($) {
+          
+          $('#second-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+      <script class="secret-source2">
+        jQuery(document).ready(function($) {
+          
+          $('#third-slide').bjqs({
+            animtype      : 'slide',
+            height        : 413,
+            width         : 800,
+            responsive    : true,
+          });
+          
+        });
+      </script>
+      
+
+</head>
+<body>
+
+  <div id="navigator">
+    <div id="navigator-inner">
+      <div id='nav-bar-wrap'>
+        <div id="mask"></div>
+        <div id="nav-bar">
+          <h1><a href="../index.html"> <strong>NETWORK SCIENCE</strong> BOOK </a></h1>
+          <h2>Albert-László Barabási</h2>
+          <a id="purchase-link" href="../chapter-4/ch4.html">CHAPTER 4</a> <a id="purchase-link" href="../chapter-2/ch2.html">CHAPTER 2</a>  
+  <!--         <a id="purchase-link" href="../pdf/network_science_Ch3_2012_November.pdf">Download Chapter 3 as PDF</a>  --> 
+          
+        </div>
+      </div>
+      <div id="toc-holder">
+        <div id="toc-list">
+          <ul>
+            <li><a href="#Introduction">3.1 Introduction</a></li> 
+            <li><a href="#The-random-network-model">3.2 The random network model</a></li>
+            <li><a href="#The-number-of-links-is-variable">3.3 The number of links is variable</a></li>
+            <li><a href="#Degree-distribution">3.4 Degree distribution</a></li>
+            <li><a href="#Real-networks-do-no-not-have-a-Poisson-degree-distribution">3.5 Real networks do no not have a Poisson degree distribution</a></li>
+            <li><a href="#The-evolution-of-a-random-network">3.6 The evolution of a random network</a></li>
+            <li><a href="#Real-networks-are-supercritical">3.7 Real networks are supercritical</a></li>
+            <li><a href="#The-small-world-property">3.8 The small world property</a></li>
+            <li><a href="#Clustering-coefficient">3.9 Clustering coefficient</a></li>
+            <li><a href="#Real-networks-are-not-random">3.10 Real networks are not random</a></li>
+            <li><a href="#The-first-law-of-network">3.11 Summary: the first law of network</a></li>
+            <li><a href="#Deriving-the-Poisson-degree-distribution">3.A: Deriving the Poisson degree distribution</a></li>
+            <li><a href="#The-maximum-and-the-minimum-degree">3.B: The maximum and the minimum degree</a></li>
+            <li><a href="#Giant-component">3.C: Giant component</a></li>
+            <li><a href="#Component-sizes">3.D: Component sizes</a></li>
+            <li><a href="#Supercritical-regime">3.E: Supercritical regime</a></li>
+            <li><a href="#Phase-transitions">3.F: Phase transitions</a></li>
+            <li><a href="#Correction-to-small-worlds">3.G: Correction to small worlds</a></li>          
+            <li><a href="#Bibliography">3 Bibliography</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> <!--  fine  navigator //-->
+  
+  
+
+  <div id="top">
+    <div id="header">
+      <h1><a href="##"><strong>NETWORK SCIENCE</strong> BOOK</a></h1>
+      <h2>Albert-László Barabási</h2>
+    </div>
+  </div>
+
+  <div id="middle">
+
+  	<div id="container">
+    
+    
+ <section>
+    <a id="Introduction"></a>
+    <h2>Chapter 3</h2>
+    <h3> INTRODUCTION</h3>
+
+<p>Imagine organizing a party for a hundred guests who initially do not know each other [1]. Offer them wine and cheese and you will soon have dozens of chatting groups of two to three. Now mention to Mary, one of your guests, that the red wine in the unlabeled dark green bottles is a rare vintage, much better than the one with the fancy red label. If she shares this information only with her acquaintances, you know that your expensive wine is safe, because she only had time to meet a few others in the room. However, the guests will continue to mingle, creating subtle paths between individuals that may still be strangers to each other. For example, while John has not yet met Mary, they have both met Mike, so now there is an invisible path from John to Mary through Mike. As time goes on, the guests will be increasingly interwoven by such intangible links. With that the secret of the unlabeled bottle will be pass from Mary to Mike and from Mike to John, slowly escaping into a rapidly expanding group.</p>
+
+<figure>
+  <img src="../imgs/chapter03/ch03_01.png" alt="From a cocktail party to random networks.">
+  <figcaption>
+    <span class="fig-nr">Image 3.1 From a cocktail party to random networks.</span><br>
+     The emergence of an acquaintance network through random encounters at a cocktail party.
+</figure>
+
+<p>To be sure, when all guests had gotten to know each other, everyone would be pouring the superior wine. But if each encounter took only ten minutes, meeting all ninety-nine others would take about sixteen hours. Thus, you could reasonably hope that a few drops of the better wine would be left for you to enjoy once the party is over.</p>
+
+<p>Yet, you will be wrong. The purpose of this chapter is to show you why. We will see that the party maps into a clas- sic model in network science called the random network model. And random network theory tells us that we do not have to wait until all individuals get to know each other for our expensive wine to be in danger. Rather, soon af- ter each person meets at least one other guest, an invisible network will form that will allow the information to reach most guests. Hence in no time everyone will be drinking the better wine.</p>
+
+
+</section>
+<div class="pageb"></div> 
+
+
+
+<section>
+<a id="The-random-network-model"></br></br></a>
+<h3 id="#">3.2 THE RANDOM NETWORK MODEL</h3>
+
+<p>An important goal of network science is to build models that accurately reproduce the properties of real networks observed in real systems. Most networks we encounter in nature do not have the comforting regularity of a crystal lattice or the predictable radial architecture of a spider web. Rather, at first inspection most real networks look as if they were spun randomly. Random network theory embraces this apparent randomness by constructing networks that are <i>truly random</i>.</p>
+
+<p>From a modeling perspective a network is a relatively simple object, consisting of only nodes and links. The real challenge, however, is to place the links between the nodes in a way to reproduce the complexity and apparent randomness of real systems. In this context the philosophy behind a random network is simple: it assumes that this goal is best achieved by placing the links randomly between the nodes. With that we arrive to the definition of a random network:</p>
+
+<blockquote>
+  <span class="large-quote">“</span>A random network consists of N labeled nodes where each node pair is connected with the same probability p.<span class="large-quote">”</span>
+</blockquote>
+
+<div class="tip">
+  <h4 id="com.plex">Box 3.1 </br>Two definitions of random networks.</h4>
+  <p>There are two equivalent ways of defining a random network:</p>
+
+<ul>
+<li><p><i>G(N,L)</i> model: <i>N</i> labeled nodes are connected with <i>L</i> randomly placed links. Erdős and Rényi (Erdős & Rényi, 1959) used this definition in their string of articles on random networks.</p></li>
+<li><p><i>G(N,p)</i> model: Each pair of <i>N</i> labeled nodes is connected with probability <i>p</i>, a model introduced by Gilbert (Gilbert, 1959).</p></li>
+</ul>
+
+<p>Hence the <i>G(N,p)</i> model fixes the probability <i>p</i> that two nodes are connected and the <i>G(N,L)</i> model fixes the total number of links <i>L</i>. While in the <i>G(N,L)</i> model the average degree of a node is simply <i>‹k› = 2L / N</i>, other network characteristics are easier to calculate in the <i>G(N, p)</i> model. Throughout this book we will explore the <i>G(N,p)</i> model, not only for the ease that it allows us to calculate key network characteristics, but also because its construction is closer to the way real systems develop. Indeed, in real networks the number of links is rarely fixed, but we can instead determine the probability that two nodes link to each other.</p>
+</div>
+
+<p>To construct a random network, denoted with <i>G(N, p)</i> (<u>Box 3.1</u>):</p>
+
+<ol>
+<li><p>Start with <i>N</i> isolated nodes.</p></li>
+<li><p>Select a node pair, and generate a random number between <i>0</i> and <i>1</i>. If the random number exceeds <i>p</i>, connect the selected node pair with a link, otherwise leave them disconnected.</p></li>
+<li><p>Repeat step (2) for each of the <i>N(N-1)/2</i> node pairs.</p></li>
+</ol>
+
+<p>The network obtained through this procedure is called a random graph or a random network. Two mathematicians, Pál Erdős and Alfréd Rényi, have played an important role in understanding the properties of random networks. In their honor a random network is often called the Erdős-Rényi network (<u>Box 3.2</u>).</p>
+
+<div class="tip">
+  <h4 id="com.plex">Box 3.2 </br>A brief history of random networks.</h4>
+  <p>Anatol Rapoport (1911-2007), a Russian immigrant to the United States, was the first to explore the properties of a random network. Trained as a pianist, Rapoport’s interests turned to mathematics after realizing that a successful career as a concert pianist would require a wealthy patron. He became interested in mathematical biology at a time when mathematicians and biologists hardly spoke to each other. In a paper written with Ray Solomonoff in 1951 [28], Rapoport demonstrated that if we increase the average degree of a network, we will observe an abrupt transition from a collection of disconnected nodes to a state in which the graph contains a giant component. Despite its pioneering ideas, Rapoport’s paper remains relatively unknown.</p>
+
+<p>The study of random networks reached prominence thanks to the fundamental work of Pál Erdős and Alfréd Rényi. In a sequence of eight papers published between 1959 and 1968 [8-15], they merged probability theory and combinatorics with graph theory, establishing random graph theory, a new branch of mathematics [5].</p>
+
+<p>The random network model was independently introduced by Gilbert [18] the same year Erdős and Rényi published their first paper on the subject. Yet, the impact of Erdős and Rényi’s work is so overwhelming that they are rightly considered the fathers of random networks.</p>
+</div>
+
+<div class="image-container " >
+	<img src="../imgs/chapter03/ch03_02a.jpg" alt="From a cocktail party to random networks." />	
+<p class="captionBold">Image 3.2a</p>
+<p class="caption"><span class="imte">Pál Erdős (1913-1996)</span></br>
+Hungarian mathematician known for both his eccentricity and exceptional scientific output, having published more papers than any other mathematician in the history of mathematics. His productivity had its roots in his fondness for collaboration: he co-authored papers with over five hundred mathematicians, inspiring the concept of Erdős number. His legendarily personality and profound professional impact has inspired two biographies [19, 27] and a documentary [7].</p>
+</div>
+
+<div class="image-container " >
+	<img src="../imgs/chapter03/ch03_02b.jpg" alt="From a cocktail party to random networks." />	
+<p class="captionBold">Image 3.2b</p>
+<p class="caption"><span class="imte">Alfréd Rényi (1921-1970)</span></br>
+Hungarian mathematician with fundamental contributions to combina- torics, graph theory, and number theory. His impact goes beyond mathe- matics: the Rényi entropy is widely used in chaos theory and the random network model he co-developed is at the heart of network science. He is remembered through the hotbed of Hungarian mathematics, the Alfréd Rényi Institute of Mathematics in Budapest. He once said, <i>“A mathematician is a device for turning coffee into theorems”</i>, a quote often attributed to Erdős.</p>
+</div>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="The-number-of-links-is-variable"></br></br></a>
+<h3 id="#">3.3 THE NUMBER OF LINKS IS VARIABLE</h3>
+
+<p>Each random network we generate with the same parameters <i>N</i>, <i>p</i> will look slightly different (Image 3.3). Not only the detailed wiring diagram will vary between realizations, but so will the number of links <i>L</i>. It is useful, therefore, to determine how many links we expect for a particular realization of a random network with fixed <i>N</i> and <i>p</i>.</p>
+
+<div class="image-container half-width-right" >
+	<img src="../imgs/chapter03/ch03_03.jpg" alt="Random networks are truly random." />	
+    <p class="captionBold">Image 3.3</p>
+    <p class="caption"><span class="imte">Random networks are truly random.</span></br>
+<i>Top row</i>: Three realizations of a random network generated with the same parameters <i>N = 12</i> and <i>p =1/6</i>. Despite the identical parameters, the net- works not only look different, but they differ in the number of links they have <i>(L = 8, 10, 7)</i> and in the degree of the individual nodes.<br>
+<i>Bottom row</i>: Three realizations of a random network with <i>N = 100</i> and <i>p = 1/6</i>.</p>
+</div>
+
+<p>The probability that a random network has exactly <i>L</i> links is the product of three terms:</p>
+
+<ol>
+<li><p>The probability that <i>L</i> of the attempts to connect the <i>N(N-1)/2</i> pairs of nodes have resulted in a link, which is <i>p <sup>L</sup></i>.</p></li>
+
+<li><p>The probability that the remaining <i>N(N-1)/2 - L</i> attempts have not resulted in a link, which is <i>(1-p)<sup>N(N-1)/2-L</sup></i></p></li>
+
+<li><p>A combinational factor, \[ \left( {\begin{array}{*{20}{c}}{\left( {\begin{array}{*{20}{c}}N\\2\end{array}} \right)}\\L\end{array}} \right)  \] counting the number of different ways we can place <i>L</i> links among <i>N(N-1)/2</i> node pairs.</p></li>
+</ol>
+
+<p>Hence the probability that a particular realization of a random graph has exactly <i>L</i> links is</p>
+
+<h4>\[{p_L}{\rm{ =  }}\left( \begin{array}{c}
+\left( \begin{array}{c}
+N\\
+2
+\end{array} \right)\\
+L
+\end{array} \right){p^L}{(1 - p)^{\frac{{N(N - 1)}}{2} - L}}.\hspace{20 mm} (1) \]</h4>
+
+<p>As Eq. (1) is a binomial distribution (Box 3.3), the expected number of links in a random graph can be calculated as</p>
+
+<h4>\[\langle L\rangle  = \sum\limits_{L = 0}^{\frac{{N(N - 1)}}{2}} L {p_L}{\rm{ }} = p\frac{{N(N - 1)}}{2}. \hspace{20 mm} (2) \]</h4>
+
+<p>Hence <i>‹L›</i> is the product of the probability <i>p</i> that two nodes are connected and the number of pairs we attempt to connect, which is <i>L<sub>max</sub> = N(N - 1)/2</i> (Chapter 2).
+Using Eq. (2) we obtain the average degree of a random network as</p>
+
+<h4>\[\langle k\rangle {\rm{ }} = \frac{{2\langle L\rangle }}{N} = p(N - 1). \hspace{20 mm} (3) \]</h4>
+
+<p>Hence <i>‹k›</i> is the product of the probability <i>p</i> that two nodes are connected and <i>(N-1)</i>, representing the maximum number of links a node can have in a network of size <i>N</i>.</p>
+
+<p>In summary the number of links in a random network is not fixed, but varies between realizations. Its expected value is determined by <i>N</i> and <i>p</i>. If we increase <i>p</i> from <i>p = 0</i> to <i>p = 1</i> the random network becomes denser and the average number of links increase linearly from <i>‹L› = 0</i> to <i>L<sub>max</sub></i> and the average degree of a node increases from <i>‹k› = 0</i> to <i>‹k› = N-1</i>.</p>
+
+<div class="tip">
+  <h4 id="com.plex">Box 3.3 </br>  Binomial distribution: Mean and variance.</h4>
+  <p>If we toss a fair coin <i>N</i> times, tails and heads should occur with the same probability <i>p = 1/2</i>. The binomial distribution provides the probability <i>p<sub>x</sub></i> that we obtain exactly <i>x</i> heads in a sequence of <i>N</i> throws. In general, the binomial distribution describes the number of successes in <i>N</i> independent experiments with two possible outcomes, in which the probability of one outcome is <i>p</i>, and of the other is <i>1-p</i>.</p>
+  
+  <p>The binomial distribution has the form</p>
+  <h4>\[{p_x} = \left( \begin{array}{c}
+N\\
+x
+\end{array} \right){p^x}{(1 - p)^{N - x}}.\]
+</h4>
+  
+  <p>The mean of the distribution (first moment) is</p>
+  <h4>\[\langle x\rangle  = \sum\limits_{x = 0}^N x {p_x} = Np.\hspace{20 mm} (4) \]  </h4>
+  
+  <p>Its second moment is</p>
+  <h4>\[\langle {x^2}\rangle  = \sum\limits_{x = 0}^N {{x^2}} {p_x} = p(1 - p)N + {p^2}{N^2},\hspace{20 mm} (5) \]  </h4>
+  
+  <p>providing its standard deviation as</p>
+  <h4>\[{\sigma _x} = {\left( {\langle {x^2}\rangle  - {{\langle x\rangle }^2}} \right)^{\frac{1}{2}}} = {[p(1 - p)N]^{\frac{1}{2}}}.\hspace{20 mm} (6) \]  </h4>
+  
+</div>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Degree-distribution"></br></br></a>
+<h3 id="#">3.4 DEGREE DISTRIBUTION</h3>
+
+<p>As Image 3.3 illustrates, in a given realization of a random network some nodes are lucky, gaining numerous links, while others have only a few or no links. These differences are captured by the degree distribution <i>p<sub>k</sub></i> providing the probablity that a randomly chosen node has degree <i>k</i>.</p>
+
+<p>In a random network the probability that node <i>i</i> has exactly <i>k</i> links is the product of three terms [5]:</p>
+
+<ul>
+<li><p>The probability that <i>k</i> of its links are present, or <i>p<sup>k</sup></i>.</p></li>
+<li><p>The probability that the remaining <i>(N-1-k)</i> links are
+missing, or <i>(1-p)<sup>N-1-k</sup></i>.</p></li>
+<li><p>The number of ways we can select <i>k</i> links from <i>N - 1</i> potential links a node can have, or \[\left( \begin{array}{c}N - 1\\k\end{array} \right)\]
+ </p></li>
+</ul>
+
+<p>Hence the degree distribution of a random network follows the binomial distribution</p>
+
+<h4>\[{p_k}{\rm{ }} = \left( \begin{array}{c}N - 1\\k\end{array} \right){p^k}{(1 - p)^{N - 1 - k}}.\hspace{20 mm} (7) \]  
+</h4>
+
+<p>The shape of this distribution depends on the system size <i>N</i> and the probability <i>p</i> (Image 3.4). Using the properties of the binomial distribution (Box 3.3), from the degree distribution (7) we can calculate the network’s average degree <i>‹k›</i>, recovering Eq. (3). We can also determine the second moment <i>‹k<sup>2</sup>›</i> and the variance σk of the degree distribution (Image 3.4), quantities that will play an important role later.</p>
+
+<p>Most real networks are sparse, hence <i>‹k› « N</i> (Table 3.1, Image 3.4b). In this limit the degree distribution (7) is well approximated by the Poisson distribution (Advanced Topics 3. A)</p>
+
+<h4>\[{p_k} = {e^{ - \langle k\rangle }}\frac{{{{\langle k\rangle }^k}}}{{k!}}, \hspace{20 mm} (8) \]  </h4>
+
+<p>which is often called, together with (7), the degree distribution of a random network.<br>
+The binomial and the Poisson distribution describe the same quantity, hence they have several common properties (Image 3.4a):
+</p>
+
+<ul>
+<li><p>Both distributions have a peak around <i>‹k›</i>. If we keep <i>N</i> constant and increase <i>p</i>, the network becomes denser, increasing <i>‹k›</i> and moving the peak to the right.</p></li>
+<li><p>The width of the distribution (dispersion) is also controlled by <i>p</i> or <i>‹k›</i>. The denser the network, the wider is the distribution, hence the larger are the differences in the degrees.</p></li>
+</ul>
+
+<p>As we use the Poisson form in Eq. (8), we need to keep in mind that:</p>
+
+<ul>
+<li><p>The exact result for the degree distribution is the binomial form in Eq. (7), thus Eq. (8) represents only an approximation to (7) valid in the <i>k « N</i> limit. For most networks of practical importance this condition is easily satisfied.</p></li>
+<li><p>The advantage of the Poisson form is that key network characteristics, like <i>‹k›</i>, <i>‹k<sup>2</sup>›</i> and <i>σ<sub>k</sub></i>, have a much simpler form (Image 3.4a), depending on a single parameter, <i>‹k›</i>.</p></li>
+<li><p>The Poisson distribution in Eq. (8) does not explicitly depend on the number of nodes <i>N</i> . Therefore, Eq. (8) predicts that the degree distributions of networks of different sizes but the same average degree <i>‹k›</i> are indistinguishable from each other (Image 3.4b).</p></li>
+</ul>
+
+<p>Despite the fact that the Poisson distribution is only an approximation to the degree distribution of a random network, thanks to its analytical simplicity, it is the preferred form for <i>p<sub>k</sub></i>. Hence throughout this book, unless noted otherwise, we will refer to the Poisson form in Eq. (8) as the degree distribution of a random network.</p>
+
+
+<div class="image-container " >
+	<img src="../imgs/chapter03/ch03_04a.jpg" alt="Anatomy of a binomial and a Poisson degree distribution." />	
+<p class="captionBold">Image 3.4a</p>
+<p class="caption"><span class="imte">Anatomy of a binomial and a Poisson degree distribution.</span></br>
+The exact form of the degree distribution of a random network is the binomial distribution (left). For <i>N » ‹k›</i>, the binomial can be well approximated by a Poisson distribution (right). As both distributions describe the same quantity, they have the same properties, which are expressed in terms of different parameters: the binomial distribution uses <i>p</i> and <i>N</i> as its fundamental parameters, while the Poisson distribution has only one parameter, <i>‹k›</i>.</p>
+</div>
+
+
+<div class="image-container " >
+	<img src="../imgs/chapter03/ch03_04b.jpg" alt="Degree distribution is independent of the network size." />	
+<p class="captionBold">Image 3.4b</p>
+<p class="caption"><span class="imte">Degree distribution is independent of the network size.</span></br>
+The degree distribution of a random network with average degree <i>‹k› = 50</i> and sizes <i>N = 10<sup>2</sup> , 10<sup>3</sup> , 10<sup>4</sup></i>. For <i>N = 10<sup>2</sup></i> the degree distribution deviates significantly from the Poisson prediction (8), as the condition for the Poisson approximation, <i>N » ‹k›</i>, is not satisfied. Hence for small networks one needs to use the exact binomial form of Eq. (7) (dotted line). For <i>N = 10<sup>3</sup></i> and larger networks the degree distribution becomes indistinguishable from the Poisson prediction, (8), shown as a continuous line, illustrating that for large <i>N</i> the degree distribution is independent of the network size. In the figure we averaged over <i>1,000</i> independently generated random networks to decrease the noise in the degree distribution.</p>
+</div>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Real-networks-do-no-not-have-a-Poisson-degree-distribution"></br></br></a>
+<h3 id="#">3.5 REAL NETWORKS DO NO NOT HAVE A POISSON DEGREE DISTRIBUTION</h3>
+
+<p>The degree of a node in a random network can vary between <i>0</i> and <i>N-1</i>, raising an important question: How big are the differences between the node degrees in a particular realization of a random network? That is, can highly connected nodes, or hubs, coexist with small degree nodes? We address answer these questions by estimating the size of the largest and the smallest node in a random network.</p>
+
+<p>Let us assume that the world’s social network is described by the random network model. This may not be as far fetched hypothesis as it first sounds: there is significant randomness in whom we meet and whom we choose to become acquainted with. Sociologists estimate that a typical person knows about <i>1,000</i> individuals on a first name basis, suggesting that <i>‹k›≃1,000</i>. Using the results obtained so far about random networks, we arrive to a number of surprising conclusions about a random society (see Advanced Topics 3.B):</p>
+
+<ul>
+<li><p>The most connected individual (the largest degree node) in a random society is expected to have degree <i>k<sub>max</sub> = 1,185</i>.</p></li>
+<li><p>The least connected individual is expected to have degree <i>k<sub>min</sub> = 816</i>.</p></li>
+<li><p>The dispersion of a random network is <i>σ<sub>k</sub>=‹k›<sup>1/2</sup></i> , which for <i>‹k›=1,000</i> is <i>σ<sub>k</sub> = 31.62</i>. This means that the number of friends of a typical individual should be mainly in the <i>‹k› ± σ<sub>k</sub></i> range, or between <i>970</i> and <i>1,030</i>, a rather narrow range.
+</p></li>
+</ul>
+
+<p>In other words, in a random society everyone would have a comparable number of friends. We would lack outliers, or highly popular individuals, and no one would be left behind, having only a few friends. This calculation illustrates that in <i>a large random network the degree of most nodes is in the narrow vicinity of ‹k›</i> (Box 3.4).</p>
+
+<p>This prediction blatantly conflicts with reality. Indeed, there is extensive evidence of individuals who have considerably more than 1,018 acquaintances. For example, US president Franklin Delano Roosevelt’s appointment book had about <i>22,000</i> names in it, individuals he met personally [17, 26]. Similarly, a study of the social network behind Facebook has documented numerous individuals with <i>5,000</i> Facebook friends, the maximum allowed by the social networking platform [4]. The reason behind these systematic discrepancies can be understood by comparing the degree distribution of real and random networks.</p>
+
+<div class="tip">
+  <h4 id="com.plex">Box 3.4 </br>  Why hubs are absent in random network.</h4>
+  <p>To understand why hubs are absent in random networks, we turn to the degree distribution (8). We first realize that the <i>1/k!</i> term in (8) significantly decreases the chances of observing large degree nodes. Indeed, the Stirling approximation</p>
+  
+<h4>\[k! \sim \left[ {\sqrt {2\pi k} } \right]{\left( {\frac{k}{e}} \right)^k}\]</h4>
+  
+<p>allows us rewrite Eq. (8) as</p>
+
+<h4>\[{p_k} = \frac{{{e^{ - \langle k\rangle }}}}{{\sqrt {2\pi k} }}{(\frac{{e\langle k\rangle }}{k})^k}. \hspace{20 mm} (9) \]  </h4>
+
+<p>For degrees <i>k > e ‹k›</i> the term in the parenthesis is smaller than one, hence for large <i>k</i> both <i>k</i>-dependent terms in (9), i.e. <i>1/√k</i> and (<i>e‹k› /k)<sup>k</sup></i> decrease rapidly with increasing <i>k</i>. Overall Eq. (9) predicts that in a random network <i>the chance of observing a hub decreases faster than exponentially</i>.</p>
+
+</div>
+
+<p>In Image 3.5 we show the degree distribution of three real networks, together with the corresponding Poisson fits. The figure documents considerable differences between the random network predictions and the real data:</p>
+
+<ul>
+<li><p>The Poisson form significantly underestimates the number of high degree nodes. For example, according to the random network model the maximum degree for the Internet is expected to be around <i>20</i>, while the data indicates the existence of nodes with degrees close to <i>10<sup>3</sup></i>.</p></li>
+<li><p>The spread in the degrees of real networks is much wider than expected in a random network. This difference is captured by the dispersion <i>σ<sub>k</sub></i>(Image 3.4a). For example, if the Internet were to be random, we would expect <i>σ<sub>k</sub> = 2.52</i>, while the measurements indicate <i>σ<sub>internet</sub> = 14.14</i>, significantly higher than predicted.</p></li>
+</ul>
+
+<p>These differences are not limited to the networks shown in Image 3.5, but all networks listed in Table 2.1 share this property. Hence the comparison with the real data indicates that the random network model does not capture the degree distribution of real networks. While in a random network most nodes have comparable degrees, forbidding hubs, in real networks we observe a significant number of highly connected nodes and large differences in node degrees. We will resolve these differences in Chapter 4.</p>
+
+
+<div class="image-container " >
+	<img src="../imgs/chapter03/ch03_05.jpg" alt="Degree distribution of real networks." />	
+<p class="captionBold">Image 3.5</p>
+<p class="caption"><span class="imte">Degree distribution of real networks.</span></br>
+The degree distribution of the Internet, science collaboration network, and the protein interaction network of yeast (Table 2.1). The dashed line corresponds to the Poisson prediction, obtained by measuring <i>‹k›</i> for the real network and then plotting Eq. (8). The significant deviation between the data and the Poisson fit indicates that the random network model underestimates the size and the frequency of highly connected nodes, or hubs.</p>
+</div>
+
+</section>
+<div class="pageb"></div>
+
+
+
+<section>
+<a id="The-evolution-of-a-random-network"></br></br></a>
+<h3 id="#">3.6 THE EVOLUTION OF A RANDOM NETWORK</h3>
+
+
+<div class="image-container " >
+	<video id="sampleMovie" width="800"  preload controls>
+    <source src="../imgs/chapter03/ch03_06.m4v" />
+	<source src="../imgs/chapter03/ch03_06.ogv" />
+	<source src="../imgs/chapter03/ch03_06.webm" />
+    </video>
+ <p class="captionBold">Movie 3.1</p>
+    <p class="caption"><span class="imte">Evolution of a random graph.</span></br>
+Changes in the structure of a random graph with increasing <i>p</i>, illustrating the absence of a giant component for small <i>p</i> and its sudden emergence once <i>p</i> exceeds a critical value.</p>
+</div>
+
+<p>The cocktail party we encountered at the beginning of the chapter captures a dynamical process: starting with <i>N</i> isolated nodes, the links are added gradually through random encounters between the guests. Within the random network model this corresponds to a gradual increase of <i>p</i>, with striking consequences on the network topology (Movie 3.1). To quantify this process, we first inspect how the size N<sub>G</sub> of the <i>giant component</i>, which is the largest cluster within the network, varies with <i>‹k›</i>. The two extreme cases are easy to understand:</p>
+
+<ul>
+<li><p>For <i>p = 0</i> we have <i>‹k› = 0</i>, hence we observe only isolated nodes. Therefore <i>N<sub>G</sub> = 1</i> and <i>N<sub>G</sub> / N→0</i> for large <i>N</i>.</p></li>
+<li><p>For <i>p = 1</i> we have <i>‹k›= N-1</i>, hence the network is a complete graph and all nodes belong to a single cluster. Therefore <i>N<sub>G</sub> = N</i> and <i>N<sub>G</sub> / N = 1</i>.</p></li>
+</ul>
+
+<p>One would expect that the giant component will grow gradually from <i>N<sub>G</sub> = 1</i> to <i>N<sub>G</sub> = N</i> if we increase <i>‹k›</i> from <i>0</i> to <i>N-1</i>. Yet, as Image 3.6a indicates, this is not the case: <i>N<sub>G</sub> / N</i> remains zero for small <i>‹k›</i>, indicating the lack of a giant component for a range of <i>‹k›</i> values. Once <i>‹k›</i> exceeds a critical value, <i>N<sub>G</sub> / N</i> increases rapidly, signaling the emergence of a giant component. Erdős and Rényi in their classical 1959 paper predicted that the <i>condition for the emergence of the giant component is</i></p>
+
+<h4>\[\left\langle k \right\rangle  = 1. \hspace{20 mm} (10) \]  </h4>
+
+<p>In other words, we have a giant component if and only if when <i>each node has on average one link</i> (Advanced Topics 3.C).</p>
+
+<p>The fact that at least one link per node is <i>necessary</i> for a giant component is not unexpected. Indeed, for a giant component to exist, each of its nodes must be linked to at least one other node. It is somewhat counterintuitive, however that one link is <i>sufficient</i> for its emergence.</p>
+
+<p>If we wish to express Eq. (10) in terms of <i>p</i>, using Eq. (3) we obtain</p>
+
+<h4>\[{p_c} = \frac{1}{{N - 1}} \approx \frac{1}{N}, \hspace{20 mm} (11) \]  </h4>
+
+<p>indicating that the larger a network, the smaller <i>p</i> is sufficient for the giant component.</p>
+
+<p>The emergence of the giant component is only one of the important transitions displayed by a random network. Changes in <i>‹k›</i> allow us to distinguish four topologically distinct regimes (Image 3.6), each with its unique characteristics:</p>
+
+<p><strong>(a) Subcritical regime: <i>0 < ‹k› < 1, (p < 1/N )</i>.</strong></p>
+
+
+<div class="image-container half-width-right" >
+	<img src="../imgs/chapter03/ch03_06.png" alt="Evolution of a random network." />	
+<p class="captionBold">Image 3.6</p>
+<p class="caption"><span class="imte">Evolution of a random network.</span></br>
+(a) The relative size of the giant component in function of the average degree ‹k› in the Erdős-Rényi model.<br>
+(b)-(e) The main network characteristics in the four regimes that charac- terize a random network.</p>
+</div>
+
+<p>For <i>‹k› = 0</i> the network consists of <i>N</i> isolated nodes. Increasing <i>‹k›</i> is equivalent with adding <i>N‹k› = pN(N-1)/2</i> links to the network. Yet, given the small number of links in the network in this regime, these links will mainly form clusters of size two (Image 3.6b). Upon increasing ‹k› further, some of the new links will join these pairs, forming tiny clusters. While we can designate at any moment the largest such cluster to be the giant component, in this regime the relative size of the largest cluster, <i>N<sub>G</sub> / N</i>, remains zero. The reason is that for <i>‹k› < 1</i> the largest cluster is a tree with size <i>N ~ lnN</i>. Therefore <i>N<sub>G</sub>/ N ≃ lnN / N→0</i> in the <i>N→∞</i> limit, indicating that the largest component is tiny compared to the size of the network.</p>
+
+<p>In summary, in the subcritical regime the network consists of numerous tiny components, whose size follows an exponential distribution. Hence these components have comparable sizes, lacking a clear winner that we could designate as a giant component (Advanced Topics 3.D).</p>
+
+<p><strong>(b) Critical Point: <i>‹k› = 1, (p = 1/N )</i>.</strong></p>
+
+<p>The critical point separates the regime where there is not yet a giant component <i>(‹k› < 1)</i> from the regime where there is one <i>(‹k› > 1)</i>. While it signals the emergence of the giant component, the relative size of the largest component in this point is still zero (Image 3.6c). Indeed, the calculations indicate that the size of the largest component is <i>N<sub>G</sub> ~ N<sup>2/3</sup></i>, so its relative size decreases as <i>N<sub>G</sub> / N~ N<sup>-1/3</sup></i>, indicating that <i>N<sub>G</sub></i> is still tiny compared to the network’s size.</p>
+
+<p>In absolute terms there is a significant increase in the size of the largest component at <i>‹k› = 1</i>. For example, for a random network of <i>N = 7 ×10<sup>9</sup></i> nodes, the size of the globe’s social network, for <i>‹k› < 1</i> the largest cluster is of the order of <i>NG ≃ lnN = ln (7 ×10<sup>9</sup>)≃ 22.7</i>. In contrast at <i>‹k› = 1</i> we expect <i>N ~ N<sup>2/3</sup> = (7 ×10<sup>9</sup>)<sup>2/3</sup> ≃ 3 ×10<sup>6</sup></i>, a jump of about five orders of magnitude. Yet, both in the subcritical regime <i>(‹k› < 1)</i> and at the critical point <i>(‹k› = 1)</i> the largest component contains a vanishing fraction of the total number of nodes in the network.</p>
+
+<p>Therefore most nodes are located in numerous small components, whose size distribution follows Eq. (36), a power law form indicating that components of rather different sizes coexist. These numerous small components are mainly trees, while the giant component may contain loops. Note that many properties of the network at the crit- ical point resemble the properties of a physical system undergoing a phase transition (Advanced Topics 3.F).</p>
+
+<p><strong>(c) Supercritical regime: ‹k› > 1, (p > 1/N )</i>.</strong></p>
+
+<p>This regime has the most relevance to real systems, as for the first time we have a giant component that looks like a network. In the vicinity of the critical point the size of the giant component varies as</p>
+
+<h4>\[{N_G}/N \sim \langle k\rangle  - 1,\hspace{20 mm} (12) \]  </h4>
+
+<p>or</p>
+
+<h4>\[{N_G}\sim(p - {p_c})N,\hspace{20 mm} (13) \]  </h4>
+
+<p>where <i>p<sub>c</sub></i> is given by Eq.(11). In other words, the <i>giant component contains a finite fraction of all nodes in the network</i>. The further we move from the critical point, a larger fraction of nodes will belong to it. Note that Eq. (12) is valid only in the vicinity of <i>‹k› = 1</i>, and for large ‹k› the dependence between <i>N<sub>G</sub></i> and <i>‹k›</i> is nonlinear (Image 3.6d).<br>
+In the supercritical regime there are still numerous isolated components that coexist with the giant component, their size distribution being given by Eq. (35). These small components are trees, while the giant component contains numerous loops and cycles. The supercritical regime lasts until all nodes are absorbed by the giant component.
+</p>
+
+<p><strong>(d) Connected regime: <i>‹k› ≥ lnN, (p ≥ (lnN)/N )</i>.</strong></p>
+
+<p>For sufficiently large <i>p</i> the giant component will absorb all nodes and components, hence <i>N<sub>G</sub>≃N</i>. In the absence of isolated nodes the network becomes connected. The average degree at which this happens depends on <i>N</i> as (Advanced Topic 3.E)</p>
+
+<h4>\[\langle k\rangle \sim\ln N. \hspace{20 mm} (14) \]  </h4>
+
+<p>Note that when we enter the connected regime the network is still relatively sparse, as <i>lnN / N → 0</i> for large <i>N</i>. The network turns into a complete graph only at <i>‹k› = N - 1</i>.</p>
+
+<div class="tip">
+  <h4 id="com.plex">Box 3.5 </br>Network evolution in graph theory.</h4>
+  <p>In the random graph literature it is often assumed that the connection probability <i>p(N)</i> scales as <i>N<sup>z</sup></i>, where <i>z</i> is a tunable parameter between <i>-∞ and 0</i>. The greatest discovery of Erdős and Rényi was that as we vary <i>z</i>, key properties of random graphs appear quite suddenly. To be precise, a graph has a given property <i>Q</i> if the probability of having <i>Q</i> approaches <i>1 as N→∞</i>. That is, for a given probability either almost every graph has the property <i>Q</i> or, almost no graph has it. For example, for <i>z</i> less than <i>-3/2</i> almost all graphs contain only isolated nodes and edges.</p>
+  
+  <div class="image-container half-width-right" >
+	<img src="../imgs/chapter03/ch03_07.png" alt="Evolution of a random network." />	
+<p class="captionBold">Image 3.7</p>
+<p class="caption"><span class="imte">Evolution of a random network.</span></br>
+The threshold probabilities at which different subgraphs appear in a random graph, as defined by exponent <i>z</i> in the <i>p(N) ~ N<sup>z</sup></i> relationship. For <i>z < -3/2</i> the graph consists of isolated nodes and edges. When <i>z</i> passes <i>-3/2</i> trees of order <i>3</i> appear, while at <i>z = -4/3</i> trees of order <i>4</i> appear. At <i>z = 1</i> trees of all orders are present, together with cycles of all orders. Complete subgraphs of order <i>4</i> appear at <i>z =-2/3</i>, and as <i>z</i> increases further, complete subgraphs of larger and larger order emerge.</p>
+</div>
+</div>
+
+<p>In summary, the emergence of a network within the random network model is not a smooth process: the isolated nodes and tiny components observed for small <i>‹k›</i> organize themselves into a giant component rather suddenly, through a process called phase transition (Advanced Topics 3.F). Along the way we encounter four topologi- cally distinct regimes (Image 3.6). The discussion offered above follows an empirical perspective, fruitful if we wish to compare the observed networks to real systems. A different prospective, leading to it own rich behavior, is discussed in the mathematical literature (Box 3.5).</p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Real-networks-are-supercritical"></br></br></a>
+<h3 id="#">3.7 REAL NETWORKS ARE SUPERCRITICAL</h3>
+
+<p>Two predictions of random network theory are of special importance for real networks:</p>
+
+<ol>
+<li><p>Once the average degree exceeds <i>‹k› = 1</i>, a giant component emerges that contains a finite fraction of all nodes. Hence only for <i>‹k› > 1</i> the nodes organize themselves into a recognizable network.</p></li>
+<li><p>For <i>‹k› > lnN</i> all components are absorbed by the giant component, resulting in a single connected network.</p></li>
+</ol>
+
+<p>But, do real networks satisfy the criteria for the existence of a giant component, i.e. <i>‹k› › 1</i>? And will this giant component contain all nodes, i.e. is <i>‹k› › lnN</i> , or do we expect some nodes and components to remain disconnected? These questions can be answered by comparing the measured <i>‹k›</i> with the theoretical thresholds uncovered above.</p>
+
+
+	<div class="image-container" >
+	<table class="tablesorter">
+		<thead>
+			<tr>
+				<th>NETWORK</th>
+				<th>NODES</th>
+				<th>LINKS</th>
+				<th>‹K›</th>
+                <th>Ln N</th>
+			</tr>
+		</thead>
+		<tbody>
+        <tr><td>Internet</td><td>192,244</td><td>609,066</td><td>6.34</td><td>12.17</td></tr>
+        <tr><td>Power Grid</td><td>4,941</td><td>6,594</td><td>2.67</td><td>8.51</td></tr>
+        <tr><td>Science Collaboration</td><td>23,133</td><td>186,936</td><td>8.08</td><td>10.04</td></tr>
+        <tr><td>Actor Network</td><td>212,250</td><td>3,054,278</td><td>28.78</td><td>12.27</td></tr>
+        <tr><td>Yeast Protein Interactions</td><td>2,018</td><td>2,930</td><td>2.90</td><td>7.61</td></tr>
+        
+		</tbody>
+	</table>
+<p class="captionBold">Table 3.1</p>
+    <p class="caption"><span class="imte">Are real networks connected?</span></br>
+The number of nodes <i>N</i> and links <i>L</i> for several undirected networks, together with <i>‹k›</i> and <i>lnN</i>. A giant component is expected for <i>‹k› > 1</i> and all nodes should join the giant component for <i>‹k› ≥ lnN</i>. While for all networks <i>‹k› > 1</i>, for most <i>‹k›</i> is under the <i>lnN</i> threshold.</p>
+</div>
+
+<p>The measurements indicate that real networks extravagantly exceed the <i>‹k› = 1</i> threshold. Indeed, sociologists estimate that an average person has around <i>1,000</i> acquaintances; a typical neuron is connected to dozens of other neurons, some to thousands; in our cells, each molecule takes part in several chemical reactions, some, like water, in hundreds. This conclusion is supported by Table 3.1, listing the average degree of several undirected networks, in each case finding <i>‹k› > 1</i>. Hence the average degree of real networks is well beyond the <i>‹k› = 1</i> threshold, implying that they all have a giant component.</p>
+
+<p>Let us now inspect if we have single component (if <i>‹k› > lnN</i>), or we expect the network to be fragmented into multiple components (if <i>‹k› < lnN</i> ). For social networks this would mean that <i>‹k› ≥ ln(7 ×10<sup>9</sup>) ≃ 22.7</i>. That is, if the average individual has more than two dozens acquain- tances, then a random society would have a single component, leaving no node disconnected. With <i>‹k› ≃ 1,000</i> this is clearly satisfied. Yet, according to Table 3.1 most real networks do not satisfy this criteria, indicating that they should consist of several disconnected components. This is a disconcerting prediction for the Internet, as it suggests that we should have routers that, being disconnected from the giant component, are unable to communicate with other routers. This prediction is at odd with reality, as these routers would be of little utility.</p>
+
+  <div class="image-container" >
+	<img src="../imgs/chapter03/ch03_08.png" alt="Most real networks are supercritical." />	
+<p class="captionBold">Image 3.8</p>
+<p class="caption"><span class="imte">Most real networks are supercritical.</span></br>
+The four regimes predicted by random network theory, marking with a cross the location of several real networks of Table 3.1. The diagram indicates that most networks are in the supercritical regime, hence they are expected to be broken into numerous isolated components. Only the actor network is in the connected regime, meaning that all nodes are expected to be part of a single giant component. Note that while the boundary between the subcritical and the supercritical regime is always at <i>‹k› = 1</i>, the boundary between the supercritical and the connected regimes is at <i>lnN</i>, hence varies from system to system.</p>
+</div>
+
+<p>Taken together, we find that most real networks are in the supercritical regime (Image 3.8). This means that these networks have a giant component, but it coexists with many disconnected components and nodes. This is true, however, only if real networks are accurately described by the Erdős-Rényi model, i.e. if real networks are random. In the coming chapters, as we learn more about the structure of real networks, we will understand why real networks can stay connected despite failing the <i>k > lnN</i> criteria.</p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="The-small-world-property"></br></br></a>
+<h3 id="#">3.8 SMALL WORLD PROPERTY</h3>
+
+  <div class="image-container" >
+	<img src="../imgs/chapter03/ch03_09.png" alt="Six degrees of separation." />	
+<p class="captionBold">Image 3.9</p>
+<p class="caption"><span class="imte">Six degrees of separation.</span></br>
+According to six degrees of separation any two individuals, anywhere in the world, can be connected through a chain of six or fewer acquaintances. This means that while Sarah does not know Peter, she knows Ralph, who knows Jane and who in turn knows Peter. Hence Sarah is three degrees from Peter. In the language of network science six degrees, also called the small world property, states that the distance between any two nodes in a network is unexpectedly small.</p>
+</div>
+
+<p><i>Small world phenomena</i>, also known as <i>six degrees of separation</i>, has long fascinated the general public. It states that if you choose any two individuals anywhere on earth, you will find a path of at most six acquaintances between them (Image 3.9). The fact that individuals who live in the same city are only a few handshakes from each other is by no means surprising. The small world concept goes further, however, stating that even individuals who are on the opposite side of the globe are six or fewer hand-shakes from us.</p>
+
+<p>In the language of network science small world phenomena implies that <i>the distance between two randomly chosen nodes in a network is surprisingly short</i>. This statement raises two questions:</p>
+
+<ul>
+<li><p>What does short (or small) mean, i.e. short compared to what?</p></li>
+<li><p>How do we explain the existence of these short distances?</p></li>
+</ul>
+
+<p>Both of these questions are answered by a simple calculation within the context of random networks. Consider a random network with average degree <i>‹k›</i>. A node in this network has on average:</p>
+<p>
+<i>‹k›</i> nodes at distance two <i>(d=1)</i>. <br>
+<i>‹k›<sup>2</sup></i> nodes at distance two <i>(d=2)</i>. <br>
+<i>‹k›<sup>3</sup></i> nodes at distance three <i>(d=3)</i>. <br>
+...<br>
+<i>‹k›<sup>d</sup></i> nodes at distance <i>d</i>.<br>
+</p>
+
+<p>6
+For example, if <i>‹k› ≃ 1,000</i>, we expect 10<sup>6</sup> individuals at distance two and about a billion individuals, i.e. almost the whole earth’s population, at distance three from us.</p>
+
+<p>To be precise, the expected number of nodes up to distance <i>d</i> from our starting node is</p>
+
+<h4>\[N(d) \simeq 1 + \langle k\rangle  + {\langle k\rangle ^2} + ... + {\langle k\rangle ^d} = \frac{{{{\langle k\rangle }^{d + 1}} - 1}}{{\langle k\rangle  - 1}}.\hspace{20 mm} (15) \]  </h4>
+
+<p>Yet, <i>N(d)</i> must not exceed the total number of nodes, <i>N</i>, in the network. Therefore the distances cannot take up arbitrary values. We can identify a maximum distance <i>d<sub>max</sub></i> or the network’s diameter at which <i>N(d)</i> reaches <i>N</i>. By setting</p>
+
+<h4>\[N({d_{max}}) \simeq N,\hspace{20 mm} (16) \]  </h4>
+
+<p>and assuming that <i>‹k› » 1</i>, we can neglect the <i>(-1)</i> term in both the nominator and denominator of Eq. (15), obtain- ing</p>
+
+<h4>\[{\langle k\rangle ^{{d_{max}}}} \simeq N.\hspace{20 mm} (17) \]  </h4>
+
+<p>Therefore the diameter of a random network follows</p>
+
+<h4>\[{d_{max}} \propto \frac{{\log N}}{{\log \langle k\rangle }},\hspace{20 mm} (18) \]  </h4>
+
+<p>which represents the <i>quantitative formulation of the small world phenomena</i>. The key, however is its interpretation:</p>
+
+<ul>
+<li><p>As derived, Eq. (18) predicts the scaling of the network diameter, <i>d<sub>max</sub></i> . Yet, for most networks Eq. (18) offers a better approximation to the average distance between two randomly chosen nodes, <i>‹d›</i>, than to <i>d<sub>max</sub></i> (Table 3.2). This is because <i>d<sub>max</sub></i> is often dominated by a few extreme paths, while <i>‹d›</i> is averaged over all node pairs, a process that diminishes the fluctuations. Hence typically the small world property is defined by \[\langle d\rangle  \propto \frac{{\log N}}{{\log \langle k\rangle }},\hspace{20 mm} (19) \]  describing the dependence on <i>N</i> and <i>‹k›</i> of the average distance in a network.</p></li>
+
+<li><p>In general <i>log N « N</i>, hence the dependence of <i>‹d›</i> on <i>logN</i> implies that the distances in a random network are <i>orders of magnitude smaller than the size of the network</i>. Consequently small world phenomena implies that the average path length or the diameter depends logarithmically on the system size. Hence, “small” means that <i>‹d›</i> is proportional to <i>log N</i>, rather than <i>N</i> or some power of <i>N</i> (Image 3.10).</p></li>
+
+<li><p>The <i>1 / log ‹k›</i> term implies that the denser the network, the smaller is the distance between the nodes.</p></li>
+
+<li><p>In real networks there are systematic corrections to Eq. (18), rooted in the fact that the number of nodes at distance <i>d > ‹d›</i> drops rapidly (Advanced Topics 3.F).</p></li>
+</ul>
+
+
+
+	<div class="image-container" >
+	<table class="tablesorter">
+		<thead>
+			<tr>
+				<th><i>NETWORK NAME</i></th>
+				<th><i>N</i></th>
+                <th><i>L</i></th>
+				<th><i>‹k›</i></th>
+				<th><i>‹d›</i></th>
+                <th><i>d<sub>max</sub></i></th>
+                <th><i>(LogN)/(log‹k›)</i></th>
+			</tr>
+		</thead>
+		<tbody>
+        <tr><td>Internet</td><td>192244</td><td>609066</td><td>6.34</td><td>6.98</td><td>26</td><td>6.59</td></tr>
+		<tr><td>WWW</td><td>325729</td><td>1497134</td><td>4.60</td><td>11.27</td><td>93</td><td>8.32</td></tr>
+        <tr><td>Power Grid</td><td>4941</td><td>6594</td><td>2.67</td><td>18.99</td><td>46</td><td>8.66</td></tr>
+        <tr><td>Mobile-Phone Calls</td><td>36595</td><td>91826</td><td>2.51</td><td>11.72</td><td>39</td><td>11.42</td></tr>
+        <tr><td>Email</td><td>57194</td><td>103731</td><td>1.81</td><td>5.88</td><td>18</td><td>18.4</td></tr>
+        <tr><td>Science Collaboration</td><td>23133</td><td>186936</td><td>8.08</td><td>5.35</td><td>15</td><td>4.81</td></tr>
+        <tr><td>Actor Network</td><td>212250</td><td>3054278</td><td>28.78</td><td>-</td><td>-</td><td>-</td></tr>
+        <tr><td>Citation Network</td><td>449673</td><td>4707958</td><td>10.47</td><td>11.21</td><td>42</td><td>5.55</td></tr>
+        <tr><td>E. coli Metabolism</td><td>1039</td><td>5802</td><td>5.84</td><td>2.98</td><td>8</td><td>4.04</td></tr>
+        <tr><td>Yeast Protein Interactions</td><td>2018</td><td>2930</td><td>2.90</td><td>5.61</td><td>14</td><td>7.14</td></tr>
+        
+		</tbody>
+	</table>
+<p class="captionBold">Table 3.4</p>
+    <p class="caption"><span class="imte">Six degrees of separation.</span></br>
+The average distance <i>‹d›</i> and the maximum distance <i>d<sub>max</sub></i> of the ten networks explored in this book. The last column provides <i>‹d›</i> predicted by Eq. (19), indicating that it offers a reasonable approximation to <i>‹d›</i>. Yet, the agreement is not perfect - we will see in the next chapter that for many real networks Eq. (19) needs to be adjusted. For directed networks we list the average out-degree <i>‹k<sub>out</sub>›</i> and the path lengths are measured only along the direction of the links.</p>
+</div>
+
+<p>Let us illustrate the implications of Eq. (19) for social net- works. Using <i>N≃ 7 ×10<sup>9</sup></i> and <i>‹k›≃10<sup>3</sup></i>, we obtain</p>
+
+<h4>\[\langle d\rangle  = \frac{{\ln 7 \times {{10}^9}}}{{\ln ({{10}^3})}} = 3.28. \hspace{20 mm} (20) \]  </h4>
+
+<p>Therefore, all individuals on Earth should be within three to four handshakes of each other, about a half of “six degrees”. The estimate (20) is probably closer to the real value given by Eq. (7) than the frequently quoted six degrees (Image 3.11).</p>
+
+
+  <div class="image-container" >
+	<img src="../imgs/chapter03/ch03_10.jpg" alt="Why are small worlds surprising?" />	
+<p class="captionBold">Image 3.10</p>
+<p class="caption"><span class="imte">Why are small worlds surprising?</span></br>
+Much of our intuition about distance is based on our experience with reg- ular lattices, which do not display the small world phenomenon. Indeed,
+<ul class="caption">
+<li class="caption">For a one-dimensional lattice (a line of length <i>N</i>) the diameter and the average path length scale linearly with <i>N: d<sub>max</sub>~‹d› ~N</i>.<br></li>
+<li class="caption">For a square lattice <i>d<sub>max</sub>~‹d› ~ N<sup>1/2</sup></i>.<br></li>
+<li class="caption">For a cubic lattice <i>d<sub>max</sub>~‹d› ~ N<sup>1/3</sup></i>.<br></li>
+<li class="caption">In general, for a <i>d</i>-dimensional lattice we have <i>d<sub>max</sub> ~ ‹d› ~ N<sup>1/d</sup></i>.<br></li>
+</ul>
+Such polynomial dependence predicts a much faster increase with <i>N</i> than Eq. (19), indicating that in regular lattices the path lengths are significantly longer than in a random network. The figure shows the predicted <i>N</i>-dependence of <i>‹d›</i> for regular and random networks on a linear (left) and on a <i>log-log</i> (right) scale. If the social network would form a regular <i>2d</i> lattice, where each individual knows only its nearest neighbors, the average distance between two individuals would be roughly <i>(7 ×10 <sup>9</sup>)<sup>1/2</sup> = 83,666</i>. Even if we correct for the fact that a person has about <i>1,000</i> acquaintances, not four, the average separation will be orders of magnitude larger than predicted by Eq. (19).
+</p>
+</div>
+
+
+  <div class="image-container half-width-right" >
+	<img src="../imgs/chapter03/ch03_11.png" alt="Six degrees? Facebook finds only four." />	
+<p class="captionBold">Image 3.11</p>
+<p class="caption"><span class="imte">Six degrees? Facebook finds only four.</span></br>
+Milgram’s experiment could not detect the true distance between his study’s participants, as he lacked an accurate map of the full social network. Today Facebook has the most extensive social network map ever assembled. Using Facebook’s social graph of May 2011, consisting of <i>721</i> million active users and 68 billion symmetric friendship links, the average distance between the users was <i>4.74</i>. The figure shows the distance distribution, <i>p<sub>d</sub></i> , for all pairs of Facebook users worldwide (full dataset) and within the US only. Therefore, instead of ‘six degrees’ researchers detected only ‘four degrees of separation’ [4], closer to the prediction of Eq. (20) than to Milgram’s six degrees [23]. Using Facebook’s <i>N</i> and <i>L</i> Eq. (19) predicts the average degree to be approximately <i>3.90</i>, not far from the reported four degrees.</p>
+</div>
+
+<p>While discovered in the context of social systems, the small world property applies beyond social networks. In Table 3.2 we compare the prediction of Eq. (19) with the average path length <i>‹d›</i> for several real networks, finding that despite the diversity of these systems and the significant differences between them in terms of <i>N</i> and <i>‹k›</i>, Eq. (19) offers a reasonable approximation to the empirically observed ‹d›.</p>
+
+<p>The small world property has not only ignited the public’s imagination, but plays an important role in network science as well. It affects most network characteristics, from the spread of ideas in social networks to search on networks. The small world phenomena can be reasonably well understood in the context of the random network model: it is rooted in the fact that the number of nodes at distance <i>d</i> from a node increases exponentially with <i>d</i>. While in the coming chapters we will see that in real networks we encounter systematic deviations from Eq. (19), forcing us to replace it with more accurate predictions, the intuition offered by the random network model on the origin of the phenomenon remains valid.</p>
+
+<div class="tip">
+  <h4 id="com.plex">Box 3.6 </br>A BRIEF HISTORY OF SIX DEGREES</h4>
+  
+    <div class="image-container" >
+	<img src="../imgs/chapter03/ch03_12.jpg" alt="Frigyes Karinthy (1887-1938)" />	
+<p class="captionBold">Image 3.12</p>
+<p class="caption"><span class="imte">Frigyes Karinthy (1887-1938)</span></br>
+Hungarian writer, journalist and playwright, the first to describe the small world property. He remains one of the most popular writers in Hungary. English translation of <i>Chains</i>, the 1929 short story describing the small world phenomena, is available in [25].</p>
+</div>
+
+<p>The first description of small world phenomena goes back to a 1929 story collection entitled <i>Minden másképpen van</i> (Everything is Different) by the Hungarian writer <strong>Frigyes Karinthy</strong> [21]. In Láncszemek (Chains), a short story in the volume, Karinthy suggests that one could name any person among earth’s one and a half billion inhabitants (estimated population in 1929) and through at most five acquaintances, one of which he knew personally, he could link to him. To demonstrate his thesis Karinthy links a Nobel Prize winner to himself, noting that the Nobelist must know King Gustav, the Swedish monarch who hands out the Nobel Prize, who in turn is a consummate tennis player and occasionally plays with a tennis champion who is one of Karinthy’s good friends. Remarking that finding a chain of acquaintances to celebrities, like a Nobelist, is easy, he next links a worker in Ford’s factory to himself:
+<i>“The worker knows the manager in the shop, who knows Ford; Ford is on friendly terms with the general director of Hearst Publications, who last year became good friends with Árpád Pásztor, someone I not only know, but to the best of my knowledge a good friend of mine.”</i></p>
+
+  <div class="image-container" >
+	<img src="../imgs/chapter03/ch03_13.jpg" alt="Stanley Milgram (1933-1984)" />	
+<p class="captionBold">Image 3.13</p>
+<p class="caption"><span class="imte">Stanley Milgram (1933-1984)</span></br>
+American social psychologist known for his experiments on obedience and authority. He designed and carried out the small world experiment in 1967 as part of his Harvard dissertation.</p>
+</div>
+  
+  <p>The first experimental study of small world phenomena took place four decades after Karinthy, in 1967, when Stanley Milgram turned the idea into an experiment probing the structure of social networks [23]. Milgram chose a stock broker in Boston and a divinity student in Sharon, Massachusetts as “targets”. Randomly selected residents of Wichita, Kansas and Omaha, Nebraska received
+a letter containing a short summary of the study’s purpose, a photograph, the name, address and information about the target person. They were asked to forward the letter to a friend, relative or acquaintance, who is more likely to know the target person. Milgram wrote in 1969: <i>“I asked a person of intelligence how many steps he thought it would take, and he said that it would require 100 intermediate persons, or more, to move from Nebraska to Sharon.”</i> Yet, within a few days the first letter arrived, passing through only two links. Eventually 42 of the 160 letters made
+it back, some requiring close to a dozen intermediates. These completed chains allowed Milgram to determine the number of individuals required to get the letter to the target. He found that the median number of intermediates was 5.5, a relatively small number and remarkably close to Karinthy’s 1929 insight.</p>
+
+  <div class="image-container" >
+	<img src="../imgs/chapter03/ch03_14.jpg" alt="Six Degrees of Separation." />	
+<p class="captionBold">Image 3.14</p>
+<p class="caption"><span class="imte">Six Degrees of Separation.</span></br>
+Cover of John Guareís Six Degrees of Separation play, that helped turn six degrees into a catch phase of popular culture.</p>
+</div>
+
+<p>The phrase “six degrees of separation” was introduced in 1991 by the playwright <strong>John Guare</strong>, who used it as the title of his Broadway play, later turned into a movie. The play’s lead character, Ousa, musing about the world’s interconnectedness, tells her daughter:<br>
+<i>“Everybody on this planet is separated by only six other people. Six degrees of separation. Between us and everybody else on this planet. The president of the United States. A gondolier in Venice. It’s not just the big names. It’s anyone. A native in a rain forest. A Tierra del Fuegan. An Eskimo. I am bound to everyone on this planet by a trail of six people. It’s a profound thought. How every person is a new door, opening up into other worlds.”</i><br>
+Milgram’s study was confined to the United States, linking individuals in Wichita and Omaha to Boston. Guare, however, with the sweep of a writer’s imagination, generalized six degrees to the whole planet, bringing it closer in spirit to Karinthy’s 1929 description. As more people watch movies than read sociology papers, Guare’s version prevailed in popular thought.</p>
+
+  <div class="image-container" >
+	<img src="../imgs/chapter03/ch03_15.jpg" alt="Watts-Strogatz model." />	
+<p class="captionBold">Image 3.15</p>
+<p class="caption"><span class="imte">Watts-Strogatz model.</span></br>
+The model starts from a ring of nodes, each node connected to their immediate and next neighbors, a configuration in which each node has clustering coefficient <i>C = 3/4</i> (left, <i>p = 0</i>). With probability <i>p</i> each link is rewired to a randomly chosen node.
+For small <i>p</i> the network maintains a high average clustering coefficient but the random long-range links drastically decrease the distances between the nodes, inducing the small world effect (middle). For large <i>p</i> (right, <i>p = 1</i>) the network turns into a random network. (After [30]).</p>
+</div>
+
+<p>A new wave of interest in small worlds emerged following
+the 1998 study of Duncan Watts and Steven Strogatz, applied mathematicians working at Cornell [30]. They analyzed three real systems, the actor network of Hollywood, the neural network
+of the worm <i>C. elegans</i>, and the North American power grid, in each case finding that the average distance between the nodes is comparable to the random network prediction Eq. (19). Hence they found that the small world property applies to networks appearing in natural and technological systems as well. Watts and Strogatz also noted that these networks have a much higher clustering coefficient than expected for a random network, prompting them to propose a model to account for the coexistence of small path lengths and large clustering (Image 3.15). The model’s properties are discussed in detail in the chapter devoted to social networks.</p>
+
+</div>
+
+</section>
+<div class="pageb"></div>
+
+
+
+<section>
+<a id="Clustering-coefficient"></br></br></a>
+<h3 id="#">3.9 CLUSTERING COEFFICIENT</h3>
+
+
+<p>The local clustering coefficient <i>C<sub>i</sub></i> captures the density of links in node <i>i</i>’s immediate neighborhood: <i>C = 0</i> means that there are no links between <i>i</i>’s neighbors; <i>C = 1</i> implies that each of the <i>i</i>’s neighbors link to each other (Sect. 2.10). To calculate <i>C<sub>i</sub></i> for a node in a random network we need to estimate the expected number of links <i>L<sub>i</sub></i> between the node’s <i>k<sub>i</sub></i> neighbors. In a random network the probability that two of i’s neighbors link to each other is <i>p</i>. As there are <i>k<sub>i</sub>(k<sub>i</sub> - 1)/2</i> possible links between the <i>k<sub>i</sub></i> neighbors of node <i>i</i>, the expected value of <i>L<sub>i</sub></i> is</p>
+
+<h4>\[{C_i} = \frac{{2\langle {L_i}\rangle }}{{{k_i}({k_i} - 1)}} = p = \frac{{\langle k\rangle }}{N}. \hspace{20 mm} (21) \]  </h4>
+
+  <div class="image-container half-width-right" >
+	<img src="../imgs/chapter03/ch03_16.jpg" alt="Clustering in real networks." />	
+<p class="captionBold">Image 3.16</p>
+<p class="caption"><span class="imte">Clustering in real networks.</span></br>
+<strong>(a)</strong> Comparison between the average clustering coefficient of real networks and the prediction Eq. (21) for random networks. Each circle corresponds to a network from Table 3.2. Directed network were made undirect- ed to calculate <i>C</i>. The dashed line corresponds to Eq. (21), predicting that for random networks the average clustering coefficient should decrease as N-1.<br> In contrast, for real networks <i>‹C›</i> has only a weak dependence on <i>N<sup>-1</sup></i>.<br><br>
+<strong>(b)-(d)</strong> The dependence of the local clustering coefficient, <i>C(k)</i>, on the node’s degree for <i>(b)</i> the Internet, <i>(c)</i> science collaboration network and <i>(d)</i> protein interaction network. <i>C(k)</i> is measured by averaging the local clustering coefficient of all nodes with the same degree <i>k</i>. The dashed line corresponds to the prediction of Eq. (21) of the random network model, for which <i>C(k)</i> is independent of <i>k</i>. In many real networks, the clustering coefficient decreases with <i>k</i>.</p>
+</div>
+
+<p>Equation (21) makes two predictions:</p>
+
+<ol class="withalpha">
+<li><p>For fixed <i>‹k›</i>, the larger the network, the smaller is a node’s clustering coefficient. Consequently the network’s average clustering coefficient <i>‹C›</i> is expected to decrease as <i>1 / N</i>.</p></li>
+<li><p>The local clustering coefficient of a node is independent of the node’s degree.</p></li>
+</ol>
+
+<p>To test the validity of Eq. (21) we plot <i>‹C›/‹k›</i> in function of N for several undirected networks (Image 3.16a). We find that <i>‹C›/‹k›</i> does not decrease as <i>N-1</i>, but it is largely independent of <i>N</i>, in violation of Eq. (21) . In Image 3.16b-d we also show the dependency of <i>C</i> on the node’s degree <i>k<sub>i</sub></i> for three real networks, finding that <i>C(k)</i> systematically decreases with the degree, again in violation of Eq. (21) .</p>
+
+<p>Taken together, we find that the random network model does not capture the local clustering of real networks. Instead real networks have a much higher clustering coefficient than expected for a random network of similar <i>N</i> and <i>L</i>, and high-degree nodes tend to have a smaller clustering coefficient than low-degree nodes.</p>
+
+</section>
+<div class="pageb"></div>
+
+
+
+<section>
+<a id="Real-networks-are-not-random"></br></br></a>
+<h3 id="#">3.10 REAL NETWORKS ARE NOT RANDOM</h3>
+
+<p>For about four decades following its introduction in 1959 the random network model has dominated mathematical approaches to complex networks. The model suggests that if a network is not as regular as a square lattice, we should describe it as random. With that it equated complexity with randomness. We must therefore ask:</p>
+
+<blockquote class='long-quote'>
+  Do we really believe that real networks are random?
+</blockquote>
+
+<p>The answer is clearly no. The interactions between our proteins are governed by the strict laws of biochemistry so for the cell to function its chemical architecture can not be random. Similarly, in a random society an American student would be more likely to have among his friends Chinese factory workers than one of her classmates. In reality we suspect the existence of a deep order behind most complex systems. That order must be reflected in the structure of the network that describes their architecture, resulting in systematic deviations from a pure random configura- tion.</p>
+
+<p>The degree to which random networks describe (or fail to describe) real systems must not be decided by epistemological arguments, but by a systematic quantitative comparison. This is possible because random network theory makes a number of quantitative predictions that can be tested on real networks:
+</p>
+
+<p><strong>Degree distribution:</strong> The degrees of a random network follow a binomial distribution, well approximated by a Poisson distribution in the <i>k « N</i> limit. Yet, as shown in Image 3.5, the Poisson distribution fails to capture the degree distribution of real networks. Instead in real systems we have more highly connected nodes than the random network model could account for.</p>
+
+<p><strong>Connectedness:</strong> Random network theory predicts that for <i>‹k› > 1</i> we should observe a giant component, a condition satisfied by all networks we examined. Most networks do not satisfy the <i>‹k› > ln N</i> condition, which implies that these networks should be broken into isolated clusters (Table 3.1). Some networks are indeed fragmented, most are not.</p>
+
+<p><strong>Average path length:</strong> Random network theory predicts that the average path length scales as <i>‹d› ~ logN / log‹k›</i>, a prediction that captures the order of magnitude of the path lengths. Hence the random network model can account for the fundamental features of small world phenomena.</p>
+
+<p><strong>Clustering coefficient:</strong> In a random network the local clustering coefficient is independent of the node’s degree and <i>‹C›</i> depends on the system size as <i>1 / N</i>. In contrast, measurements indicate that for real networks <i>C</i> decreases with the node degrees and is largely independent of the system size (Image 3.16).
+</p>
+
+<p>Taken together, it appears that the small world phenomena is the only property reasonably explained by the random network model. All other network characteristics, from the degree distribution to the clustering coefficient, are significantly different in real and random networks. In fact, the more we learn about real networks, the more we will arrive at the startling conclusion that <i>we do not know of any real network that is accurately described by the random network model</i>.</p>
+
+<p>This conclusion begs a legitimate question: If real networks are not random, why did we devote a full chapter to the random network model? The answer is simple: the model serves as a fundamental reference as we try to understand the properties of real networks. Each time we observe some network property we will have to ask if it could have emerged by chance. For this we turn to the random network model as a guide: if the property is present in the model, it means that randomness can account for it. If the property is absent in random networks, it may represents some signature of order, requiring a deeper explanation. So, the random network model may be the wrong model for most real systems, yet, <i>it remains quite relevant for network science</i> (Box 3.8).</p>
+
+<div class="tip">
+  <h4 id="com.plex">Box 3.7 </br>Random networks and network science.</h4>
+  
+    <div class="image-container half-width-right" >
+	<img src="../imgs/chapter03/ch03_17.jpg" alt="Network science and random networks." />	
+<p class="captionBold">Image 3.17</p>
+<p class="caption"><span class="imte">Network science and random networks.</span></br>
+While today we perceive the Erdős-Rényi model as the cornerstone of network theory, the model was hardly known outside a small segment of mathematics. This is illustrated by the yearly citations of the first two papers by Erdős and Rényi, published in 1959 and 1960. For four decades after their publication the papers gathered less than 10 citations per year. The number of citations exploded after the first papers on scale-free networks [2, 3, 20] have turned Erdős and Rényi’s work into the reference model of network theory.</p>
+</div>
+
+  <p>The lack of agreement between random and real networks raises an important question: how could a theory survive so long given its poor agreement with reality? The answer is simple: random network theory was never meant to serve as a model of real systems. True Erdős and Rényi did write in their first paper [9] that “This may be interesting not only from a purely mathematical point of view. In fact, the evolution of graphs may be considered as a rather simplified model of the evolution of certain communication nets (railways, road or electric network systems, etc.) of a country or some unit.” Yet, this is the only mention of the potential practical value of their approach. The subsequent development of random graphs was driven by inherent mathematical challenges.</p>
+  <p>It is tempting to follow Thomas Kuhn and view network science
+as a paradigm change from random graphs to a theory of real networks [22]. In reality, there was no network paradigm before the end of 1990s. This period is characterized by a lack of interest in the problem, without systematic attempts to compare the properties of real networks with graph theoretical models. The work of Erdős and Rényi has gained prominence outside mathematics only after the emergence of network science (see Image 3.17).</p>
+  <p>Network theory does not lessen the contributions of Erdős and Rényi, but demonstrates the unintended importance of their work. When we point out the disrepacies between the predictions of the random network model and real networks, we do so only to offer a proper ground on which we can understand the properties of real systems.</p>
+</div>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="The-first-law-of-network"></br></br></a>
+<h3 id="#">3.11 SUMMARY:<br>
+THE FIRST LAW OF NETWORKS</h3>
+
+<p>Network science has distilled a small number of fundamental organizing principles that govern the structure and evolution of real networks. We call these network laws as just like the laws of physics, they encode generic principles obeyed by many real networks. A network property quantifies as a law if</p>
+
+<ol class="withalpha">
+<li><p>it has a unique quantitative, testable and falsifiable formulation;</p></li>
+<li><p>it is obeyed by a large number of real networks;</p></li>
+<li><p>it does not emergence by chance, hence it cannot be explained within the context of the random network model.</p></li>
+</ol>
+
+<p>The results of this chapter allow us to formulate the fist of these laws:</p>
+
+<div class="tip">
+<blockquote class='long-quote'>
+  THE FIRST LAW: SMALL WORLD PROPERTY<br>
+  <STRONG>In complex networks there are short distances between any pair of nodes.</STRONG>
+</blockquote>
+</div>
+
+<p>Evidence for the first law is provided in Sect. 3.8. To recap in the context of the criteria A-C:</p>
+
+<ol class="withalpha">
+<li><p>Equation (19) offers the quantitative formulation of the First Law, predicting that the average distance between two randomly chosen nodes scales as a logarithm of the system size. Hence node-to-node distances are small compared to the network size.</p></li>
+<li><p>Table 3.2 offers evidence that most real networks obey the first law.</p></li>
+<li><p>As the small world property is present in random networks, the First Law apparently fails criterion <i>C</i>. Yet, we will see in the next chapter that in real networks distances are different from those expected in random networks, forcing us to modify Eq. (19).</p></li>
+</ol>
+
+
+<div class="tip">
+  <h4 id="com.plex">Box 3.8 </br>At a glance: Random networks.</h4>
+  <ul>
+<li><p>Definition: <i>N</i> nodes, where each node pair is connected with probability <i>p</i>.</p></li>
+<li><p>Average degree: \[\left\langle k \right\rangle  \sim p\left( {N - 1} \right)\]</p></li>
+
+<li><p>Average number of links: \[\left\langle L \right\rangle  \sim \frac{{p\left( {N - 1} \right)}}{2}\]</p></li>
+
+<li><p>Degree distribution: \[{p_k}{\rm{ }} = \left( \begin{array}{c}
+N - 1\\
+k
+\end{array} \right){p^k}{(1 - p)^{N - 1 - k}}.\]
+For sparse networks <i>(k « N)</i>, <i>P<sub>k</sub></i> has the Poisson form \[{p_k} = {e^{ - \left\langle k \right\rangle }}\frac{{{{\left\langle k \right\rangle }^k}}}{{k!}}.\]</p></li>
+
+<li><p>Giant component <i>(N<sub>G</sub>)</i>: <i>‹k› < 1</i>: no giant component <i>(N<sub>G</sub>~ lnN)</i> <br>
+<i>1 < ‹k› < lnN</i>: one giant component and disconnected clusters
+\[{N_G} \sim {N^{\frac{2}{3}}}\]
+<i>‹k› > lnN</i>: all nodes join the giant component
+\[{N_G} \sim \left( {p - {p_i}} \right)N\]
+</p></li>
+
+<li><p>Average distance: \[\langle d\rangle  \propto \frac{{\log N}}{{\log \langle k\rangle }},\]</p></li>
+
+<li><p>Clustering coefficient: \[C = \frac{{\left\langle k \right\rangle }}{N}.\]</p></li>
+</ul>
+</div>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Deriving-the-Poisson-degree-distribution"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 3.A:<br>
+DERIVING THE POISSON DEGREE DISTRIBUTION</h3>
+
+<p>We start from the exact binomial distribution (7)</p>
+<h4>\[{p_k} = \left( \begin{array}{c}
+N - 1\\
+k
+\end{array} \right){p^k}{(1 - p)^{N - 1 - k}} \hspace{20 mm} (22) \]  
+</h4>
+
+<p>that characterizes a random graph, and we rewrite the first term on the r.h.s. as</p>
+<h4>\[\left( \begin{array}{c}
+N - 1\\
+k
+\end{array} \right) = \frac{{(N - 1)(N - 1 - 1)(N - 1 - 2)...(N - 1 - k + 1)(N - 1 - k)!}}{{k!(N - 1 - k)!}} = \frac{{{{(N - 1)}^k}}}{{k!}} \hspace{20 mm} (23) \]  
+</h4>
+
+<p>The last term of Eq. (22) can be simplified as</p>
+<h4>\[\ln [{(1 - p)^{(N - 1) - k}}] = (N - 1 - k)\ln (1 - \frac{{\langle k\rangle }}{{N - 1}})\]</h4>
+
+<p>and using the series expansion</p>
+<h4>\[\ln (1 + x) = \sum\limits_{n = 1}^\infty  {\frac{{{{( - 1)}^{n + 1}}}}{n}} {x^n} = x - \frac{{{x^2}}}{2} + \frac{{{x^3}}}{3} - ...,\forall |x| \le 1\]</h4>
+
+<p>we obtain</p>
+<h4>\[\ln [{(1 - p)^{N - 1 - k}}] \cong (N - 1 - k)\frac{{\langle k\rangle }}{{N - 1}} =  - \langle k\rangle (1 - \frac{k}{{N - 1}}) \cong  - \langle k\rangle ,\]</h4>
+
+<p>which is valid if <i>N » k</i>, representing the small degree approximation at the heart of this derivation. Therefore the last term of Eq. (22) becomes</p>
+<h4>\[{(1 - p)^{(N - 1) - k}} = {e^{ - \langle k\rangle }}. \hspace{20 mm} (24) \]  </h4>
+
+<p>Combining Eqs. (22), (23), and (24) we obtain the Poisson
+form of the degree distribution</p>
+<h4>\[{p_k} = \left( \begin{array}{c}
+N - 1\\
+k
+\end{array} \right){p^k}{(1 - p)^{(N - 1) - k}} = \frac{{{{(N - 1)}^k}}}{{k!}}{p^k}{e^{ - \langle k\rangle }}\]
+</h4>
+
+<h4>\[ = \frac{{{{(N - 1)}^k}}}{{k!}}{\left( {\frac{{\langle k\rangle }}{{N - 1}}} \right)^k}{e^{ - \langle k\rangle }},\]</h4>
+
+<p>or</p>
+<h4>\[{p_x} = {e^{ - \langle k\rangle }}\frac{{{{\langle k\rangle }^k}}}{{k!}}. \hspace{20 mm} (25) \]  </h4>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="The-maximum-and-the-minimum-degree"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 3.B:<br>
+MAXIMUM AND MINIMUM DEGREES</h3>
+
+  <div class="image-container half-width-right" >
+	<img src="../imgs/chapter03/ch03_18.jpg" alt="Approximating the minimum and the maximum degree." />	
+<p class="captionBold">Image 3.18</p>
+<p class="caption"><span class="imte">Approximating the minimum and the maximum degree.</span></br>
+The maximum degree <i>k<sub>max</sub></i> is chosen so that there is at most one node whose degree is higher than <i>k<sub>max</sub></i> . This is often called the natural upper cutoff of a degree distribution. To calculate it, we need to set <i>k<sub>max</sub></i> such that the area under the degree distribution <i>p<sub>k</sub></i> for <i>k ≥</i> <i>k<sub>max</sub></i> is exactly equal <i>k<sub>max</sub></i> to <i>1/N</i>, hence this area multiplied by <i>N</i>, capturing the total number of nodes expected in the regime, is exactly one. We follow a similar argument to determine <i>k<sub>min</sub></i>, or the expected smallest degree.</p>
+</div>
+
+
+<p>To determine the expected degree of the largest node in a random network, called the network’s upper cutoff, we de- fine the degree kmax such that in a network of N nodes we have at most one node with degree higher than kmax . Math- ematically this means that the area behind the Poisson dis- tribution pk for k ≥ kmax should be approximately one (Im- age 3.18). Since the area is given by 1- P(kmax), where P(k) is the cumulative degree distribution of pk, the network’s largest node satisfies:</p>
+
+<h4>\[N\left[ {1 - P({k_{max}})} \right]{\rm{ }} \approx 1.\hspace{20 mm} (26) \]  </h4>
+
+<p>We write ≃ instead of =, because <i>k<sub>max</sub></i> is an integer, so in general the exact equation does not have a solution. For a Poisson distribution</p>
+
+<h4>\[1 - P({k_{max}}) = 1 - {e^{ - \langle k\rangle }}\sum\limits_{k = 0}^{{k_{max}}} {\frac{{{{\langle k\rangle }^k}}}{{k!}}}  = {e^{ - \langle k\rangle }}\sum\limits_{k = {k_{max}} + 1}^\infty  {\frac{{{{\langle k\rangle }^k}}}{{k!}}}  \approx {e^{ - \langle k\rangle }}\frac{{{{\langle k\rangle }^{{k_{max}} + 1}}}}{{({k_{max}} + 1)!}},\hspace{20 mm} (27) \]  </h4>
+
+<p>where in the last term we approximate the sum with its largest (leading) term.</p>
+
+<p>For <i>N = 10<sup>9</sup></i>, and <i>‹k› = 1,000</i> corresponding to roughly the size and average degree of the globe’s social network, we obtain <i>k<sub>max</sub> = 1,185</i>, indicating that a random network lacks extremely popular individuals, or hubs.</p>
+
+<p>We can use a similar argument to calculate the degree of the smallest node <i>k<sub>min</sub></i> , or the natural smallest cutoff. Indeed, by requiring that there should be at most one node with degree smaller than <i>k<sub>min</sub></i> we can write</p>
+
+<h4>\[NP({k_{min}}) \approx 1.\hspace{20 mm} (28) \]  </h4>
+
+<p>If <i>P(0)>1</i> the equation has no solution and <i>k<sub>min</sub> =0</i>. For the <i>ER</i> network we have</p>
+
+<h4>\[P({k_{min}}) = {e^{ - \langle k\rangle }}\sum\limits_{k = 0}^{{k_{min}}} {\frac{{{{\langle k\rangle }^k}}}{{k!}}} \hspace{20 mm} (29) \]  </h4>
+
+<p>Solving Eq. (28) with <i>N = 10<sup>9</sup></i> and <i>‹k› = 1,000</i> we obtain <i>k<sub>min</sub>= 816.</i></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Giant-component"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 3.C:<br> 
+GIANT COMPONENT</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Component-sizes"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 3.D:<br> 
+COMPONENT SIZES</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Supercritical-regime"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 3.E:<br>
+SUPERCRITICAL REGIME.</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Phase-transitions"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 3.F:<br>
+PHASE TRANSITIONS.</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Correction-to-small-worlds"></br></br></a>
+<h3 id="#">ADVANCED TOPICS 3.G:<br>
+CORRECTION TO SMALL WORLDS</h3>
+
+<p></p>
+
+</section>
+<div class="pageb"></div>
+
+
+<section>
+<a id="Bibliography"></br></br></a>
+<h3 id="#">3 BIBLIOGRAPHY</h3>
+<div class="list">
+
+<ul>
+		
+<li><p>
+[1] Barabási, A.-L. (2003). <a href="http://barabasilab.com/LinkedBook/"><em>Linked: The new science of networks</em></a>. New York: Plume Books, 1 edition.
+</p></li>
+
+<li><p>
+[2] Barabási, A.-L. & Albert R. (1999).  <a href="http://www.barabasilab.com/pubs/CCNR-ALB_Publications/199910-15_Science-Emergence/199910-15_Science-Emergence.pdf"><em>Emergence of scaling in random networks</em></a>. Science, 286:509-512.
+</p></li>
+
+<li><p>
+[3] Barabási, A.-L., Albert, R., and Jeong, H. (1999). <a href="http://arxiv.org/abs/cond-mat/9907068"><em>Meanfield theory for scale-free random networks.</em></a>. Physica A: Statistical Mechanics and its Applica- tions, 272:173-187.
+</p></li>
+
+<li><p>
+[4] Backstrom, L., Boldi, P., Rosa, M., Ugander, J. & Vigna, S. (2011). <a href="http://arxiv.org/abs/1111.4570"><em>Four degrees of separation</em></a>. CoRR, abs/1111.4570.
+</p></li>
+
+<li><p>
+[5] Bollobás, B. (2001). <a href="http://www.amazon.com/Random-Cambridge-Studies-Advanced-Mathematics/dp/0521797225/ref=lh_ni_t?ie=UTF8&psc=1&smid=ATVPDKIKX0DER"><em>Random Graphs</em></a>. Cambridge University Press.
+</p></li>
+
+<li><p>
+[6] Christensen, K., Donangelo, R., Koiller, B., and Sneppen, K. (1998). <a href="http://www.cmth.ph.imperial.ac.uk/people/k.christensen/papers/published/prl81_1998.pdf"><em>Evolution of Random Networks</em></a>. Physical Review Letters, 81:2380-2383.
+</p></li>
+
+<li><p>
+[7] Csicsery, G. P. (1993). <a href="http://www.imdb.com/title/tt0125425/"><em>N is a Number: A Portait of Paul Erdős.</em></a>. Director: George Paul Csicsery.
+</p></li>
+
+<li><p>
+[8] Erdős, P. & Rényi, A. (1959). <a href="http://ftp.math-inst.hu/~p_erdos/1959-11.pdf"><em>On random graphs, I.</em></a>. Publicationes Mathematicae (Debrecen), 6:290-297.
+</p></li>
+
+<li><p>
+[9] Erdős, P. & Rényi, A. (1960). <a href="http://www.renyi.hu/~p_erdos/1960-10.pdf"><em>On the evolution of random graphs</em></a>. Publ. Math. Inst. Hung. Acad. Sci., 5:17- 61.
+</p></li>
+
+<li><p>
+[10] Erdős, P. & Rényi, A. (1961a). <a href="https://www.renyi.hu/~p_erdos/1961-15.pdf"><em>On the evolution of random graphs</em></a>. Bull. Inst. Internat. Statist., 38:343-347.
+</p></li>
+
+<li><p>
+[11] Erdős, P. & Rényi A. (1961b) <a href="http://www.renyi.hu/~p_erdos/1961-19.pdf"><em>On the Strength of Connectedness of a Random Graph</em></a>. Acta Math. Acad. Sci. Hungary 12: 261–267.
+</p></li>
+
+<li><p>
+[12] Erdős, P. & Rényi, A. (1963). <a href="http://mabit.org.hu/~p_erdos/1963-04.pdf"><em>Asymmetric graphs</em></a>. Acta Mathematica Acod. Sci. Hungarica, 14(3-4):295-315.
+</p></li>
+
+<li><p>
+[13] Erdős, P. & Rényi, A. (1966). <a href="https://www.renyi.hu/~p_erdos/1964-14.pdf"><em>On random matrices</em></a>. Publ. Math. Inst. Hung. Acad. Sci., 8:455-461.
+</p></li>
+
+<li><p>
+[14] Erdős, P. & Rényi, A. (1966). <a href="https://www.renyi.hu/~p_erdos/1966-16.pdf"><em>On the existence of a fac- tor of degree one of a connected random graph</em></a>. Acta Math. Acad. Sci. Hungar., 17:359-368.
+</p></li>
+
+<li><p>
+[15] Erdős, P. & Rényi, A. (1968). <a href="http://www.renyi.hu/~p_erdos/1968-07.pdf"><em>On random matrices II</em></a>. Studia Sci. Math. Hung., 13:459-464.
+</p></li>
+
+<li><p>
+[16] Fernholz, D. & Ramachandran, V. (2007). <a href="http://www.cs.utexas.edu/~vlr/papers/rsa07.pdf"><em>The diameter of sparse random graphs</em></a>. Random Structures and Algorithms, 31(4):482-516.
+</p></li>
+
+<li><p>
+[17] Freeman, L. C. & Thompson, C. R. (1989). <a href="http://moreno.ss.uci.edu/52.pdf"><em>Estimating Acquaintanceship</em></a>. Volume, pg. 147-158, in The Small World, Edited by Manfred Kochen (Ablex, Norwood, NJ)
+</p></li>
+
+<li><p>
+[18] Gilbert, E. N. (1959). <a href="https://projecteuclid.org/euclid.aoms/1177706098"><em>Random graphs</em></a>. The Annals of Mathematical Statistics, 30:1141-1144.
+</p></li>
+
+<li><p>
+[19] Hoffman, P. (1998). <a href="http://www.nytimes.com/books/first/h/hoffman-man.html"><em>The Man Who Loved Only Numbers: The Story of Paul Erdős and the Search for Mathematical Truth</em></a>. Hyperion Books.
+</p></li>
+
+<li><p>
+[20] Jeong, H., Albert, R. & Barabási, A. L. (1999). <a href="http://www3.nd.edu/~networks/Publication%20Categories/03%20Journal%20Articles/Computer/Diameter_Nature%20401,%20130-131%20(1999).pdf"><em>Internet: Diameter of the world-wide web</em></a>. Nature, 401:130- 131.
+</p></li>
+
+<li><p>
+[21] Frigyes K. <a href="http://www.vers.hu/hirek/741"><em>“Láncszemek,” in Minden másképpen van</em></a>. (Budapest: Atheneum Irodai es Nyomdai R.-T. Kiadása, 1929), 85–90. English translation is avail- able in (Newman, Barabási, and Watts, 2006).
+</p></li>
+
+<li><p>
+[22] Kuhn, T. S. (1962). <a href="http://www.amazon.com/The-Structure-Scientific-Revolutions-Edition/dp/0226458083"><em>The Structure of Scientific Revolutions</em></a>. Chicago: University of Chicago Press, 1962.
+</p></li>
+
+<li><p>
+[23] Milgram, S. (1967). <a href="http://measure.igpp.ucla.edu/GK12-SEE-LA/Lesson_Files_09/Tina_Wey/TW_social_networks_Milgram_1967_small_world_problem.pdf"><em>The Small World Problem</em></a>. Psychology Today, 2: 60-67.
+</p></li>
+
+<li><p>
+[24] Newman, M. (2010). <a href="http://www-personal.umich.edu/~mejn/networks-an-introduction/"><em>Networks: An Introduction</em></a>. Oxford University Press, 1 edition.
+</p></li>
+
+<li><p>
+[25] Newman, M., Barabási, A. L., and Watts, D. J. (2006). <a href="http://lief.if.ufrgs.br/pub/biosoftwares/EBB2009/book.pdf"><em>The Structure and Dynamics of Networks</em></a>. Princeton University Press.
+</p></li>
+
+<li><p>
+[26] Rosenthal, H. (1960). <a href="#"><em>Acquaintances and contacts of Franklin Roosevelt</em></a>. Unpublished thesis. Massachusetts Institute of Technology.
+</p></li>
+
+<li><p>
+[27] Schechter, B. (1998). <a href="http://www.amazon.com/MY-BRAIN-IS-OPEN-Mathematical/dp/0684859807"><em>My Brain is Open: The Mathematical Journeys of Paul Erdős</em></a>. Simon & Schuster.
+</p></li>
+
+<li><p>
+[28] Solomonoff, R. & Rapoport, A. (1951). <a href="http://world.std.com/~rjs/50.pdf"><em>Connectivity of random nets</em></a>. Bulletin of Mathematical Biology, 13:107-117.
+</p></li>
+
+<li><p>
+[29] Stanley, H. E. (1987). <a href="http://www.amazon.com/Introduction-Transitions-Phenomena-International-Monographs/dp/0195053168"><em>Introduction to Phase Transitions and Critical Phenomena</em></a>. Oxford University Press.
+</p></li>
+
+<li><p>
+[30] Watts, D. J. & Strogatz, S. H. (1998). <a href="http://www.nature.com/nature/journal/v393/n6684/abs/393440a0.html"><em>Collective dynamics of ‘small-world’ networks</em></a>. Nature 393: 409–10.
+</p></li>
+
+
+</ul>
+</div>
+<div style="page-break-after:always;"> </div>
+</section>
+<div class="pageb"></div>
+
+
+</div>
+</div>  
+  
+  
+  
+
+	<div id="bottom">
+		<div id="footer">
+        
+        
+			<div class="one-third" id="licenses">
+        <h4>Licenses</h4>
+        <p>
+          <a class="license-badge" rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a>
+         
+        </p>
+
+        <p>
+          The book's text and illustrations are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.
+        </p>
+      </div>
+      
+
+      <div class="one-third">
+        <h4>Credit</h4>
+
+        <p>Design & Data Visualization: <a href="http://www.mamartino.com">Mauro Martino</a>, Márton Pósfai, Gabriele Musella</p>
+
+      </div>
+
+      <div class="one-third">
+        <h4>Author</h4>
+        <p><a href="http://www.barabasi.com">ALBERT-LÁSZLÓ BARABÁSI</a> is director of the <a href="http://barabasilab.neu.edu">Center for Complex Network Research</a> at Northeastern University.</p>
+
+        <p>He is the author of <a href="http://barabasilab.com/LinkedBook/">Linked</a>.</p>
+
+        <p><a href="https://twitter.com/barabasi">BARABÁSI in Twitter</a> </p>
+      </div>
+		</div>
+	</div>
+</body>
+</html>
